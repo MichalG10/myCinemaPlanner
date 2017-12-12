@@ -467,7 +467,6 @@ __pycache__/
 *.dbf
 *.mdb
 *.pdb
-*.sql
 *.sqlite3
 
 ### VisualStudio Patch ###

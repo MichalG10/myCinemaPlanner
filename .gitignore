@@ -1,6 +1,7 @@
 ### Config file
 *.Config
 *.config
+App.Config
 
 ### C++ ###
 # Prerequisites

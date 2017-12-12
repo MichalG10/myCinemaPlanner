@@ -164,6 +164,9 @@
     <EmbeddedResource Include="Manager_Welcome.resx">
       <DependentUpon>Manager_Welcome.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MovsDistrControl.resx">
+      <DependentUpon>MovsDistrControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

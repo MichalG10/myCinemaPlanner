@@ -41,11 +41,28 @@ namespace MyCinemaPlanner
             comboBox1.SelectedItem = "Movies";
             dataGrid.DataSource = ctx.Movies.ToList();
             dataGridDist.DataSource = ctx.Distributors.ToList();
+            dataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            dataGridDist.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             refreshComboBox(ctx);
 
             lastItem = comboBox1.Text;
             label1.Text = comboBox1.Text;
             labelGridDist.Text = "Distributors";
+            label16.Text = "Distributions";
+
+            updateDistributions(ctx);
+        }
+
+        private void updateDistributions(myCinemaPlannerDBEntities ctx)
+        {
+            var query = (from dis in ctx.Distributions
+                         from ds in ctx.Distributors
+                         from mv in ctx.Movies
+                         where dis.DistributorID == ds.DistributorID
+                         where dis.MovieID == mv.MovieID
+                         select new { mv.Title, ds.Name, dis.Dubbing, dis.Subtitle, dis.is3D } ).ToList();
+            distributionsGridView.DataSource = query;
+            distributionsGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
         }
 
 

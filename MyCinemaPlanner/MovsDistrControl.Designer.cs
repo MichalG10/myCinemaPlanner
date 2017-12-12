@@ -71,17 +71,32 @@
             this.label7 = new System.Windows.Forms.Label();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.distributionsGridView = new System.Windows.Forms.DataGridView();
+            this.label16 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.comboBox5 = new System.Windows.Forms.ComboBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.comboBox6 = new System.Windows.Forms.ComboBox();
+            this.comboBox7 = new System.Windows.Forms.ComboBox();
+            this.comboBox8 = new System.Windows.Forms.ComboBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridDist)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.distributionsGridView)).BeginInit();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(681, 428);
+            this.button5.Location = new System.Drawing.Point(392, 449);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(87, 53);
+            this.button5.Size = new System.Drawing.Size(75, 45);
             this.button5.TabIndex = 36;
             this.button5.Text = "Usuń Dystrybutora";
             this.button5.UseVisualStyleBackColor = true;
@@ -89,9 +104,9 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(600, 428);
+            this.button6.Location = new System.Drawing.Point(311, 450);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 53);
+            this.button6.Size = new System.Drawing.Size(75, 45);
             this.button6.TabIndex = 35;
             this.button6.Text = "Edytuj Dystrybutora";
             this.button6.UseVisualStyleBackColor = true;
@@ -99,9 +114,9 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(519, 428);
+            this.button7.Location = new System.Drawing.Point(230, 450);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(75, 53);
+            this.button7.Size = new System.Drawing.Size(75, 45);
             this.button7.TabIndex = 34;
             this.button7.Text = "Dodaj Dystrybutora";
             this.button7.UseVisualStyleBackColor = true;
@@ -109,9 +124,9 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(920, 204);
+            this.button4.Location = new System.Drawing.Point(392, 199);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(68, 39);
+            this.button4.Size = new System.Drawing.Size(75, 45);
             this.button4.TabIndex = 33;
             this.button4.Text = "Usuń Film";
             this.button4.UseVisualStyleBackColor = true;
@@ -119,9 +134,9 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(846, 204);
+            this.button3.Location = new System.Drawing.Point(311, 199);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(68, 39);
+            this.button3.Size = new System.Drawing.Size(75, 45);
             this.button3.TabIndex = 32;
             this.button3.Text = "Edytuj Film";
             this.button3.UseVisualStyleBackColor = true;
@@ -129,9 +144,9 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(774, 204);
+            this.button2.Location = new System.Drawing.Point(230, 199);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(68, 39);
+            this.button2.Size = new System.Drawing.Size(75, 45);
             this.button2.TabIndex = 31;
             this.button2.Text = "Dodaj Film";
             this.button2.UseVisualStyleBackColor = true;
@@ -142,7 +157,7 @@
             this.exceptionLabel.AutoSize = true;
             this.exceptionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.exceptionLabel.ForeColor = System.Drawing.Color.PeachPuff;
-            this.exceptionLabel.Location = new System.Drawing.Point(4, 497);
+            this.exceptionLabel.Location = new System.Drawing.Point(6, 586);
             this.exceptionLabel.Name = "exceptionLabel";
             this.exceptionLabel.Size = new System.Drawing.Size(86, 16);
             this.exceptionLabel.TabIndex = 30;
@@ -150,7 +165,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(4, 456);
+            this.button1.Location = new System.Drawing.Point(7, 545);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(121, 38);
             this.button1.TabIndex = 29;
@@ -177,7 +192,7 @@
             this.groupBox2.Controls.Add(this.label13);
             this.groupBox2.Controls.Add(this.idDistBox);
             this.groupBox2.ForeColor = System.Drawing.Color.White;
-            this.groupBox2.Location = new System.Drawing.Point(774, 258);
+            this.groupBox2.Location = new System.Drawing.Point(7, 280);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(217, 223);
             this.groupBox2.TabIndex = 28;
@@ -325,7 +340,7 @@
             this.labelGridDist.AutoSize = true;
             this.labelGridDist.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelGridDist.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.labelGridDist.Location = new System.Drawing.Point(3, 231);
+            this.labelGridDist.Location = new System.Drawing.Point(226, 258);
             this.labelGridDist.Name = "labelGridDist";
             this.labelGridDist.Size = new System.Drawing.Size(65, 24);
             this.labelGridDist.TabIndex = 26;
@@ -336,10 +351,10 @@
             this.dataGridDist.AllowUserToAddRows = false;
             this.dataGridDist.AllowUserToDeleteRows = false;
             this.dataGridDist.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridDist.Location = new System.Drawing.Point(4, 258);
+            this.dataGridDist.Location = new System.Drawing.Point(230, 286);
             this.dataGridDist.Name = "dataGridDist";
             this.dataGridDist.ReadOnly = true;
-            this.dataGridDist.Size = new System.Drawing.Size(764, 164);
+            this.dataGridDist.Size = new System.Drawing.Size(563, 159);
             this.dataGridDist.TabIndex = 25;
             this.dataGridDist.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DistributorsGrid_Click);
             // 
@@ -348,10 +363,10 @@
             this.dataGrid.AllowUserToAddRows = false;
             this.dataGrid.AllowUserToDeleteRows = false;
             this.dataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGrid.Location = new System.Drawing.Point(4, 27);
+            this.dataGrid.Location = new System.Drawing.Point(229, 28);
             this.dataGrid.Name = "dataGrid";
             this.dataGrid.ReadOnly = true;
-            this.dataGrid.Size = new System.Drawing.Size(764, 171);
+            this.dataGrid.Size = new System.Drawing.Size(563, 165);
             this.dataGrid.TabIndex = 24;
             this.dataGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGrid_CellClick);
             // 
@@ -373,7 +388,7 @@
             "Products",
             "Seance",
             "Usage"});
-            this.comboBox1.Location = new System.Drawing.Point(4, 428);
+            this.comboBox1.Location = new System.Drawing.Point(7, 518);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 23;
@@ -383,7 +398,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Location = new System.Drawing.Point(229, 1);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 24);
             this.label1.TabIndex = 22;
@@ -391,7 +406,7 @@
             // 
             // filmidBox
             // 
-            this.filmidBox.Location = new System.Drawing.Point(72, 16);
+            this.filmidBox.Location = new System.Drawing.Point(83, 16);
             this.filmidBox.Name = "filmidBox";
             this.filmidBox.Size = new System.Drawing.Size(127, 20);
             this.filmidBox.TabIndex = 0;
@@ -408,7 +423,7 @@
             // 
             // tytulBox
             // 
-            this.tytulBox.Location = new System.Drawing.Point(72, 42);
+            this.tytulBox.Location = new System.Drawing.Point(83, 42);
             this.tytulBox.Name = "tytulBox";
             this.tytulBox.Size = new System.Drawing.Size(127, 20);
             this.tytulBox.TabIndex = 2;
@@ -425,7 +440,7 @@
             // 
             // rezyserBox
             // 
-            this.rezyserBox.Location = new System.Drawing.Point(72, 68);
+            this.rezyserBox.Location = new System.Drawing.Point(83, 68);
             this.rezyserBox.Name = "rezyserBox";
             this.rezyserBox.Size = new System.Drawing.Size(127, 20);
             this.rezyserBox.TabIndex = 4;
@@ -452,7 +467,7 @@
             // 
             // ocenaBox
             // 
-            this.ocenaBox.Location = new System.Drawing.Point(72, 121);
+            this.ocenaBox.Location = new System.Drawing.Point(83, 120);
             this.ocenaBox.Name = "ocenaBox";
             this.ocenaBox.Size = new System.Drawing.Size(127, 20);
             this.ocenaBox.TabIndex = 8;
@@ -470,7 +485,7 @@
             // comboBox2
             // 
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(72, 94);
+            this.comboBox2.Location = new System.Drawing.Point(83, 94);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(127, 21);
             this.comboBox2.TabIndex = 10;
@@ -488,7 +503,7 @@
             // comboBox3
             // 
             this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(72, 145);
+            this.comboBox3.Location = new System.Drawing.Point(83, 145);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(127, 21);
             this.comboBox3.TabIndex = 12;
@@ -508,18 +523,154 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.filmidBox);
             this.groupBox1.ForeColor = System.Drawing.Color.White;
-            this.groupBox1.Location = new System.Drawing.Point(774, 27);
+            this.groupBox1.Location = new System.Drawing.Point(7, 22);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(207, 171);
+            this.groupBox1.Size = new System.Drawing.Size(216, 171);
             this.groupBox1.TabIndex = 27;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dodaj/Edytuj/Usuń Film";
+            // 
+            // distributionsGridView
+            // 
+            this.distributionsGridView.AllowUserToAddRows = false;
+            this.distributionsGridView.AllowUserToDeleteRows = false;
+            this.distributionsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.distributionsGridView.Location = new System.Drawing.Point(837, 28);
+            this.distributionsGridView.Name = "distributionsGridView";
+            this.distributionsGridView.ReadOnly = true;
+            this.distributionsGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.distributionsGridView.Size = new System.Drawing.Size(447, 417);
+            this.distributionsGridView.TabIndex = 37;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label16.Location = new System.Drawing.Point(833, 1);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(77, 24);
+            this.label16.TabIndex = 38;
+            this.label16.Text = "label16";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.label21);
+            this.groupBox3.Controls.Add(this.label20);
+            this.groupBox3.Controls.Add(this.label19);
+            this.groupBox3.Controls.Add(this.comboBox8);
+            this.groupBox3.Controls.Add(this.comboBox7);
+            this.groupBox3.Controls.Add(this.comboBox6);
+            this.groupBox3.Controls.Add(this.label18);
+            this.groupBox3.Controls.Add(this.comboBox5);
+            this.groupBox3.Controls.Add(this.comboBox4);
+            this.groupBox3.Controls.Add(this.label17);
+            this.groupBox3.ForeColor = System.Drawing.Color.White;
+            this.groupBox3.Location = new System.Drawing.Point(837, 452);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(447, 72);
+            this.groupBox3.TabIndex = 39;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Dodaj/Edytuj/Usuń Dystrybucje";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label17.Location = new System.Drawing.Point(6, 20);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(33, 16);
+            this.label17.TabIndex = 0;
+            this.label17.Text = "Film";
+            // 
+            // comboBox4
+            // 
+            this.comboBox4.FormattingEnabled = true;
+            this.comboBox4.Location = new System.Drawing.Point(10, 39);
+            this.comboBox4.Name = "comboBox4";
+            this.comboBox4.Size = new System.Drawing.Size(121, 21);
+            this.comboBox4.TabIndex = 1;
+            // 
+            // comboBox5
+            // 
+            this.comboBox5.FormattingEnabled = true;
+            this.comboBox5.Location = new System.Drawing.Point(137, 39);
+            this.comboBox5.Name = "comboBox5";
+            this.comboBox5.Size = new System.Drawing.Size(121, 21);
+            this.comboBox5.TabIndex = 2;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label18.Location = new System.Drawing.Point(134, 20);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(76, 16);
+            this.label18.TabIndex = 3;
+            this.label18.Text = "Dystrybutor";
+            // 
+            // comboBox6
+            // 
+            this.comboBox6.FormattingEnabled = true;
+            this.comboBox6.Location = new System.Drawing.Point(264, 39);
+            this.comboBox6.Name = "comboBox6";
+            this.comboBox6.Size = new System.Drawing.Size(55, 21);
+            this.comboBox6.TabIndex = 4;
+            // 
+            // comboBox7
+            // 
+            this.comboBox7.FormattingEnabled = true;
+            this.comboBox7.Location = new System.Drawing.Point(325, 39);
+            this.comboBox7.Name = "comboBox7";
+            this.comboBox7.Size = new System.Drawing.Size(55, 21);
+            this.comboBox7.TabIndex = 5;
+            // 
+            // comboBox8
+            // 
+            this.comboBox8.FormattingEnabled = true;
+            this.comboBox8.Location = new System.Drawing.Point(386, 39);
+            this.comboBox8.Name = "comboBox8";
+            this.comboBox8.Size = new System.Drawing.Size(55, 21);
+            this.comboBox8.TabIndex = 6;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label19.Location = new System.Drawing.Point(261, 20);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(59, 16);
+            this.label19.TabIndex = 7;
+            this.label19.Text = "Dubbing";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label20.Location = new System.Drawing.Point(321, 20);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(51, 16);
+            this.label20.TabIndex = 8;
+            this.label20.Text = "Napisy";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label21.Location = new System.Drawing.Point(383, 20);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(25, 16);
+            this.label21.TabIndex = 40;
+            this.label21.Text = "3D";
             // 
             // MovsDistrControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
+            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.label16);
+            this.Controls.Add(this.distributionsGridView);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGrid);
             this.Controls.Add(this.button5);
@@ -536,13 +687,16 @@
             this.Controls.Add(this.dataGridDist);
             this.Controls.Add(this.comboBox1);
             this.Name = "MovsDistrControl";
-            this.Size = new System.Drawing.Size(1006, 568);
+            this.Size = new System.Drawing.Size(1313, 670);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridDist)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.distributionsGridView)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -593,5 +747,18 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.DataGridView distributionsGridView;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.ComboBox comboBox8;
+        private System.Windows.Forms.ComboBox comboBox7;
+        private System.Windows.Forms.ComboBox comboBox6;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.ComboBox comboBox5;
+        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.Label label17;
     }
 }

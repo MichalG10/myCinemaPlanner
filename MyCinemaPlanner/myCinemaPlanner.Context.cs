@@ -37,8 +37,8 @@ namespace MyCinemaPlanner
         public virtual DbSet<Seance> Seance { get; set; }
         public virtual DbSet<Sellings> Sellings { get; set; }
         public virtual DbSet<Staff> Staff { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Technicians> Technicians { get; set; }
         public virtual DbSet<Usage> Usage { get; set; }
+        public virtual DbSet<Distributors_counted_movies> Distributors_counted_movies { get; set; }
     }
 }

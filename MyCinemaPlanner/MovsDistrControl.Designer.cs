@@ -74,27 +74,29 @@
             this.distributionsGridView = new System.Windows.Forms.DataGridView();
             this.label16 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.comboBox6 = new System.Windows.Forms.ComboBox();
-            this.comboBox7 = new System.Windows.Forms.ComboBox();
-            this.comboBox8 = new System.Windows.Forms.ComboBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.comboBox8 = new System.Windows.Forms.ComboBox();
+            this.comboBox7 = new System.Windows.Forms.ComboBox();
+            this.comboBox6 = new System.Windows.Forms.ComboBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.comboBox5 = new System.Windows.Forms.ComboBox();
+            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.countedDistributionsView = new System.Windows.Forms.DataGridView();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridDist)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.distributionsGridView)).BeginInit();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.countedDistributionsView)).BeginInit();
             this.SuspendLayout();
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(392, 449);
+            this.button5.Location = new System.Drawing.Point(392, 438);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(75, 45);
             this.button5.TabIndex = 36;
@@ -104,7 +106,7 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(311, 450);
+            this.button6.Location = new System.Drawing.Point(311, 439);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(75, 45);
             this.button6.TabIndex = 35;
@@ -114,7 +116,7 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(230, 450);
+            this.button7.Location = new System.Drawing.Point(230, 438);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(75, 45);
             this.button7.TabIndex = 34;
@@ -157,7 +159,7 @@
             this.exceptionLabel.AutoSize = true;
             this.exceptionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.exceptionLabel.ForeColor = System.Drawing.Color.PeachPuff;
-            this.exceptionLabel.Location = new System.Drawing.Point(6, 586);
+            this.exceptionLabel.Location = new System.Drawing.Point(7, 565);
             this.exceptionLabel.Name = "exceptionLabel";
             this.exceptionLabel.Size = new System.Drawing.Size(86, 16);
             this.exceptionLabel.TabIndex = 30;
@@ -165,7 +167,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(7, 545);
+            this.button1.Location = new System.Drawing.Point(7, 524);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(121, 38);
             this.button1.TabIndex = 29;
@@ -192,7 +194,7 @@
             this.groupBox2.Controls.Add(this.label13);
             this.groupBox2.Controls.Add(this.idDistBox);
             this.groupBox2.ForeColor = System.Drawing.Color.White;
-            this.groupBox2.Location = new System.Drawing.Point(7, 280);
+            this.groupBox2.Location = new System.Drawing.Point(7, 268);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(217, 223);
             this.groupBox2.TabIndex = 28;
@@ -340,7 +342,7 @@
             this.labelGridDist.AutoSize = true;
             this.labelGridDist.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelGridDist.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.labelGridDist.Location = new System.Drawing.Point(226, 258);
+            this.labelGridDist.Location = new System.Drawing.Point(226, 247);
             this.labelGridDist.Name = "labelGridDist";
             this.labelGridDist.Size = new System.Drawing.Size(65, 24);
             this.labelGridDist.TabIndex = 26;
@@ -351,10 +353,10 @@
             this.dataGridDist.AllowUserToAddRows = false;
             this.dataGridDist.AllowUserToDeleteRows = false;
             this.dataGridDist.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridDist.Location = new System.Drawing.Point(230, 286);
+            this.dataGridDist.Location = new System.Drawing.Point(229, 274);
             this.dataGridDist.Name = "dataGridDist";
             this.dataGridDist.ReadOnly = true;
-            this.dataGridDist.Size = new System.Drawing.Size(563, 159);
+            this.dataGridDist.Size = new System.Drawing.Size(362, 159);
             this.dataGridDist.TabIndex = 25;
             this.dataGridDist.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DistributorsGrid_Click);
             // 
@@ -366,7 +368,7 @@
             this.dataGrid.Location = new System.Drawing.Point(229, 28);
             this.dataGrid.Name = "dataGrid";
             this.dataGrid.ReadOnly = true;
-            this.dataGrid.Size = new System.Drawing.Size(563, 165);
+            this.dataGrid.Size = new System.Drawing.Size(602, 165);
             this.dataGrid.TabIndex = 24;
             this.dataGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGrid_CellClick);
             // 
@@ -388,7 +390,7 @@
             "Products",
             "Seance",
             "Usage"});
-            this.comboBox1.Location = new System.Drawing.Point(7, 518);
+            this.comboBox1.Location = new System.Drawing.Point(7, 497);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 23;
@@ -573,75 +575,15 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Dodaj/Edytuj/Usuń Dystrybucje";
             // 
-            // label17
+            // label21
             // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label17.Location = new System.Drawing.Point(6, 20);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(33, 16);
-            this.label17.TabIndex = 0;
-            this.label17.Text = "Film";
-            // 
-            // comboBox4
-            // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(10, 39);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(121, 21);
-            this.comboBox4.TabIndex = 1;
-            // 
-            // comboBox5
-            // 
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(137, 39);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(121, 21);
-            this.comboBox5.TabIndex = 2;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label18.Location = new System.Drawing.Point(134, 20);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(76, 16);
-            this.label18.TabIndex = 3;
-            this.label18.Text = "Dystrybutor";
-            // 
-            // comboBox6
-            // 
-            this.comboBox6.FormattingEnabled = true;
-            this.comboBox6.Location = new System.Drawing.Point(264, 39);
-            this.comboBox6.Name = "comboBox6";
-            this.comboBox6.Size = new System.Drawing.Size(55, 21);
-            this.comboBox6.TabIndex = 4;
-            // 
-            // comboBox7
-            // 
-            this.comboBox7.FormattingEnabled = true;
-            this.comboBox7.Location = new System.Drawing.Point(325, 39);
-            this.comboBox7.Name = "comboBox7";
-            this.comboBox7.Size = new System.Drawing.Size(55, 21);
-            this.comboBox7.TabIndex = 5;
-            // 
-            // comboBox8
-            // 
-            this.comboBox8.FormattingEnabled = true;
-            this.comboBox8.Location = new System.Drawing.Point(386, 39);
-            this.comboBox8.Name = "comboBox8";
-            this.comboBox8.Size = new System.Drawing.Size(55, 21);
-            this.comboBox8.TabIndex = 6;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label19.Location = new System.Drawing.Point(261, 20);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(59, 16);
-            this.label19.TabIndex = 7;
-            this.label19.Text = "Dubbing";
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label21.Location = new System.Drawing.Point(383, 20);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(25, 16);
+            this.label21.TabIndex = 40;
+            this.label21.Text = "3D";
             // 
             // label20
             // 
@@ -653,21 +595,93 @@
             this.label20.TabIndex = 8;
             this.label20.Text = "Napisy";
             // 
-            // label21
+            // label19
             // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label21.Location = new System.Drawing.Point(383, 20);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(25, 16);
-            this.label21.TabIndex = 40;
-            this.label21.Text = "3D";
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label19.Location = new System.Drawing.Point(261, 20);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(59, 16);
+            this.label19.TabIndex = 7;
+            this.label19.Text = "Dubbing";
+            // 
+            // comboBox8
+            // 
+            this.comboBox8.FormattingEnabled = true;
+            this.comboBox8.Location = new System.Drawing.Point(386, 39);
+            this.comboBox8.Name = "comboBox8";
+            this.comboBox8.Size = new System.Drawing.Size(55, 21);
+            this.comboBox8.TabIndex = 6;
+            // 
+            // comboBox7
+            // 
+            this.comboBox7.FormattingEnabled = true;
+            this.comboBox7.Location = new System.Drawing.Point(325, 39);
+            this.comboBox7.Name = "comboBox7";
+            this.comboBox7.Size = new System.Drawing.Size(55, 21);
+            this.comboBox7.TabIndex = 5;
+            // 
+            // comboBox6
+            // 
+            this.comboBox6.FormattingEnabled = true;
+            this.comboBox6.Location = new System.Drawing.Point(264, 39);
+            this.comboBox6.Name = "comboBox6";
+            this.comboBox6.Size = new System.Drawing.Size(55, 21);
+            this.comboBox6.TabIndex = 4;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label18.Location = new System.Drawing.Point(134, 20);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(76, 16);
+            this.label18.TabIndex = 3;
+            this.label18.Text = "Dystrybutor";
+            // 
+            // comboBox5
+            // 
+            this.comboBox5.FormattingEnabled = true;
+            this.comboBox5.Location = new System.Drawing.Point(137, 39);
+            this.comboBox5.Name = "comboBox5";
+            this.comboBox5.Size = new System.Drawing.Size(121, 21);
+            this.comboBox5.TabIndex = 2;
+            // 
+            // comboBox4
+            // 
+            this.comboBox4.FormattingEnabled = true;
+            this.comboBox4.Location = new System.Drawing.Point(10, 39);
+            this.comboBox4.Name = "comboBox4";
+            this.comboBox4.Size = new System.Drawing.Size(121, 21);
+            this.comboBox4.TabIndex = 1;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label17.Location = new System.Drawing.Point(6, 20);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(33, 16);
+            this.label17.TabIndex = 0;
+            this.label17.Text = "Film";
+            // 
+            // countedDistributionsView
+            // 
+            this.countedDistributionsView.AllowUserToAddRows = false;
+            this.countedDistributionsView.AllowUserToDeleteRows = false;
+            this.countedDistributionsView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.countedDistributionsView.Location = new System.Drawing.Point(597, 274);
+            this.countedDistributionsView.Name = "countedDistributionsView";
+            this.countedDistributionsView.ReadOnly = true;
+            this.countedDistributionsView.Size = new System.Drawing.Size(234, 250);
+            this.countedDistributionsView.TabIndex = 40;
             // 
             // MovsDistrControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
+            this.Controls.Add(this.countedDistributionsView);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.distributionsGridView);
@@ -697,6 +711,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.distributionsGridView)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.countedDistributionsView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -760,5 +775,6 @@
         private System.Windows.Forms.ComboBox comboBox5;
         private System.Windows.Forms.ComboBox comboBox4;
         private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.DataGridView countedDistributionsView;
     }
 }

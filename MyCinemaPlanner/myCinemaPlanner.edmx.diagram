@@ -17,7 +17,6 @@
         <EntityTypeShape EntityType="myCinemaPlannerDBModel.Seance" Width="1.5" PointX="5.25" PointY="8" IsExpanded="true" />
         <EntityTypeShape EntityType="myCinemaPlannerDBModel.Sellings" Width="1.5" PointX="8.25" PointY="4.5" IsExpanded="true" />
         <EntityTypeShape EntityType="myCinemaPlannerDBModel.Staff" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="myCinemaPlannerDBModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="8.25" IsExpanded="true" />
         <EntityTypeShape EntityType="myCinemaPlannerDBModel.Technicians" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
         <EntityTypeShape EntityType="myCinemaPlannerDBModel.Usage" Width="1.5" PointX="8.25" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="myCinemaPlannerDBModel.FK__Sellings__CashID__45F365D3" ManuallyRouted="false" />
@@ -34,6 +33,7 @@
         <AssociationConnector Association="myCinemaPlannerDBModel.FK__Seance__RoomID__3C69FB99" ManuallyRouted="false" />
         <AssociationConnector Association="myCinemaPlannerDBModel.FK__Seance__Technici__3D5E1FD2" ManuallyRouted="false" />
         <AssociationConnector Association="myCinemaPlannerDBModel.FK__Sellings__StaffI__44FF419A" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="myCinemaPlannerDBModel.Distributors_counted_movies" Width="1.5" PointX="8.25" PointY="7.625" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -41,6 +41,7 @@ namespace MyCinemaPlanner
             comboBox1.SelectedItem = "Movies";
             dataGrid.DataSource = ctx.Movies.ToList();
             dataGridDist.DataSource = ctx.Distributors.ToList();
+            countedDistributionsView.DataSource = ctx.Distributors_counted_movies.ToList();
             dataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             dataGridDist.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             refreshComboBox(ctx);

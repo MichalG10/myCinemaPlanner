@@ -1,3 +1,6 @@
+### Config file
+*.config
+
 ### C++ ###
 # Prerequisites
 *.d

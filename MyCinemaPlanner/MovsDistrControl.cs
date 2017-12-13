@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.Entity.Validation;
 
 namespace MyCinemaPlanner
 {
@@ -14,6 +15,7 @@ namespace MyCinemaPlanner
     {
         private int cellRowM, cellColM;
         private int cellRowD, cellColD;
+        private int cellRowDis, cellColDis;
         private string lastItem;
 
         private static MovsDistrControl _instance;
@@ -36,20 +38,26 @@ namespace MyCinemaPlanner
             cellRowM = 0;
             cellColM = 0;
             cellRowD = 0;
-            cellRowM = 0;
+            cellColM = 0;
+            cellRowDis = 0;
+            cellColDis = 0;
 
             comboBox1.SelectedItem = "Movies";
-            dataGrid.DataSource = ctx.Movies.ToList();
-            dataGridDist.DataSource = ctx.Distributors.ToList();
-            countedDistributionsView.DataSource = ctx.Distributors_counted_movies.ToList();
+
+            /* inicjalizacja tabel */
+            dataGrid.DataSource = ctx.Movies.ToList(); // tabela - Filmy
+            dataGridDist.DataSource = ctx.Distributors.ToList(); // tabela - Dystrybutorzy
+            countedDistributionsView.DataSource = ctx.Distributors_counted_movies.ToList(); // widok - Dystrybutorzy - Liczba filmów
+
             dataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             dataGridDist.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+
             refreshComboBox(ctx);
 
             lastItem = comboBox1.Text;
-            label1.Text = comboBox1.Text;
-            labelGridDist.Text = "Distributors";
-            label16.Text = "Distributions";
+            label1.Text = "Filmy";
+            labelGridDist.Text = "Dystrybutorzy";
+            label16.Text = "Dystrybucje";
 
             updateDistributions(ctx);
         }
@@ -62,6 +70,7 @@ namespace MyCinemaPlanner
                          where dis.DistributorID == ds.DistributorID
                          where dis.MovieID == mv.MovieID
                          select new { mv.Title, ds.Name, dis.Dubbing, dis.Subtitle, dis.is3D } ).ToList();
+
             distributionsGridView.DataSource = query;
             distributionsGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
         }
@@ -94,6 +103,18 @@ namespace MyCinemaPlanner
             kodDistBox.Text = dataGridDist.CurrentRow.Cells[5].Value.ToString();
             miastoDistBox.Text = dataGridDist.CurrentRow.Cells[6].Value.ToString();
             krajDistBox.Text = dataGridDist.CurrentRow.Cells[7].Value.ToString();
+        }
+
+        private void distributionsGridView_Click(object sender, DataGridViewCellEventArgs e)
+        {
+            cellRowDis = dataGridDist.CurrentRow.Index;
+            cellColDis = dataGridDist.CurrentCell.ColumnIndex;
+
+            DistibutionMovieBox.Text = distributionsGridView.CurrentRow.Cells[0].Value.ToString();
+            distributionDistributorBox.Text = distributionsGridView.CurrentRow.Cells[1].Value.ToString();
+            dubbingBox.Text = distributionsGridView.CurrentRow.Cells[2].Value.ToString();
+            subtitlesBox.Text = distributionsGridView.CurrentRow.Cells[3].Value.ToString();
+            threedimBox.Text = distributionsGridView.CurrentRow.Cells[4].Value.ToString();
         }
 
         // Po naciśnięciu wypisz wszystko z tabelii
@@ -232,7 +253,8 @@ namespace MyCinemaPlanner
                 }
                 catch (Exception ex)
                 {
-                    exceptionLabel.Text = "Wyjątek: " + ex.InnerException.InnerException.Message;
+                    if (ex.InnerException == null) MessageBox.Show("Wyjątek: Wprowadzono nie właściwy typ danych.");
+                    else MessageBox.Show("Wyjątek: " + ex.InnerException.InnerException.Message);
                 }
             }
 
@@ -244,173 +266,222 @@ namespace MyCinemaPlanner
         {
             using (var ctx = new myCinemaPlannerDBEntities())
             {
+                int retCode = 0;
+
                 try
                 {
-                    Distributors x = new Distributors
-                    {
-                        Name = nazwaDistBox.Text,
-                        Email = emailDistBox.Text,
-                        PhoneNumber = telDistBox.Text,
-                        Adress = adresDistBox.Text,
-                        ZipCode = kodDistBox.Text,
-                        City = miastoDistBox.Text,
-                        Country = krajDistBox.Text
-
-                    };
-                    String rec = x.Name + " | " + x.Email + " | " + x.PhoneNumber + " | " + x.Adress + " | " + x.ZipCode + " | " + x.City + " | " + x.Country;
-
-                    DialogResult dr = MessageBox.Show("Czy napewno chcesz dodać rekord ?\n" + rec, "Potwierdzenie", MessageBoxButtons.YesNo);
-                    if (dr == DialogResult.Yes)
-                    {
-                        ctx.Distributors.Add(x);
-                        ctx.SaveChanges();
+                    if (procedurecheckbox.Checked) {
+                        retCode = ctx.AddDistributor(
+                            //nazwaDistBox.Text,
+                            null,
+                            emailDistBox.Text,
+                            telDistBox.Text,
+                            adresDistBox.Text,
+                            kodDistBox.Text,
+                            miastoDistBox.Text,
+                            krajDistBox.Text);
                     }
-                    else
-                    {
-                        exceptionLabel.Text = "Wiadomość: Nie dodano rekordu.";
-                    }
+                    else {
+                        Distributors x = new Distributors
+                        {
+                            Name = nazwaDistBox.Text,
+                            Email = emailDistBox.Text,
+                            PhoneNumber = telDistBox.Text,
+                            Adress = adresDistBox.Text,
+                            ZipCode = kodDistBox.Text,
+                            City = miastoDistBox.Text,
+                            Country = krajDistBox.Text
 
+                        };
+                        String rec = x.Name + " | " + x.Email + " | " + x.PhoneNumber + " | " + x.Adress + " | " + x.ZipCode + " | " + x.City + " | " + x.Country;
+
+                        DialogResult dr = MessageBox.Show("Czy napewno chcesz dodać rekord ?\n" + rec, "Potwierdzenie", MessageBoxButtons.YesNo);
+                        if (dr == DialogResult.Yes)
+                        {
+                            ctx.Distributors.Add(x);
+                            ctx.SaveChanges();
+                        }
+                        else
+                        {
+                            exceptionLabel.Text = "Wiadomość: Nie dodano rekordu.";
+                        }
+                    }
                 }
-                catch (NullReferenceException ex)
+                catch (DbEntityValidationException ex)
                 {
-                    exceptionLabel.Text = "Wyjątek: Film nie istnieje w bazie danych.";
+                    var errorMessages = ex.EntityValidationErrors
+                    .SelectMany(x => x.ValidationErrors)
+                    .Select(x => x.ErrorMessage);
+                    var fullErrorMessage = string.Join("; ", errorMessages);
+                    MessageBox.Show(fullErrorMessage);
                 }
-                catch (FormatException ex)
+                catch (System.Data.Entity.Core.EntityCommandExecutionException ex)
                 {
-                    exceptionLabel.Text = "Wyjątek: Wprowadzono nie właściwy typ danych.";
+                    if (ex.InnerException == null) MessageBox.Show("Wyjątek: Wprowadzono nie właściwy typ danych.\nKod błędu - " + retCode);
+                    else MessageBox.Show("Wyjątek: " + ex.InnerException.Message + "\nKod błędu - " + retCode);
                 }
                 catch (Exception ex)
                 {
-                    exceptionLabel.Text = "Wyjątek: " + ex.InnerException.InnerException.Message;
+                    if (ex.InnerException == null) MessageBox.Show("Wyjątek: Wprowadzono nie właściwy typ danych.");
+                    else MessageBox.Show("Wyjątek: " + ex.InnerException.InnerException.Message);
                 }
-            }
 
-            refreshGrid();
+                refreshGrid();
+            }
         }
 
         /* usuń dystrybutora z bazy danych */
         private void UsunDystrybutora_Click(object sender, EventArgs e)
         {
             int IdtoDelete = Int32.Parse(idDistBox.Text);
+            int retCode = 0;
             using (var ctx = new myCinemaPlannerDBEntities())
             {
                 try
                 {
-                    var x = (from d in ctx.Distributors
-                             where d.DistributorID == IdtoDelete
-                             select d).FirstOrDefault();
-                    String rec = x.Name + " | " + x.Email + " | " + x.PhoneNumber + " | " + x.Adress + " | " + x.ZipCode + " | " + x.City + " | " + x.Country;
-
-                    DialogResult dr = MessageBox.Show("Czy napewno chcesz usunąć rekord ?\n" + rec, "Potwierdzenie", MessageBoxButtons.YesNo);
-                    if (dr == DialogResult.Yes)
+                    if (procedurecheckbox.Checked)
                     {
-                        ctx.Distributors.Remove(x);
-                        ctx.SaveChanges();
+                        retCode = ctx.DeleteDistributor(IdtoDelete);
                     }
                     else
                     {
-                        exceptionLabel.Text = "Wiadomość: Nie usunięto rekordu.";
-                    }
+                        var x = (from d in ctx.Distributors
+                                 where d.DistributorID == IdtoDelete
+                                 select d).FirstOrDefault();
+                        String rec = x.Name + " | " + x.Email + " | " + x.PhoneNumber + " | " + x.Adress + " | " + x.ZipCode + " | " + x.City + " | " + x.Country;
 
+                        DialogResult dr = MessageBox.Show("Czy napewno chcesz usunąć rekord ?\n" + rec, "Potwierdzenie", MessageBoxButtons.YesNo);
+                        if (dr == DialogResult.Yes)
+                        {
+                            ctx.Distributors.Remove(x);
+                            ctx.SaveChanges();
+                        }
+                        else
+                        {
+                            exceptionLabel.Text = "Wiadomość: Nie usunięto rekordu.";
+                        }
+                    }
                 }
                 catch (NullReferenceException ex)
                 {
                     exceptionLabel.Text = "Wyjątek: Film nie istnieje w bazie danych.";
                 }
+                catch (DbEntityValidationException ex)
+                {
+                    var errorMessages = ex.EntityValidationErrors
+                    .SelectMany(x => x.ValidationErrors)
+                    .Select(x => x.ErrorMessage);
+                    var fullErrorMessage = string.Join("; ", errorMessages);
+                    MessageBox.Show(fullErrorMessage);
+                }
+                catch (System.Data.Entity.Core.EntityCommandExecutionException ex)
+                {
+                    if (ex.InnerException == null) MessageBox.Show("Wyjątek: Wprowadzono nie właściwy typ danych.\nKod błędu - " + retCode);
+                    else MessageBox.Show("Wyjątek: " + ex.InnerException.Message + "\nKod błędu - " + retCode);
+                }
                 catch (Exception ex)
                 {
-                    exceptionLabel.Text = "Wyjątek: " + ex.InnerException.InnerException.Message;
+                    if (ex.InnerException == null) MessageBox.Show("Wyjątek: Wprowadzono nie właściwy typ danych.\nKod błędu - " + retCode);
+                    else MessageBox.Show("Wyjątek: " + ex.InnerException.InnerException.Message + "\nKod błędu - " + retCode);
                 }
-            }
 
-            refreshGrid();
+                refreshGrid();
+            }
         }
 
         /* edytuj dystrybutora */
         private void EdytujDystrybutora_Click(object sender, EventArgs e)
         {
             int IdtoEdit = Int32.Parse(idDistBox.Text);
-
+            int retCode = 0;
             using (var ctx = new myCinemaPlannerDBEntities())
             {
                 try
                 {
-                    var x = (from d in ctx.Distributors
-                             where d.DistributorID == IdtoEdit
-                             select d).FirstOrDefault();
-                    String rec = x.Name + " | " + x.Email + " | " + x.PhoneNumber + " | " + x.Adress + " | " + x.ZipCode + " | " + x.City + " | " + x.Country;
-
-                    x.Name = nazwaDistBox.Text;
-                    x.Email = emailDistBox.Text;
-                    x.PhoneNumber = telDistBox.Text;
-                    x.Adress = adresDistBox.Text;
-                    x.ZipCode = kodDistBox.Text;
-                    x.City = miastoDistBox.Text;
-                    x.Country = krajDistBox.Text;
-                    String recafter = x.Name + " | " + x.Email + " | " + x.PhoneNumber + " | " + x.Adress + " | " + x.ZipCode + " | " + x.City + " | " + x.Country;
-
-                    DialogResult dr = MessageBox.Show("Czy napewno chcesz zmienić rekord z\n" + rec + "\nna\n" + recafter + " ?", "Potwierdzenie", MessageBoxButtons.YesNo);
-                    if (dr == DialogResult.Yes)
+                    if (procedurecheckbox.Checked)
                     {
-                        ctx.SaveChanges();
+                        retCode = ctx.EditDistributor( IdtoEdit, nazwaDistBox.Text, emailDistBox.Text,
+                            telDistBox.Text, adresDistBox.Text, kodDistBox.Text, miastoDistBox.Text, krajDistBox.Text);
                     }
                     else
                     {
-                        exceptionLabel.Text = "Wiadomość: Nie zmieniono rekordu.";
-                    }
+                        var x = (from d in ctx.Distributors
+                                 where d.DistributorID == IdtoEdit
+                                 select d).FirstOrDefault();
+                        String rec = x.Name + " | " + x.Email + " | " + x.PhoneNumber + " | " + x.Adress + " | " + x.ZipCode + " | " + x.City + " | " + x.Country;
 
+                        x.Name = nazwaDistBox.Text;
+                        x.Email = emailDistBox.Text;
+                        x.PhoneNumber = telDistBox.Text;
+                        x.Adress = adresDistBox.Text;
+                        x.ZipCode = kodDistBox.Text;
+                        x.City = miastoDistBox.Text;
+                        x.Country = krajDistBox.Text;
+                        String recafter = x.Name + " | " + x.Email + " | " + x.PhoneNumber + " | " + x.Adress + " | " + x.ZipCode + " | " + x.City + " | " + x.Country;
+
+                        DialogResult dr = MessageBox.Show("Czy napewno chcesz zmienić rekord z\n" + rec + "\nna\n" + recafter + " ?", "Potwierdzenie", MessageBoxButtons.YesNo);
+                        if (dr == DialogResult.Yes)
+                        {
+                            ctx.SaveChanges();
+                        }
+                        else
+                        {
+                            exceptionLabel.Text = "Wiadomość: Nie zmieniono rekordu.";
+                        }
+                    }
                 }
                 catch (NullReferenceException ex)
                 {
                     exceptionLabel.Text = "Wyjątek: Film nie istnieje w bazie danych.";
                 }
+                catch (DbEntityValidationException ex)
+                {
+                    var errorMessages = ex.EntityValidationErrors
+                    .SelectMany(x => x.ValidationErrors)
+                    .Select(x => x.ErrorMessage);
+                    var fullErrorMessage = string.Join("; ", errorMessages);
+                    MessageBox.Show(fullErrorMessage);
+                }
+                catch (System.Data.Entity.Core.EntityCommandExecutionException ex)
+                {
+                    if (ex.InnerException == null) MessageBox.Show("Wyjątek: Wprowadzono nie właściwy typ danych.\nKod błędu - " + retCode);
+                    else MessageBox.Show("Wyjątek: " + ex.InnerException.Message + "\nKod błędu - " + retCode);
+                }
                 catch (Exception ex)
                 {
-                    exceptionLabel.Text = "Wyjątek: " + ex.InnerException.InnerException.Message;
+                    if (ex.InnerException == null) MessageBox.Show("Wyjątek: Wprowadzono nie właściwy typ danych.\nKod błędu - " + retCode);
+                    else MessageBox.Show("Wyjątek: " + ex.InnerException.InnerException.Message + "\nKod błędu - " + retCode);
                 }
             }
 
             refreshGrid();
         }
 
-        /* Refresh values in Grid */
+        /* odświeża wartości w dataGridViews */
         private void refreshGrid()
         {
             var ctx = new myCinemaPlannerDBEntities();
-
             try
             {
-                if (comboBox1.SelectedItem.ToString() == "Employee") dataGrid.DataSource = ctx.Employee.ToList();
-                else if (comboBox1.SelectedItem.ToString() == "Staff") dataGrid.DataSource = ctx.Staff.ToList();
-                else if (comboBox1.SelectedItem.ToString() == "Technicians") dataGrid.DataSource = ctx.Technicians.ToList();
-                else if (comboBox1.SelectedItem.ToString() == "Cleaning") dataGrid.DataSource = ctx.Cleaning.ToList();
-                else if (comboBox1.SelectedItem.ToString() == "Sellings") dataGrid.DataSource = ctx.Sellings.ToList();
-                else if (comboBox1.SelectedItem.ToString() == "Movies") dataGrid.DataSource = ctx.Movies.ToList();
-                else if (comboBox1.SelectedItem.ToString() == "Distributors") dataGrid.DataSource = ctx.Distributors.ToList();
-                else if (comboBox1.SelectedItem.ToString() == "Rooms") dataGrid.DataSource = ctx.Rooms.ToList();
-                else if (comboBox1.SelectedItem.ToString() == "Cashes") dataGrid.DataSource = ctx.Cashes.ToList();
-                else if (comboBox1.SelectedItem.ToString() == "Distributions") dataGrid.DataSource = ctx.Distributions.ToList();
-                else if (comboBox1.SelectedItem.ToString() == "Orders") dataGrid.DataSource = ctx.Orders.ToList();
-                else if (comboBox1.SelectedItem.ToString() == "Products") dataGrid.DataSource = ctx.Products.ToList();
-                else if (comboBox1.SelectedItem.ToString() == "Seance") dataGrid.DataSource = ctx.Seance.ToList();
-                else if (comboBox1.SelectedItem.ToString() == "Usage") dataGrid.DataSource = ctx.Usage.ToList();
+                dataGrid.DataSource = ctx.Employee.ToList();
                 dataGridDist.DataSource = ctx.Distributors.ToList();
+                countedDistributionsView.DataSource = ctx.Distributors_counted_movies.ToList();
 
+                /* uaktualnia pozycje kursora, uodparnia przed "skakaniem" kursora do pierwszej pozycji */
                 updateCursor(cellRowM, cellColM, dataGrid);
                 updateCursor(cellRowD, cellColD, dataGridDist);
 
-            }
-            catch (ArgumentOutOfRangeException ex)
-            {
-                cellRowM = 0;
-                cellColM = 0;
-                cellRowD = 0;
-                cellColD = 0;
+              /* jeśli w wyniku operacji usuwania kursor będzie wskazywał nieistniejącą komórkę */
+            } catch (ArgumentOutOfRangeException ex) {
+                cellRowM = 0; cellColM = 0;
+                cellRowD = 0; cellColD = 0;
+                cellRowDis = 0; cellColDis = 0;
 
                 updateCursor(cellRowM, cellColM, dataGrid);
                 updateCursor(cellRowD, cellColD, dataGridDist);
+                updateCursor(cellRowDis, cellColDis, dataGridDist);
             }
-
+            /* odświeża wartości w wykorzystywanych ComboBoxach */
             refreshComboBox(ctx);
         }
 
@@ -419,8 +490,8 @@ namespace MyCinemaPlanner
 
             /* Init Film - Combobox - Gatunek */
             var qGenres = (from m in ctx.Movies
-                           orderby m.Genre
-                           select m.Genre).Distinct().ToList();
+                            orderby m.Genre
+                            select m.Genre).Distinct().ToList();
             comboBox2.DataSource = qGenres;
 
             /* Init Film - Combobox - Studio */
@@ -428,6 +499,27 @@ namespace MyCinemaPlanner
                             orderby m.Studio
                             select m.Studio).Distinct().ToList();
             comboBox3.DataSource = qStudios;
+
+            /* Init Distributions - Combobox - Film */
+            var qDisMovies = (from m in ctx.Movies
+                              select m.Title).ToList();
+            DistibutionMovieBox.DataSource = qDisMovies;
+
+            /* Init Distributions - Combobox - Studio */
+            var qDisStudio = (from m in ctx.Distributors
+                              select m.Name).ToList();
+            distributionDistributorBox.DataSource = qDisStudio;
+
+            /* Init Distributions - Combobox - Dubbing */
+            qDisStudio = (from m in ctx.Distributions
+                          select m.Dubbing).Distinct().ToList();
+            dubbingBox.DataSource = qDisStudio;
+
+            /* Init Distributions - Combobox - Dubbing */
+            qDisStudio = (from m in ctx.Distributions
+                          select m.Subtitle).Distinct().ToList();
+            subtitlesBox.DataSource = qDisStudio;
+
 
         }
 

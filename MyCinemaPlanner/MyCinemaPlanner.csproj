@@ -211,6 +211,9 @@
       <DependentUpon>myCinemaPlanner.edmx</DependentUpon>
       <LastGenOutput>myCinemaPlanner.cs</LastGenOutput>
     </Content>
+    <Content Include="sqlscripts\add_constraints.sql" />
+    <Content Include="sqlscripts\add_views.sql" />
+    <Content Include="sqlscripts\triggers.sql" />
     <None Include="Resources\Movie+napis.png" />
     <None Include="Resources\02052_theredarrows_672x420.jpg" />
     <None Include="Resources\uwaga.png" />

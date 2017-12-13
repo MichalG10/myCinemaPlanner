@@ -340,6 +340,28 @@ warning 6002: The table/view 'myCinemaPlannerDB.dbo.Distributors_counted_movies'
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="AddDistributor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="disName" Type="varchar" Mode="In" />
+          <Parameter Name="disEmail" Type="varchar" Mode="In" />
+          <Parameter Name="disPhone" Type="varchar" Mode="In" />
+          <Parameter Name="disAdress" Type="varchar" Mode="In" />
+          <Parameter Name="zipCode" Type="varchar" Mode="In" />
+          <Parameter Name="disCity" Type="varchar" Mode="In" />
+          <Parameter Name="disCountry" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="DeleteDistributor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="EditDistributor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="disName" Type="varchar" Mode="In" />
+          <Parameter Name="disEmail" Type="varchar" Mode="In" />
+          <Parameter Name="disPhone" Type="varchar" Mode="In" />
+          <Parameter Name="disAdress" Type="varchar" Mode="In" />
+          <Parameter Name="zipCode" Type="varchar" Mode="In" />
+          <Parameter Name="disCity" Type="varchar" Mode="In" />
+          <Parameter Name="disCountry" Type="varchar" Mode="In" />
+        </Function>
         <EntityContainer Name="myCinemaPlannerDBModelStoreContainer">
           <EntitySet Name="Cashes" EntityType="Self.Cashes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cleaning" EntityType="Self.Cleaning" Schema="dbo" store:Type="Tables" />
@@ -853,6 +875,28 @@ warning 6002: The table/view 'myCinemaPlannerDB.dbo.Distributors_counted_movies'
             <End Role="Sellings" EntitySet="Sellings" />
           </AssociationSet>
           <EntitySet Name="Distributors_counted_movies" EntityType="myCinemaPlannerDBModel.Distributors_counted_movies" />
+          <FunctionImport Name="AddDistributor">
+            <Parameter Name="disName" Mode="In" Type="String" />
+            <Parameter Name="disEmail" Mode="In" Type="String" />
+            <Parameter Name="disPhone" Mode="In" Type="String" />
+            <Parameter Name="disAdress" Mode="In" Type="String" />
+            <Parameter Name="zipCode" Mode="In" Type="String" />
+            <Parameter Name="disCity" Mode="In" Type="String" />
+            <Parameter Name="disCountry" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="EditDistributor">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="disName" Mode="In" Type="String" />
+            <Parameter Name="disEmail" Mode="In" Type="String" />
+            <Parameter Name="disPhone" Mode="In" Type="String" />
+            <Parameter Name="disAdress" Mode="In" Type="String" />
+            <Parameter Name="zipCode" Mode="In" Type="String" />
+            <Parameter Name="disCity" Mode="In" Type="String" />
+            <Parameter Name="disCountry" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteDistributor">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="Distributors_counted_movies">
           <Key>
@@ -1042,6 +1086,9 @@ warning 6002: The table/view 'myCinemaPlannerDB.dbo.Distributors_counted_movies'
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="AddDistributor" FunctionName="myCinemaPlannerDBModel.Store.AddDistributor" />
+          <FunctionImportMapping FunctionImportName="EditDistributor" FunctionName="myCinemaPlannerDBModel.Store.EditDistributor" />
+          <FunctionImportMapping FunctionImportName="DeleteDistributor" FunctionName="myCinemaPlannerDBModel.Store.DeleteDistributor" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

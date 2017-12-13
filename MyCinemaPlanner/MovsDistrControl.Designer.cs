@@ -77,14 +77,15 @@
             this.label21 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
-            this.comboBox8 = new System.Windows.Forms.ComboBox();
-            this.comboBox7 = new System.Windows.Forms.ComboBox();
-            this.comboBox6 = new System.Windows.Forms.ComboBox();
+            this.threedimBox = new System.Windows.Forms.ComboBox();
+            this.subtitlesBox = new System.Windows.Forms.ComboBox();
+            this.dubbingBox = new System.Windows.Forms.ComboBox();
             this.label18 = new System.Windows.Forms.Label();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.distributionDistributorBox = new System.Windows.Forms.ComboBox();
+            this.DistibutionMovieBox = new System.Windows.Forms.ComboBox();
             this.label17 = new System.Windows.Forms.Label();
             this.countedDistributionsView = new System.Windows.Forms.DataGridView();
+            this.procedurecheckbox = new System.Windows.Forms.CheckBox();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridDist)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).BeginInit();
@@ -543,6 +544,7 @@
             this.distributionsGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.distributionsGridView.Size = new System.Drawing.Size(447, 417);
             this.distributionsGridView.TabIndex = 37;
+            this.distributionsGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.distributionsGridView_Click);
             // 
             // label16
             // 
@@ -560,12 +562,12 @@
             this.groupBox3.Controls.Add(this.label21);
             this.groupBox3.Controls.Add(this.label20);
             this.groupBox3.Controls.Add(this.label19);
-            this.groupBox3.Controls.Add(this.comboBox8);
-            this.groupBox3.Controls.Add(this.comboBox7);
-            this.groupBox3.Controls.Add(this.comboBox6);
+            this.groupBox3.Controls.Add(this.threedimBox);
+            this.groupBox3.Controls.Add(this.subtitlesBox);
+            this.groupBox3.Controls.Add(this.dubbingBox);
             this.groupBox3.Controls.Add(this.label18);
-            this.groupBox3.Controls.Add(this.comboBox5);
-            this.groupBox3.Controls.Add(this.comboBox4);
+            this.groupBox3.Controls.Add(this.distributionDistributorBox);
+            this.groupBox3.Controls.Add(this.DistibutionMovieBox);
             this.groupBox3.Controls.Add(this.label17);
             this.groupBox3.ForeColor = System.Drawing.Color.White;
             this.groupBox3.Location = new System.Drawing.Point(837, 452);
@@ -605,29 +607,32 @@
             this.label19.TabIndex = 7;
             this.label19.Text = "Dubbing";
             // 
-            // comboBox8
+            // threedimBox
             // 
-            this.comboBox8.FormattingEnabled = true;
-            this.comboBox8.Location = new System.Drawing.Point(386, 39);
-            this.comboBox8.Name = "comboBox8";
-            this.comboBox8.Size = new System.Drawing.Size(55, 21);
-            this.comboBox8.TabIndex = 6;
+            this.threedimBox.FormattingEnabled = true;
+            this.threedimBox.Items.AddRange(new object[] {
+            "True",
+            "False"});
+            this.threedimBox.Location = new System.Drawing.Point(386, 39);
+            this.threedimBox.Name = "threedimBox";
+            this.threedimBox.Size = new System.Drawing.Size(55, 21);
+            this.threedimBox.TabIndex = 6;
             // 
-            // comboBox7
+            // subtitlesBox
             // 
-            this.comboBox7.FormattingEnabled = true;
-            this.comboBox7.Location = new System.Drawing.Point(325, 39);
-            this.comboBox7.Name = "comboBox7";
-            this.comboBox7.Size = new System.Drawing.Size(55, 21);
-            this.comboBox7.TabIndex = 5;
+            this.subtitlesBox.FormattingEnabled = true;
+            this.subtitlesBox.Location = new System.Drawing.Point(325, 39);
+            this.subtitlesBox.Name = "subtitlesBox";
+            this.subtitlesBox.Size = new System.Drawing.Size(55, 21);
+            this.subtitlesBox.TabIndex = 5;
             // 
-            // comboBox6
+            // dubbingBox
             // 
-            this.comboBox6.FormattingEnabled = true;
-            this.comboBox6.Location = new System.Drawing.Point(264, 39);
-            this.comboBox6.Name = "comboBox6";
-            this.comboBox6.Size = new System.Drawing.Size(55, 21);
-            this.comboBox6.TabIndex = 4;
+            this.dubbingBox.FormattingEnabled = true;
+            this.dubbingBox.Location = new System.Drawing.Point(264, 39);
+            this.dubbingBox.Name = "dubbingBox";
+            this.dubbingBox.Size = new System.Drawing.Size(55, 21);
+            this.dubbingBox.TabIndex = 4;
             // 
             // label18
             // 
@@ -639,21 +644,21 @@
             this.label18.TabIndex = 3;
             this.label18.Text = "Dystrybutor";
             // 
-            // comboBox5
+            // distributionDistributorBox
             // 
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(137, 39);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(121, 21);
-            this.comboBox5.TabIndex = 2;
+            this.distributionDistributorBox.FormattingEnabled = true;
+            this.distributionDistributorBox.Location = new System.Drawing.Point(137, 39);
+            this.distributionDistributorBox.Name = "distributionDistributorBox";
+            this.distributionDistributorBox.Size = new System.Drawing.Size(121, 21);
+            this.distributionDistributorBox.TabIndex = 2;
             // 
-            // comboBox4
+            // DistibutionMovieBox
             // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(10, 39);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(121, 21);
-            this.comboBox4.TabIndex = 1;
+            this.DistibutionMovieBox.FormattingEnabled = true;
+            this.DistibutionMovieBox.Location = new System.Drawing.Point(10, 39);
+            this.DistibutionMovieBox.Name = "DistibutionMovieBox";
+            this.DistibutionMovieBox.Size = new System.Drawing.Size(121, 21);
+            this.DistibutionMovieBox.TabIndex = 1;
             // 
             // label17
             // 
@@ -676,11 +681,23 @@
             this.countedDistributionsView.Size = new System.Drawing.Size(234, 250);
             this.countedDistributionsView.TabIndex = 40;
             // 
+            // procedurecheckbox
+            // 
+            this.procedurecheckbox.AutoSize = true;
+            this.procedurecheckbox.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.procedurecheckbox.Location = new System.Drawing.Point(231, 489);
+            this.procedurecheckbox.Name = "procedurecheckbox";
+            this.procedurecheckbox.Size = new System.Drawing.Size(142, 17);
+            this.procedurecheckbox.TabIndex = 41;
+            this.procedurecheckbox.Text = "Wykonaj jako procedura";
+            this.procedurecheckbox.UseVisualStyleBackColor = true;
+            // 
             // MovsDistrControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
+            this.Controls.Add(this.procedurecheckbox);
             this.Controls.Add(this.countedDistributionsView);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.label16);
@@ -768,13 +785,14 @@
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.ComboBox comboBox8;
-        private System.Windows.Forms.ComboBox comboBox7;
-        private System.Windows.Forms.ComboBox comboBox6;
+        private System.Windows.Forms.ComboBox threedimBox;
+        private System.Windows.Forms.ComboBox subtitlesBox;
+        private System.Windows.Forms.ComboBox dubbingBox;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.ComboBox comboBox5;
-        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.ComboBox distributionDistributorBox;
+        private System.Windows.Forms.ComboBox DistibutionMovieBox;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.DataGridView countedDistributionsView;
+        private System.Windows.Forms.CheckBox procedurecheckbox;
     }
 }

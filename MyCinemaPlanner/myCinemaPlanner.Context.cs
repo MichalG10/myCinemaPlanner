@@ -121,5 +121,68 @@ namespace MyCinemaPlanner
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeleteDistributor", idParameter);
         }
+    
+        public virtual int addDistribution(Nullable<int> movieID, Nullable<int> distributorID, string dubb, string sub, Nullable<bool> is3D)
+        {
+            var movieIDParameter = movieID.HasValue ?
+                new ObjectParameter("MovieID", movieID) :
+                new ObjectParameter("MovieID", typeof(int));
+    
+            var distributorIDParameter = distributorID.HasValue ?
+                new ObjectParameter("DistributorID", distributorID) :
+                new ObjectParameter("DistributorID", typeof(int));
+    
+            var dubbParameter = dubb != null ?
+                new ObjectParameter("Dubb", dubb) :
+                new ObjectParameter("Dubb", typeof(string));
+    
+            var subParameter = sub != null ?
+                new ObjectParameter("Sub", sub) :
+                new ObjectParameter("Sub", typeof(string));
+    
+            var is3DParameter = is3D.HasValue ?
+                new ObjectParameter("is3D", is3D) :
+                new ObjectParameter("is3D", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("addDistribution", movieIDParameter, distributorIDParameter, dubbParameter, subParameter, is3DParameter);
+        }
+    
+        public virtual int deleteDistribution(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("deleteDistribution", idParameter);
+        }
+    
+        public virtual int editDistribution(Nullable<int> id, Nullable<int> movieID, Nullable<int> distributorID, string dubb, string sub, Nullable<bool> is3D)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            var movieIDParameter = movieID.HasValue ?
+                new ObjectParameter("MovieID", movieID) :
+                new ObjectParameter("MovieID", typeof(int));
+    
+            var distributorIDParameter = distributorID.HasValue ?
+                new ObjectParameter("DistributorID", distributorID) :
+                new ObjectParameter("DistributorID", typeof(int));
+    
+            var dubbParameter = dubb != null ?
+                new ObjectParameter("Dubb", dubb) :
+                new ObjectParameter("Dubb", typeof(string));
+    
+            var subParameter = sub != null ?
+                new ObjectParameter("Sub", sub) :
+                new ObjectParameter("Sub", typeof(string));
+    
+            var is3DParameter = is3D.HasValue ?
+                new ObjectParameter("is3D", is3D) :
+                new ObjectParameter("is3D", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("editDistribution", idParameter, movieIDParameter, distributorIDParameter, dubbParameter, subParameter, is3DParameter);
+        }
     }
 }

@@ -86,6 +86,10 @@
             this.label17 = new System.Windows.Forms.Label();
             this.countedDistributionsView = new System.Windows.Forms.DataGridView();
             this.procedurecheckbox = new System.Windows.Forms.CheckBox();
+            this.addDistributionButton = new System.Windows.Forms.Button();
+            this.EditDistributionButton = new System.Windows.Forms.Button();
+            this.deleteDistributionButton = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridDist)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).BeginInit();
@@ -559,6 +563,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.textBox1);
             this.groupBox3.Controls.Add(this.label21);
             this.groupBox3.Controls.Add(this.label20);
             this.groupBox3.Controls.Add(this.label19);
@@ -692,11 +697,51 @@
             this.procedurecheckbox.Text = "Wykonaj jako procedura";
             this.procedurecheckbox.UseVisualStyleBackColor = true;
             // 
+            // addDistributionButton
+            // 
+            this.addDistributionButton.Location = new System.Drawing.Point(837, 530);
+            this.addDistributionButton.Name = "addDistributionButton";
+            this.addDistributionButton.Size = new System.Drawing.Size(93, 38);
+            this.addDistributionButton.TabIndex = 42;
+            this.addDistributionButton.Text = "Dodaj Dystrybucje";
+            this.addDistributionButton.UseVisualStyleBackColor = true;
+            this.addDistributionButton.Click += new System.EventHandler(this.addDistributionButton_Click);
+            // 
+            // EditDistributionButton
+            // 
+            this.EditDistributionButton.Location = new System.Drawing.Point(936, 530);
+            this.EditDistributionButton.Name = "EditDistributionButton";
+            this.EditDistributionButton.Size = new System.Drawing.Size(93, 38);
+            this.EditDistributionButton.TabIndex = 43;
+            this.EditDistributionButton.Text = "Edytuj Dystrybucje";
+            this.EditDistributionButton.UseVisualStyleBackColor = true;
+            this.EditDistributionButton.Click += new System.EventHandler(this.EditDistributionButton_Click);
+            // 
+            // deleteDistributionButton
+            // 
+            this.deleteDistributionButton.Location = new System.Drawing.Point(1035, 530);
+            this.deleteDistributionButton.Name = "deleteDistributionButton";
+            this.deleteDistributionButton.Size = new System.Drawing.Size(93, 38);
+            this.deleteDistributionButton.TabIndex = 44;
+            this.deleteDistributionButton.Text = "Usuń Dystrybucje";
+            this.deleteDistributionButton.UseVisualStyleBackColor = true;
+            this.deleteDistributionButton.Click += new System.EventHandler(this.deleteDistributionButton_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(1, 39);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(10, 20);
+            this.textBox1.TabIndex = 45;
+            // 
             // MovsDistrControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
+            this.Controls.Add(this.deleteDistributionButton);
+            this.Controls.Add(this.EditDistributionButton);
+            this.Controls.Add(this.addDistributionButton);
             this.Controls.Add(this.procedurecheckbox);
             this.Controls.Add(this.countedDistributionsView);
             this.Controls.Add(this.groupBox3);
@@ -794,5 +839,9 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.DataGridView countedDistributionsView;
         private System.Windows.Forms.CheckBox procedurecheckbox;
+        private System.Windows.Forms.Button addDistributionButton;
+        private System.Windows.Forms.Button EditDistributionButton;
+        private System.Windows.Forms.Button deleteDistributionButton;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

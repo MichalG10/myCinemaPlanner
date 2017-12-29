@@ -1,9 +1,8 @@
 ﻿create trigger TRIG_AddDistribution on Distributions
 after INSERT
 as
-if (select count(*) from Distributions d, inserted i
-	where d.DistributorID = i.DistributorID
-	and d.MovieID = i.MovieID) <= 1 
+if (select count(d.DistributorID) from Distributions d
+	join inserted i on d.MovieID = i.MovieID) >= 2
 begin
 	rollback
 	RAISERROR ('Nie można dodać dystrybucji, dostarczonej już przez innego dystrybutora.', 12, 11);

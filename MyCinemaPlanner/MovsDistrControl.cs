@@ -58,6 +58,7 @@ namespace MyCinemaPlanner
             label1.Text = "Filmy";
             labelGridDist.Text = "Dystrybutorzy";
             label16.Text = "Dystrybucje";
+            textBox1.Hide();
 
             updateDistributions(ctx);
         }
@@ -69,7 +70,7 @@ namespace MyCinemaPlanner
                          from mv in ctx.Movies
                          where dis.DistributorID == ds.DistributorID
                          where dis.MovieID == mv.MovieID
-                         select new { mv.Title, ds.Name, dis.Dubbing, dis.Subtitle, dis.is3D } ).ToList();
+                         select new { dis.DistributionID, mv.Title, ds.Name, dis.Dubbing, dis.Subtitle, dis.is3D } ).ToList();
 
             distributionsGridView.DataSource = query;
             distributionsGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
@@ -110,11 +111,12 @@ namespace MyCinemaPlanner
             cellRowDis = dataGridDist.CurrentRow.Index;
             cellColDis = dataGridDist.CurrentCell.ColumnIndex;
 
-            DistibutionMovieBox.Text = distributionsGridView.CurrentRow.Cells[0].Value.ToString();
-            distributionDistributorBox.Text = distributionsGridView.CurrentRow.Cells[1].Value.ToString();
-            dubbingBox.Text = distributionsGridView.CurrentRow.Cells[2].Value.ToString();
-            subtitlesBox.Text = distributionsGridView.CurrentRow.Cells[3].Value.ToString();
-            threedimBox.Text = distributionsGridView.CurrentRow.Cells[4].Value.ToString();
+            textBox1.Text = distributionsGridView.CurrentRow.Cells[0].Value.ToString();
+            DistibutionMovieBox.Text = distributionsGridView.CurrentRow.Cells[1].Value.ToString();
+            distributionDistributorBox.Text = distributionsGridView.CurrentRow.Cells[2].Value.ToString();
+            dubbingBox.Text = distributionsGridView.CurrentRow.Cells[3].Value.ToString();
+            subtitlesBox.Text = distributionsGridView.CurrentRow.Cells[4].Value.ToString();
+            threedimBox.Text = distributionsGridView.CurrentRow.Cells[5].Value.ToString();
         }
 
         // Po naciśnięciu wypisz wszystko z tabelii
@@ -272,8 +274,7 @@ namespace MyCinemaPlanner
                 {
                     if (procedurecheckbox.Checked) {
                         retCode = ctx.AddDistributor(
-                            //nazwaDistBox.Text,
-                            null,
+                            nazwaDistBox.Text,
                             emailDistBox.Text,
                             telDistBox.Text,
                             adresDistBox.Text,
@@ -457,15 +458,134 @@ namespace MyCinemaPlanner
             refreshGrid();
         }
 
+        private void addDistributionButton_Click(object sender, EventArgs e)
+        {
+            using(var ctx = new myCinemaPlannerDBEntities())
+            {
+                int retCode = 0;
+                bool threedim = false;
+                try
+                {
+                    int distID = (from d in ctx.Distributors
+                                where d.Name == distributionDistributorBox.Text
+                                select d.DistributorID).FirstOrDefault();
+                    int movID = (from m in ctx.Movies
+                                 where m.Title == DistibutionMovieBox.Text
+                                 select m.MovieID).FirstOrDefault();
+                    if (threedimBox.Text == "True") threedim = true;
+                    else threedim = false;
+
+                    exceptionLabel.Text = distID.ToString() + " " + movID.ToString();
+
+                    retCode = ctx.addDistribution(movID, distID, dubbingBox.Text, subtitlesBox.Text, threedim);
+
+                } catch (DbEntityValidationException ex) {
+                    var errorMessages = ex.EntityValidationErrors
+                    .SelectMany(x => x.ValidationErrors)
+                    .Select(x => x.ErrorMessage);
+                    var fullErrorMessage = string.Join("; ", errorMessages);
+                    MessageBox.Show(fullErrorMessage);
+                } catch (System.Data.Entity.Core.EntityCommandExecutionException ex) {
+                    if (ex.InnerException == null) MessageBox.Show("Wyjątek: Wprowadzono nie właściwy typ danych.\nKod błędu - " + retCode);
+                    else MessageBox.Show("Wyjątek: " + ex.InnerException.Message + "\nKod błędu - " + retCode);
+                } catch (Exception ex) {
+                    if (ex.InnerException == null) MessageBox.Show("Wyjątek: Wprowadzono nie właściwy typ danych.\nKod błędu - " + retCode);
+                    else MessageBox.Show("Wyjątek: " + ex.InnerException.InnerException.Message + "\nKod błędu - " + retCode);
+                }
+
+                refreshGrid();
+            }
+        }
+
+        private void EditDistributionButton_Click(object sender, EventArgs e)
+        {
+            using (var ctx = new myCinemaPlannerDBEntities())
+            {
+                int retCode = 0;
+                int IdtoEdit = Int32.Parse(textBox1.Text);
+                bool threedim = false;
+                try
+                {
+                    int distID = (from d in ctx.Distributors
+                                  where d.Name == distributionDistributorBox.Text
+                                  select d.DistributorID).FirstOrDefault();
+                    int movID = (from m in ctx.Movies
+                                 where m.Title == DistibutionMovieBox.Text
+                                 select m.MovieID).FirstOrDefault();
+                    if (threedimBox.Text == "True") threedim = true;
+                    else threedim = false;
+
+                    exceptionLabel.Text = distID.ToString() + " " + movID.ToString();
+
+                    retCode = ctx.editDistribution(IdtoEdit, movID, distID, dubbingBox.Text, subtitlesBox.Text, threedim);
+
+                }
+                catch (DbEntityValidationException ex)
+                {
+                    var errorMessages = ex.EntityValidationErrors
+                    .SelectMany(x => x.ValidationErrors)
+                    .Select(x => x.ErrorMessage);
+                    var fullErrorMessage = string.Join("; ", errorMessages);
+                    MessageBox.Show(fullErrorMessage);
+                }
+                catch (System.Data.Entity.Core.EntityCommandExecutionException ex)
+                {
+                    if (ex.InnerException == null) MessageBox.Show("Wyjątek: Wprowadzono nie właściwy typ danych.\nKod błędu - " + retCode);
+                    else MessageBox.Show("Wyjątek: " + ex.InnerException.Message + "\nKod błędu - " + retCode);
+                }
+                catch (Exception ex)
+                {
+                    if (ex.InnerException == null) MessageBox.Show("Wyjątek: Wprowadzono nie właściwy typ danych.\nKod błędu - " + retCode);
+                    else MessageBox.Show("Wyjątek: " + ex.InnerException.InnerException.Message + "\nKod błędu - " + retCode);
+                }
+
+                refreshGrid();
+            }
+        }
+
+        private void deleteDistributionButton_Click(object sender, EventArgs e)
+        {
+            using (var ctx = new myCinemaPlannerDBEntities())
+            {
+                int retCode = 0;
+                int IdtoEdit = Int32.Parse(textBox1.Text);
+                try
+                {
+                    ctx.deleteDistribution(IdtoEdit);
+                }
+                catch (DbEntityValidationException ex)
+                {
+                    var errorMessages = ex.EntityValidationErrors
+                    .SelectMany(x => x.ValidationErrors)
+                    .Select(x => x.ErrorMessage);
+                    var fullErrorMessage = string.Join("; ", errorMessages);
+                    MessageBox.Show(fullErrorMessage);
+                }
+                catch (System.Data.Entity.Core.EntityCommandExecutionException ex)
+                {
+                    if (ex.InnerException == null) MessageBox.Show("Wyjątek: Wprowadzono nie właściwy typ danych.\nKod błędu - " + retCode);
+                    else MessageBox.Show("Wyjątek: " + ex.InnerException.Message + "\nKod błędu - " + retCode);
+                }
+                catch (Exception ex)
+                {
+                    if (ex.InnerException == null) MessageBox.Show("Wyjątek: Wprowadzono nie właściwy typ danych.\nKod błędu - " + retCode);
+                    else MessageBox.Show("Wyjątek: " + ex.InnerException.InnerException.Message + "\nKod błędu - " + retCode);
+                }
+
+                refreshGrid();
+            }
+        }
+
         /* odświeża wartości w dataGridViews */
         private void refreshGrid()
         {
             var ctx = new myCinemaPlannerDBEntities();
             try
             {
-                dataGrid.DataSource = ctx.Employee.ToList();
+                dataGrid.DataSource = ctx.Movies.ToList();
                 dataGridDist.DataSource = ctx.Distributors.ToList();
                 countedDistributionsView.DataSource = ctx.Distributors_counted_movies.ToList();
+                updateDistributions(ctx);
 
                 /* uaktualnia pozycje kursora, uodparnia przed "skakaniem" kursora do pierwszej pozycji */
                 updateCursor(cellRowM, cellColM, dataGrid);

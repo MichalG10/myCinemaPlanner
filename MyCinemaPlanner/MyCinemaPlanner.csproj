@@ -200,7 +200,6 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="add_constraints.sql" />
     <Content Include="myCinemaPlanner.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>myCinemaPlanner.edmx</DependentUpon>
@@ -213,6 +212,7 @@
     </Content>
     <Content Include="sqlscripts\add_constraints.sql" />
     <Content Include="sqlscripts\add_views.sql" />
+    <Content Include="sqlscripts\procedures.sql" />
     <Content Include="sqlscripts\triggers.sql" />
     <None Include="Resources\Movie+napis.png" />
     <None Include="Resources\02052_theredarrows_672x420.jpg" />

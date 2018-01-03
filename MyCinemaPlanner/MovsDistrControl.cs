@@ -272,8 +272,7 @@ namespace MyCinemaPlanner
                 {
                     if (procedurecheckbox.Checked) {
                         retCode = ctx.AddDistributor(
-                            //nazwaDistBox.Text,
-                            null,
+                            nazwaDistBox.Text,
                             emailDistBox.Text,
                             telDistBox.Text,
                             adresDistBox.Text,
@@ -463,7 +462,7 @@ namespace MyCinemaPlanner
             var ctx = new myCinemaPlannerDBEntities();
             try
             {
-                dataGrid.DataSource = ctx.Employee.ToList();
+                dataGrid.DataSource = ctx.Movies.ToList();
                 dataGridDist.DataSource = ctx.Distributors.ToList();
                 countedDistributionsView.DataSource = ctx.Distributors_counted_movies.ToList();
 

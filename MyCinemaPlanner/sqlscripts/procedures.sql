@@ -45,3 +45,33 @@ begin
 end
 delete from Distributors
 where DistributorID = @id
+
+-- 29.12.17r - Distrybutions - Procedures
+
+create procedure addDistribution
+@MovieID int,
+@DistributorID int,
+@Dubb varchar(3),
+@Sub varchar(3),
+@is3D bit
+as
+insert into Distributions(MovieID, DistributorID, Dubbing, Subtitle, is3D)
+values (@MovieID, @DistributorID, @Dubb, @Sub, @is3D)
+
+create procedure editDistribution
+@id int,
+@MovieID int,
+@DistributorID int,
+@Dubb varchar(3),
+@Sub varchar(3),
+@is3D bit
+as
+update Distributions
+set MovieID = @MovieID, DistributorID = @DistributorID, Dubbing = @Dubb, Subtitle = @Sub, is3D = @is3D
+where DistributionID = @id
+
+create procedure deleteDistribution
+@id int
+as
+delete from Distributions
+where DistributionID = @id

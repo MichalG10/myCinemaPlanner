@@ -68,11 +68,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BarCash.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BarCash.Designer.cs">
+      <DependentUpon>BarCash.cs</DependentUpon>
+    </Compile>
     <Compile Include="Cashes.cs">
       <DependentUpon>myCinemaPlanner.tt</DependentUpon>
     </Compile>
     <Compile Include="Cleaning.cs">
       <DependentUpon>myCinemaPlanner.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DailyView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DailyView.Designer.cs">
+      <DependentUpon>DailyView.cs</DependentUpon>
     </Compile>
     <Compile Include="DBCom.cs" />
     <Compile Include="Distributions.cs">
@@ -149,12 +161,24 @@
     <Compile Include="Staff.cs">
       <DependentUpon>myCinemaPlanner.tt</DependentUpon>
     </Compile>
+    <Compile Include="StaffForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StaffForm.Designer.cs">
+      <DependentUpon>StaffForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Technicians.cs">
       <DependentUpon>myCinemaPlanner.tt</DependentUpon>
     </Compile>
     <Compile Include="Usage.cs">
       <DependentUpon>myCinemaPlanner.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="BarCash.resx">
+      <DependentUpon>BarCash.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DailyView.resx">
+      <DependentUpon>DailyView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Employee_control.resx">
       <DependentUpon>Employee_control.cs</DependentUpon>
     </EmbeddedResource>
@@ -177,6 +201,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="StaffForm.resx">
+      <DependentUpon>StaffForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="App.Config" />
     <EntityDeploy Include="myCinemaPlanner.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -212,7 +239,7 @@
     </Content>
     <Content Include="sqlscripts\add_constraints.sql" />
     <Content Include="sqlscripts\add_views.sql" />
-    <Content Include="sqlscripts\procedures_distributors.sql" />
+    <Content Include="sqlscripts\procedures.sql" />
     <Content Include="sqlscripts\triggers.sql" />
     <None Include="Resources\Movie+napis.png" />
     <None Include="Resources\02052_theredarrows_672x420.jpg" />

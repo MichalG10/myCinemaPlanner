@@ -32,6 +32,8 @@
             this.employeesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.moviesAnDistributionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel = new System.Windows.Forms.Panel();
+            this.dailyViewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.employeeVersionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -39,7 +41,9 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.employeesToolStripMenuItem,
-            this.moviesAnDistributionsToolStripMenuItem});
+            this.moviesAnDistributionsToolStripMenuItem,
+            this.dailyViewToolStripMenuItem,
+            this.employeeVersionToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1146, 24);
@@ -57,8 +61,8 @@
             // 
             this.moviesAnDistributionsToolStripMenuItem.AutoSize = false;
             this.moviesAnDistributionsToolStripMenuItem.Name = "moviesAnDistributionsToolStripMenuItem";
-            this.moviesAnDistributionsToolStripMenuItem.Size = new System.Drawing.Size(143, 20);
-            this.moviesAnDistributionsToolStripMenuItem.Text = "Movies an Distributions";
+            this.moviesAnDistributionsToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
+            this.moviesAnDistributionsToolStripMenuItem.Text = "Movies";
             this.moviesAnDistributionsToolStripMenuItem.Click += new System.EventHandler(this.moviesAnDistributionsToolStripMenuItem_Click);
             // 
             // panel
@@ -69,10 +73,26 @@
             this.panel.Size = new System.Drawing.Size(449, 164);
             this.panel.TabIndex = 1;
             // 
+            // dailyViewToolStripMenuItem
+            // 
+            this.dailyViewToolStripMenuItem.Name = "dailyViewToolStripMenuItem";
+            this.dailyViewToolStripMenuItem.Size = new System.Drawing.Size(73, 20);
+            this.dailyViewToolStripMenuItem.Text = "Daily View";
+            this.dailyViewToolStripMenuItem.Click += new System.EventHandler(this.dailyViewToolStripMenuItem_Click);
+            // 
+            // employeeVersionToolStripMenuItem
+            // 
+            this.employeeVersionToolStripMenuItem.Name = "employeeVersionToolStripMenuItem";
+            this.employeeVersionToolStripMenuItem.Size = new System.Drawing.Size(112, 20);
+            this.employeeVersionToolStripMenuItem.Text = "Employee Version";
+            this.employeeVersionToolStripMenuItem.Click += new System.EventHandler(this.employeeVersionToolStripMenuItem_Click);
+            // 
             // Manager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1146, 691);
             this.Controls.Add(this.panel);
             this.Controls.Add(this.menuStrip1);
@@ -93,5 +113,7 @@
         private System.Windows.Forms.Panel panel;
         private System.Windows.Forms.ToolStripMenuItem employeesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem moviesAnDistributionsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dailyViewToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem employeeVersionToolStripMenuItem;
     }
 }

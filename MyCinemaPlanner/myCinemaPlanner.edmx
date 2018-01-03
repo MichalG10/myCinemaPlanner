@@ -340,6 +340,13 @@ warning 6002: The table/view 'myCinemaPlannerDB.dbo.Distributors_counted_movies'
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="addDistribution" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MovieID" Type="int" Mode="In" />
+          <Parameter Name="DistributorID" Type="int" Mode="In" />
+          <Parameter Name="Dubb" Type="varchar" Mode="In" />
+          <Parameter Name="Sub" Type="varchar" Mode="In" />
+          <Parameter Name="is3D" Type="bit" Mode="In" />
+        </Function>
         <Function Name="AddDistributor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="disName" Type="varchar" Mode="In" />
           <Parameter Name="disEmail" Type="varchar" Mode="In" />
@@ -349,8 +356,19 @@ warning 6002: The table/view 'myCinemaPlannerDB.dbo.Distributors_counted_movies'
           <Parameter Name="disCity" Type="varchar" Mode="In" />
           <Parameter Name="disCountry" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="deleteDistribution" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
         <Function Name="DeleteDistributor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="editDistribution" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="MovieID" Type="int" Mode="In" />
+          <Parameter Name="DistributorID" Type="int" Mode="In" />
+          <Parameter Name="Dubb" Type="varchar" Mode="In" />
+          <Parameter Name="Sub" Type="varchar" Mode="In" />
+          <Parameter Name="is3D" Type="bit" Mode="In" />
         </Function>
         <Function Name="EditDistributor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
@@ -895,7 +913,25 @@ warning 6002: The table/view 'myCinemaPlannerDB.dbo.Distributors_counted_movies'
             <Parameter Name="disCountry" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="DeleteDistributor">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="addDistribution">
+            <Parameter Name="MovieID" Mode="In" Type="Int32" />
+            <Parameter Name="DistributorID" Mode="In" Type="Int32" />
+            <Parameter Name="Dubb" Mode="In" Type="String" />
+            <Parameter Name="Sub" Mode="In" Type="String" />
+            <Parameter Name="is3D" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="deleteDistribution">
             <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="editDistribution">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="MovieID" Mode="In" Type="Int32" />
+            <Parameter Name="DistributorID" Mode="In" Type="Int32" />
+            <Parameter Name="Dubb" Mode="In" Type="String" />
+            <Parameter Name="Sub" Mode="In" Type="String" />
+            <Parameter Name="is3D" Mode="In" Type="Boolean" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="Distributors_counted_movies">
@@ -1089,6 +1125,9 @@ warning 6002: The table/view 'myCinemaPlannerDB.dbo.Distributors_counted_movies'
           <FunctionImportMapping FunctionImportName="AddDistributor" FunctionName="myCinemaPlannerDBModel.Store.AddDistributor" />
           <FunctionImportMapping FunctionImportName="EditDistributor" FunctionName="myCinemaPlannerDBModel.Store.EditDistributor" />
           <FunctionImportMapping FunctionImportName="DeleteDistributor" FunctionName="myCinemaPlannerDBModel.Store.DeleteDistributor" />
+          <FunctionImportMapping FunctionImportName="addDistribution" FunctionName="myCinemaPlannerDBModel.Store.addDistribution" />
+          <FunctionImportMapping FunctionImportName="deleteDistribution" FunctionName="myCinemaPlannerDBModel.Store.deleteDistribution" />
+          <FunctionImportMapping FunctionImportName="editDistribution" FunctionName="myCinemaPlannerDBModel.Store.editDistribution" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

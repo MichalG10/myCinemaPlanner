@@ -23,5 +23,6 @@ namespace MyCinemaPlanner
     
         public virtual Cashes Cashes { get; set; }
         public virtual Staff Staff { get; set; }
+
     }
 }

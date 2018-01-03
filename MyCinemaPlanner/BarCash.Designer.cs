@@ -28,18 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.BC_GridView = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.BC_CashBox = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.BC_ProduktLabel = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.BC_IloscNumeric = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
             this.BC_DodajZamowienieButton = new System.Windows.Forms.Button();
+            this.BC_ZamowieniaGrid = new System.Windows.Forms.DataGridView();
+            this.BC_ZamowienieLabel = new System.Windows.Forms.Label();
+            this.BC_PotwierdzButton = new System.Windows.Forms.Button();
+            this.BC_RazemLabel = new System.Windows.Forms.Label();
+            this.BC_AnulujButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.BC_GridView)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BC_IloscNumeric)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BC_ZamowieniaGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // BC_GridView
@@ -47,14 +53,14 @@
             this.BC_GridView.AllowUserToAddRows = false;
             this.BC_GridView.AllowUserToDeleteRows = false;
             this.BC_GridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.BC_GridView.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.BC_GridView.DefaultCellStyle = dataGridViewCellStyle3;
             this.BC_GridView.Location = new System.Drawing.Point(3, 35);
             this.BC_GridView.Name = "BC_GridView";
             this.BC_GridView.ReadOnly = true;
@@ -85,7 +91,7 @@
             // 
             this.groupBox1.Controls.Add(this.BC_DodajZamowienieButton);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.numericUpDown1);
+            this.groupBox1.Controls.Add(this.BC_IloscNumeric);
             this.groupBox1.Controls.Add(this.BC_ProduktLabel);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.White;
@@ -106,12 +112,12 @@
             this.BC_ProduktLabel.TabIndex = 0;
             this.BC_ProduktLabel.Text = "Produkt";
             // 
-            // numericUpDown1
+            // BC_IloscNumeric
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(52, 51);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(158, 22);
-            this.numericUpDown1.TabIndex = 1;
+            this.BC_IloscNumeric.Location = new System.Drawing.Point(52, 51);
+            this.BC_IloscNumeric.Name = "BC_IloscNumeric";
+            this.BC_IloscNumeric.Size = new System.Drawing.Size(158, 22);
+            this.BC_IloscNumeric.TabIndex = 1;
             // 
             // label3
             // 
@@ -132,12 +138,69 @@
             this.BC_DodajZamowienieButton.TabIndex = 3;
             this.BC_DodajZamowienieButton.Text = "Dodaj do zamówienia";
             this.BC_DodajZamowienieButton.UseVisualStyleBackColor = true;
+            this.BC_DodajZamowienieButton.Click += new System.EventHandler(this.BC_DodajZamowienieButton_Click);
+            // 
+            // BC_ZamowieniaGrid
+            // 
+            this.BC_ZamowieniaGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.BC_ZamowieniaGrid.Location = new System.Drawing.Point(3, 283);
+            this.BC_ZamowieniaGrid.Name = "BC_ZamowieniaGrid";
+            this.BC_ZamowieniaGrid.Size = new System.Drawing.Size(500, 101);
+            this.BC_ZamowieniaGrid.TabIndex = 4;
+            // 
+            // BC_ZamowienieLabel
+            // 
+            this.BC_ZamowienieLabel.AutoSize = true;
+            this.BC_ZamowienieLabel.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BC_ZamowienieLabel.ForeColor = System.Drawing.Color.White;
+            this.BC_ZamowienieLabel.Location = new System.Drawing.Point(4, 256);
+            this.BC_ZamowienieLabel.Name = "BC_ZamowienieLabel";
+            this.BC_ZamowienieLabel.Size = new System.Drawing.Size(129, 24);
+            this.BC_ZamowienieLabel.TabIndex = 5;
+            this.BC_ZamowienieLabel.Text = "Zamówienie:";
+            // 
+            // BC_PotwierdzButton
+            // 
+            this.BC_PotwierdzButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BC_PotwierdzButton.Location = new System.Drawing.Point(510, 283);
+            this.BC_PotwierdzButton.Name = "BC_PotwierdzButton";
+            this.BC_PotwierdzButton.Size = new System.Drawing.Size(216, 101);
+            this.BC_PotwierdzButton.TabIndex = 6;
+            this.BC_PotwierdzButton.Text = "Potwierdź zamówienie";
+            this.BC_PotwierdzButton.UseVisualStyleBackColor = true;
+            this.BC_PotwierdzButton.Click += new System.EventHandler(this.BC_PotwierdzButton_Click);
+            // 
+            // BC_RazemLabel
+            // 
+            this.BC_RazemLabel.AutoSize = true;
+            this.BC_RazemLabel.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BC_RazemLabel.ForeColor = System.Drawing.Color.White;
+            this.BC_RazemLabel.Location = new System.Drawing.Point(4, 391);
+            this.BC_RazemLabel.Name = "BC_RazemLabel";
+            this.BC_RazemLabel.Size = new System.Drawing.Size(255, 24);
+            this.BC_RazemLabel.TabIndex = 7;
+            this.BC_RazemLabel.Text = "Razem do zapłaty:        0";
+            // 
+            // BC_AnulujButton
+            // 
+            this.BC_AnulujButton.Location = new System.Drawing.Point(604, 391);
+            this.BC_AnulujButton.Name = "BC_AnulujButton";
+            this.BC_AnulujButton.Size = new System.Drawing.Size(122, 24);
+            this.BC_AnulujButton.TabIndex = 8;
+            this.BC_AnulujButton.Text = "Anuluj zamówienie";
+            this.BC_AnulujButton.UseVisualStyleBackColor = true;
+            this.BC_AnulujButton.Click += new System.EventHandler(this.BC_AnulujButton_Click);
             // 
             // BarCash
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
+            this.Controls.Add(this.BC_AnulujButton);
+            this.Controls.Add(this.BC_RazemLabel);
+            this.Controls.Add(this.BC_PotwierdzButton);
+            this.Controls.Add(this.BC_ZamowienieLabel);
+            this.Controls.Add(this.BC_ZamowieniaGrid);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.BC_CashBox);
             this.Controls.Add(this.label1);
@@ -147,7 +210,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.BC_GridView)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BC_IloscNumeric)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BC_ZamowieniaGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -160,8 +224,13 @@
         private System.Windows.Forms.ComboBox BC_CashBox;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown BC_IloscNumeric;
         private System.Windows.Forms.Label BC_ProduktLabel;
         private System.Windows.Forms.Button BC_DodajZamowienieButton;
+        private System.Windows.Forms.DataGridView BC_ZamowieniaGrid;
+        private System.Windows.Forms.Label BC_ZamowienieLabel;
+        private System.Windows.Forms.Button BC_PotwierdzButton;
+        private System.Windows.Forms.Label BC_RazemLabel;
+        private System.Windows.Forms.Button BC_AnulujButton;
     }
 }

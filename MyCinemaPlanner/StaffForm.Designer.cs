@@ -39,6 +39,7 @@
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.AutoSize = true;
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
@@ -50,7 +51,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 346F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(915, 407);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(915, 394);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // label1
@@ -68,7 +69,7 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.kasaBarToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 30);
+            this.menuStrip1.Location = new System.Drawing.Point(0, 24);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(915, 24);
             this.menuStrip1.TabIndex = 1;
@@ -83,7 +84,7 @@
             // 
             // StaffPanel
             // 
-            this.StaffPanel.Location = new System.Drawing.Point(3, 63);
+            this.StaffPanel.Location = new System.Drawing.Point(3, 51);
             this.StaffPanel.Name = "StaffPanel";
             this.StaffPanel.Size = new System.Drawing.Size(200, 100);
             this.StaffPanel.TabIndex = 2;
@@ -103,6 +104,7 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

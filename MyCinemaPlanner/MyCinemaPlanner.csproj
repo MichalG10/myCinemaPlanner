@@ -74,6 +74,12 @@
     <Compile Include="Cleaning.cs">
       <DependentUpon>myCinemaPlanner.tt</DependentUpon>
     </Compile>
+    <Compile Include="DailyView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DailyView.Designer.cs">
+      <DependentUpon>DailyView.cs</DependentUpon>
+    </Compile>
     <Compile Include="DBCom.cs" />
     <Compile Include="Distributions.cs">
       <DependentUpon>myCinemaPlanner.tt</DependentUpon>
@@ -155,6 +161,9 @@
     <Compile Include="Usage.cs">
       <DependentUpon>myCinemaPlanner.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="DailyView.resx">
+      <DependentUpon>DailyView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Employee_control.resx">
       <DependentUpon>Employee_control.cs</DependentUpon>
     </EmbeddedResource>

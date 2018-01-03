@@ -34,8 +34,6 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.exceptionLabel = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.krajDistBox = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
@@ -56,7 +54,6 @@
             this.labelGridDist = new System.Windows.Forms.Label();
             this.dataGridDist = new System.Windows.Forms.DataGridView();
             this.dataGrid = new System.Windows.Forms.DataGridView();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.filmidBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -74,6 +71,7 @@
             this.distributionsGridView = new System.Windows.Forms.DataGridView();
             this.label16 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
@@ -89,7 +87,6 @@
             this.addDistributionButton = new System.Windows.Forms.Button();
             this.EditDistributionButton = new System.Windows.Forms.Button();
             this.deleteDistributionButton = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridDist)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).BeginInit();
@@ -158,27 +155,6 @@
             this.button2.Text = "Dodaj Film";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.Dodaj_Click);
-            // 
-            // exceptionLabel
-            // 
-            this.exceptionLabel.AutoSize = true;
-            this.exceptionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.exceptionLabel.ForeColor = System.Drawing.Color.PeachPuff;
-            this.exceptionLabel.Location = new System.Drawing.Point(7, 565);
-            this.exceptionLabel.Name = "exceptionLabel";
-            this.exceptionLabel.Size = new System.Drawing.Size(86, 16);
-            this.exceptionLabel.TabIndex = 30;
-            this.exceptionLabel.Text = "Wyjątki: Brak";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(7, 524);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(121, 38);
-            this.button1.TabIndex = 29;
-            this.button1.Text = "Pokaż tabele";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.ShowAll_Click);
             // 
             // groupBox2
             // 
@@ -377,29 +353,6 @@
             this.dataGrid.TabIndex = 24;
             this.dataGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGrid_CellClick);
             // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Employee",
-            "Staff",
-            "Technicians",
-            "Cleaning",
-            "Sellings",
-            "Movies",
-            "Distributors",
-            "Rooms",
-            "Cashes",
-            "Distributions",
-            "Orders",
-            "Products",
-            "Seance",
-            "Usage"});
-            this.comboBox1.Location = new System.Drawing.Point(7, 497);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 23;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -582,6 +535,13 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Dodaj/Edytuj/Usuń Dystrybucje";
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(1, 39);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(10, 20);
+            this.textBox1.TabIndex = 45;
+            // 
             // label21
             // 
             this.label21.AutoSize = true;
@@ -727,13 +687,6 @@
             this.deleteDistributionButton.UseVisualStyleBackColor = true;
             this.deleteDistributionButton.Click += new System.EventHandler(this.deleteDistributionButton_Click);
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(1, 39);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(10, 20);
-            this.textBox1.TabIndex = 45;
-            // 
             // MovsDistrControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -757,13 +710,10 @@
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button7);
-            this.Controls.Add(this.exceptionLabel);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.labelGridDist);
             this.Controls.Add(this.dataGridDist);
-            this.Controls.Add(this.comboBox1);
             this.Name = "MovsDistrControl";
-            this.Size = new System.Drawing.Size(1313, 670);
+            this.Size = new System.Drawing.Size(1320, 585);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridDist)).EndInit();
@@ -787,8 +737,6 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Label exceptionLabel;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox krajDistBox;
         private System.Windows.Forms.Label label15;
@@ -809,7 +757,6 @@
         private System.Windows.Forms.Label labelGridDist;
         private System.Windows.Forms.DataGridView dataGridDist;
         private System.Windows.Forms.DataGridView dataGrid;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox filmidBox;
         private System.Windows.Forms.Label label2;

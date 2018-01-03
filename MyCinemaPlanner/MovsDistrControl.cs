@@ -42,8 +42,6 @@ namespace MyCinemaPlanner
             cellRowDis = 0;
             cellColDis = 0;
 
-            comboBox1.SelectedItem = "Movies";
-
             /* inicjalizacja tabel */
             dataGrid.DataSource = ctx.Movies.ToList(); // tabela - Filmy
             dataGridDist.DataSource = ctx.Distributors.ToList(); // tabela - Dystrybutorzy
@@ -53,8 +51,6 @@ namespace MyCinemaPlanner
             dataGridDist.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
 
             refreshComboBox(ctx);
-
-            lastItem = comboBox1.Text;
             label1.Text = "Filmy";
             labelGridDist.Text = "Dystrybutorzy";
             label16.Text = "Dystrybucje";
@@ -63,6 +59,7 @@ namespace MyCinemaPlanner
             updateDistributions(ctx);
         }
 
+        // aktualizacja widoku w dataGrid - Dystrybucje
         private void updateDistributions(myCinemaPlannerDBEntities ctx)
         {
             var query = (from dis in ctx.Distributions
@@ -76,8 +73,7 @@ namespace MyCinemaPlanner
             distributionsGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
         }
 
-
-        // Zapisuje pozycje kursora po kliknięciu w komórkę
+        // Zapisuje pozycje kursora po kliknieciu w komórkę - dataGrid - Movies
         private void dataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             cellRowM = dataGrid.CurrentRow.Index;
@@ -90,7 +86,7 @@ namespace MyCinemaPlanner
             ocenaBox.Text = dataGrid.CurrentRow.Cells[5].Value.ToString();
             comboBox3.Text = dataGrid.CurrentRow.Cells[4].Value.ToString();
         }
-
+        // Zapisuje pozycje kursora - dataGrid - Dystrybutorzy
         private void DistributorsGrid_Click(object sender, DataGridViewCellEventArgs e)
         {
             cellRowD = dataGridDist.CurrentRow.Index;
@@ -105,7 +101,7 @@ namespace MyCinemaPlanner
             miastoDistBox.Text = dataGridDist.CurrentRow.Cells[6].Value.ToString();
             krajDistBox.Text = dataGridDist.CurrentRow.Cells[7].Value.ToString();
         }
-
+        // Zapisuje pozycje kursora - dataGrid - Dystrybucje
         private void distributionsGridView_Click(object sender, DataGridViewCellEventArgs e)
         {
             cellRowDis = dataGridDist.CurrentRow.Index;
@@ -117,22 +113,6 @@ namespace MyCinemaPlanner
             dubbingBox.Text = distributionsGridView.CurrentRow.Cells[3].Value.ToString();
             subtitlesBox.Text = distributionsGridView.CurrentRow.Cells[4].Value.ToString();
             threedimBox.Text = distributionsGridView.CurrentRow.Cells[5].Value.ToString();
-        }
-
-        // Po naciśnięciu wypisz wszystko z tabelii
-        private void ShowAll_Click(object sender, EventArgs e)
-        {
-
-            if (lastItem != comboBox1.Text)
-            {
-                lastItem = comboBox1.Text; cellRowM = 0; cellColM = 0;
-            }
-
-            refreshGrid();
-
-            label1.Text = comboBox1.Text;
-            label1.Update();
-
         }
 
         /* dodaj nowy film do bazy danych */
@@ -158,23 +138,26 @@ namespace MyCinemaPlanner
                         ctx.Movies.Add(x);
                         ctx.SaveChanges();
                     }
-                    else
-                    {
-                        exceptionLabel.Text = "Wiadomość: Nie dodano rekordu.";
-                    }
+
 
                 }
-                catch (NullReferenceException ex)
+                catch (DbEntityValidationException ex)
                 {
-                    exceptionLabel.Text = "Wyjątek: Film nie istnieje w bazie danych.";
+                    var errorMessages = ex.EntityValidationErrors
+                    .SelectMany(x => x.ValidationErrors)
+                    .Select(x => x.ErrorMessage);
+                    var fullErrorMessage = string.Join("; ", errorMessages);
+                    MessageBox.Show(fullErrorMessage);
                 }
-                catch (FormatException ex)
+                catch (System.Data.Entity.Core.EntityCommandExecutionException ex)
                 {
-                    exceptionLabel.Text = "Wyjątek: Wprowadzono nie właściwy typ danych.";
+                    if (ex.InnerException == null) MessageBox.Show("Wyjątek: Wprowadzono nie właściwy typ danych.");
+                    else MessageBox.Show("Wyjątek: " + ex.InnerException.Message);
                 }
                 catch (Exception ex)
                 {
-                    exceptionLabel.Text = "Wyjątek: " + ex.InnerException.InnerException.Message;
+                    if (ex.InnerException == null) MessageBox.Show("Wyjątek: Wprowadzono nie właściwy typ danych.");
+                    else MessageBox.Show("Wyjątek: " + ex.InnerException.InnerException.Message);
                 }
             }
 
@@ -199,25 +182,30 @@ namespace MyCinemaPlanner
                         ctx.Movies.Remove(x);
                         ctx.SaveChanges();
                     }
-                    else
-                    {
-                        exceptionLabel.Text = "Wiadomość: Nie usunięto rekordu.";
-                    }
 
                 }
-                catch (NullReferenceException ex)
+                catch (DbEntityValidationException ex)
                 {
-                    exceptionLabel.Text = "Wyjątek: Film nie istnieje w bazie danych.";
+                    var errorMessages = ex.EntityValidationErrors
+                    .SelectMany(x => x.ValidationErrors)
+                    .Select(x => x.ErrorMessage);
+                    var fullErrorMessage = string.Join("; ", errorMessages);
+                    MessageBox.Show(fullErrorMessage);
+                }
+                catch (System.Data.Entity.Core.EntityCommandExecutionException ex)
+                {
+                    if (ex.InnerException == null) MessageBox.Show("Wyjątek: Wprowadzono nie właściwy typ danych.");
+                    else MessageBox.Show("Wyjątek: " + ex.InnerException.Message);
                 }
                 catch (Exception ex)
                 {
-                    exceptionLabel.Text = "Wyjątek: " + ex.InnerException.InnerException.Message;
+                    if (ex.InnerException == null) MessageBox.Show("Wyjątek: Wprowadzono nie właściwy typ danych.");
+                    else MessageBox.Show("Wyjątek: " + ex.InnerException.InnerException.Message);
                 }
             }
 
             refreshGrid();
         }
-
         /*edytuj film */
         private void EdytujFilm_Click(object sender, EventArgs e)
         {
@@ -243,15 +231,20 @@ namespace MyCinemaPlanner
                     {
                         ctx.SaveChanges();
                     }
-                    else
-                    {
-                        exceptionLabel.Text = "Wiadomość: Nie zmieniono rekordu.";
-                    }
 
                 }
-                catch (NullReferenceException ex)
+                catch (DbEntityValidationException ex)
                 {
-                    exceptionLabel.Text = "Wyjątek: Film nie istnieje w bazie danych.";
+                    var errorMessages = ex.EntityValidationErrors
+                    .SelectMany(x => x.ValidationErrors)
+                    .Select(x => x.ErrorMessage);
+                    var fullErrorMessage = string.Join("; ", errorMessages);
+                    MessageBox.Show(fullErrorMessage);
+                }
+                catch (System.Data.Entity.Core.EntityCommandExecutionException ex)
+                {
+                    if (ex.InnerException == null) MessageBox.Show("Wyjątek: Wprowadzono nie właściwy typ danych.");
+                    else MessageBox.Show("Wyjątek: " + ex.InnerException.Message);
                 }
                 catch (Exception ex)
                 {
@@ -302,10 +295,6 @@ namespace MyCinemaPlanner
                             ctx.Distributors.Add(x);
                             ctx.SaveChanges();
                         }
-                        else
-                        {
-                            exceptionLabel.Text = "Wiadomość: Nie dodano rekordu.";
-                        }
                     }
                 }
                 catch (DbEntityValidationException ex)
@@ -330,7 +319,6 @@ namespace MyCinemaPlanner
                 refreshGrid();
             }
         }
-
         /* usuń dystrybutora z bazy danych */
         private void UsunDystrybutora_Click(object sender, EventArgs e)
         {
@@ -357,15 +345,11 @@ namespace MyCinemaPlanner
                             ctx.Distributors.Remove(x);
                             ctx.SaveChanges();
                         }
-                        else
-                        {
-                            exceptionLabel.Text = "Wiadomość: Nie usunięto rekordu.";
-                        }
                     }
                 }
                 catch (NullReferenceException ex)
                 {
-                    exceptionLabel.Text = "Wyjątek: Film nie istnieje w bazie danych.";
+                    MessageBox.Show("Wyjątek: " + ex.InnerException.Message);
                 }
                 catch (DbEntityValidationException ex)
                 {
@@ -389,7 +373,6 @@ namespace MyCinemaPlanner
                 refreshGrid();
             }
         }
-
         /* edytuj dystrybutora */
         private void EdytujDystrybutora_Click(object sender, EventArgs e)
         {
@@ -425,15 +408,11 @@ namespace MyCinemaPlanner
                         {
                             ctx.SaveChanges();
                         }
-                        else
-                        {
-                            exceptionLabel.Text = "Wiadomość: Nie zmieniono rekordu.";
-                        }
                     }
                 }
                 catch (NullReferenceException ex)
                 {
-                    exceptionLabel.Text = "Wyjątek: Film nie istnieje w bazie danych.";
+                    MessageBox.Show("Wyjątek: " + ex.InnerException.Message);
                 }
                 catch (DbEntityValidationException ex)
                 {
@@ -458,6 +437,7 @@ namespace MyCinemaPlanner
             refreshGrid();
         }
 
+        /* dodaj dystrybucje - procedura */
         private void addDistributionButton_Click(object sender, EventArgs e)
         {
             using(var ctx = new myCinemaPlannerDBEntities())
@@ -474,8 +454,6 @@ namespace MyCinemaPlanner
                                  select m.MovieID).FirstOrDefault();
                     if (threedimBox.Text == "True") threedim = true;
                     else threedim = false;
-
-                    exceptionLabel.Text = distID.ToString() + " " + movID.ToString();
 
                     retCode = ctx.addDistribution(movID, distID, dubbingBox.Text, subtitlesBox.Text, threedim);
 
@@ -496,7 +474,7 @@ namespace MyCinemaPlanner
                 refreshGrid();
             }
         }
-
+        /* edytuj dystrybucje - procedura */
         private void EditDistributionButton_Click(object sender, EventArgs e)
         {
             using (var ctx = new myCinemaPlannerDBEntities())
@@ -514,8 +492,6 @@ namespace MyCinemaPlanner
                                  select m.MovieID).FirstOrDefault();
                     if (threedimBox.Text == "True") threedim = true;
                     else threedim = false;
-
-                    exceptionLabel.Text = distID.ToString() + " " + movID.ToString();
 
                     retCode = ctx.editDistribution(IdtoEdit, movID, distID, dubbingBox.Text, subtitlesBox.Text, threedim);
 
@@ -542,7 +518,7 @@ namespace MyCinemaPlanner
                 refreshGrid();
             }
         }
-
+        /* usuń dystrybucję - procedura */
         private void deleteDistributionButton_Click(object sender, EventArgs e)
         {
             using (var ctx = new myCinemaPlannerDBEntities())

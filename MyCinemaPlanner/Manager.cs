@@ -70,6 +70,12 @@ namespace MyCinemaPlanner
                 DailyView.Instance.BringToFront();
         }
 
+        private void employeeVersionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            StaffForm f = new StaffForm();
+            f.Show();
+        }
 
     }
 }

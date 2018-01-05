@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.Entity.Infrastructure;
 
 namespace MyCinemaPlanner
 {
@@ -34,16 +35,17 @@ namespace MyCinemaPlanner
 
         private void showProducts(myCinemaPlannerDBEntities ctx)
         {
+
             PW_MainGrid.DataSource = (from p in ctx.Products
-                                      select new
-                                      {
-                                          p.ProductID,
-                                          p.Name,
-                                          p.Category,
-                                          p.UnitPrice,
-                                          p.AmountInStock,
-                                          p.MinAmount
-                                      }).ToList();
+                                        select new
+                                        {
+                                            p.ProductID,
+                                            p.Name,
+                                            p.Category,
+                                            p.UnitPrice,
+                                            p.AmountInStock,
+                                            p.MinAmount
+                                        }).ToList();
 
             PW_KategoriaBox.DataSource = ctx.Products.Select(p => p.Category).Distinct().ToList();
             PW_MainGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
@@ -61,12 +63,24 @@ namespace MyCinemaPlanner
             int idtoEdit = int.Parse(PW_MainGrid.CurrentRow.Cells[0].Value.ToString());
             using (var ctx = new myCinemaPlannerDBEntities())
             {
-                pr1 = (from p in ctx.Products
-                       where p.ProductID == idtoEdit
-                       select p).Single();
-                pr1.AmountInStock += (int)PW_IloscwmagNumeric.Value;
-                ctx.SaveChanges();
+                try
+                {
+                    pr1 = (from p in ctx.Products
+                           where p.ProductID == idtoEdit
+                           select p).Single();
+                    pr1.AmountInStock += (int)PW_IloscwmagNumeric.Value;
+
+                    ctx.Entry(pr1).State = System.Data.Entity.EntityState.Modified;
+                    ctx.SaveChanges();
+
+                    showProducts(ctx);
+                }
+                catch (DbUpdateConcurrencyException ex)
+                {
+                    if (ex.InnerException == null) MessageBox.Show("Wyjątek: Dwie osoby próbowały zmieniać wartość produktu w tym samym czasie.");
+                    else MessageBox.Show("Wyjątek: " + ex.InnerException.InnerException.Message);
+                }
             }
         }
     }
-}
+ }

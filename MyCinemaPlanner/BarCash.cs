@@ -112,19 +112,22 @@ namespace MyCinemaPlanner
                                       where p.Name == rec.Nazwa
                                       select p.ProductID).FirstOrDefault();
 
-                            Orders ord = new Orders
+                            Usage usa = new Usage
                             {
                                 ProductID = id,
+                                CashID = int.Parse(BC_CashBox.Text),
                                 Amount = rec.Liczba,
-                                Price = rec.Liczba * rec.Cena,
-                                Discount = rec.Znizka
+                                WorkDay = DateTime.Now
                             };
-                            ctx.Orders.Add(ord);
+
+                            ctx.Usage.Add(usa);
                         }
 
                         ctx.SaveChanges();
                         dbTran.Commit();
                         MessageBox.Show("Transakcja przeprowadzona pomyślnie.");
+
+                        updateGrid(ctx);
                     }
                     catch (DbEntityValidationException ex)
                     {

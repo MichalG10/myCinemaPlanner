@@ -32,7 +32,7 @@ End
 
 -- 4.01.2017 - trigger wywoływany kiedy chcemy sprzedać więcej niż jest w magazynie
 -- nie ma rollbacka bo załatwia to transakcja
-create trigger TRIG_CheckAmountinStock on Orders
+create trigger TRIG_CheckAmountinStock on Usage
 after INSERT
 as
 declare @amount varchar(250)

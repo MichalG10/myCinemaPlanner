@@ -19,6 +19,7 @@ namespace MyCinemaPlanner
         public int Amount { get; set; }
         public decimal Price { get; set; }
         public decimal Discount { get; set; }
+        public Nullable<System.DateTime> WorkDay { get; set; }
     
         public virtual Products Products { get; set; }
     }

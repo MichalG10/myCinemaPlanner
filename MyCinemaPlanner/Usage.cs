@@ -18,6 +18,7 @@ namespace MyCinemaPlanner
         public int ProductID { get; set; }
         public int Amount { get; set; }
         public System.DateTime WorkDay { get; set; }
+        public int UsageID { get; set; }
     
         public virtual Cashes Cashes { get; set; }
         public virtual Products Products { get; set; }

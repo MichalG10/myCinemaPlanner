@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.Entity.Validation;
 
 namespace MyCinemaPlanner
 {
@@ -18,10 +19,11 @@ namespace MyCinemaPlanner
             public int Liczba { get; set; }
             public decimal Cena { get; set; }
             public decimal Razem { get; set; }
+            public decimal Znizka { get; set; }
 
-            public Record(string n, int a, decimal p, decimal s)
+            public Record(string n, int a, decimal p, decimal s, decimal z)
             {
-                Nazwa = n; Liczba = a; Cena = p; Razem = s;
+                Nazwa = n; Liczba = a; Cena = p; Razem = s; Znizka = z;
             }
         }
         private decimal orderSum;
@@ -69,12 +71,14 @@ namespace MyCinemaPlanner
         {
             decimal p = decimal.Parse(BC_GridView.CurrentRow.Cells[2].Value.ToString());
             decimal sum = p * (int)BC_IloscNumeric.Value;
-            BC_IloscNumeric.Value = 0;
+            decimal disc = BC_ZnizkaNumeric.Value * (decimal)0.01;
 
-            Record r = new Record(BC_ProduktLabel.Text, (int)BC_IloscNumeric.Value, p, sum);
+            Record r = new Record(BC_ProduktLabel.Text, (int)BC_IloscNumeric.Value, p, sum, disc);
             orderList.Add(r);
-            orderSum += sum;
+            orderSum += (sum*(1-disc));
 
+            BC_IloscNumeric.Value = 0;
+            BC_ZnizkaNumeric.Value = 0;
             updateZamowienia();
         }
 
@@ -96,7 +100,57 @@ namespace MyCinemaPlanner
 
         private void BC_PotwierdzButton_Click(object sender, EventArgs e)
         {
+            using (var ctx = new myCinemaPlannerDBEntities())
+            {
+                using (System.Data.Entity.DbContextTransaction dbTran = ctx.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        foreach (Record rec in orderList)
+                        {
+                            int id = (from p in ctx.Products
+                                      where p.Name == rec.Nazwa
+                                      select p.ProductID).FirstOrDefault();
 
+                            Orders ord = new Orders
+                            {
+                                ProductID = id,
+                                Amount = rec.Liczba,
+                                Price = rec.Liczba * rec.Cena,
+                                Discount = rec.Znizka
+                            };
+                            ctx.Orders.Add(ord);
+                        }
+
+                        ctx.SaveChanges();
+                        dbTran.Commit();
+                        MessageBox.Show("Transakcja przeprowadzona pomyślnie.");
+                    }
+                    catch (DbEntityValidationException ex)
+                    {
+                        var errorMessages = ex.EntityValidationErrors
+                        .SelectMany(x => x.ValidationErrors)
+                        .Select(x => x.ErrorMessage);
+                        var fullErrorMessage = string.Join("; ", errorMessages);
+                        MessageBox.Show(fullErrorMessage);
+                        dbTran.Rollback();
+                    }
+                    catch (System.Data.Entity.Core.EntityCommandExecutionException ex)
+                    {
+                        if (ex.InnerException == null) MessageBox.Show("Wyjątek: Wprowadzono nie właściwy typ danych.");
+                        else MessageBox.Show("Wyjątek: " + ex.InnerException.Message + "\n======================\nTransakcja przerwana.");
+                        dbTran.Rollback();
+                    }
+                    catch (Exception ex)
+                    {
+                        if (ex.InnerException == null) MessageBox.Show("Wyjątek: Wprowadzono nie właściwy typ danych.");
+                        else MessageBox.Show("Wyjątek: " + ex.InnerException.InnerException.Message + "\n======================\nTransakcja przerwana.");
+                        dbTran.Rollback();
+                    }
+
+                    BC_AnulujButton_Click(null, null);
+                }
+            }
         }
     }
 }

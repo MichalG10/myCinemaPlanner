@@ -27,6 +27,7 @@ namespace MyCinemaPlanner
         public int MinAmount { get; set; }
         public decimal UnitPrice { get; set; }
         public string Category { get; set; }
+        public byte[] RowVersion { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Orders> Orders { get; set; }

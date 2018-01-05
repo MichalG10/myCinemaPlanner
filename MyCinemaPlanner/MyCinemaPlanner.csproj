@@ -147,6 +147,12 @@
     <Compile Include="Products.cs">
       <DependentUpon>myCinemaPlanner.tt</DependentUpon>
     </Compile>
+    <Compile Include="ProductWarehouse.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ProductWarehouse.Designer.cs">
+      <DependentUpon>ProductWarehouse.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rooms.cs">
@@ -190,6 +196,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MovsDistrControl.resx">
       <DependentUpon>MovsDistrControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductWarehouse.resx">
+      <DependentUpon>ProductWarehouse.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -241,6 +250,7 @@
     <Content Include="sqlscripts\add_views.sql" />
     <Content Include="sqlscripts\procedures.sql" />
     <Content Include="sqlscripts\triggers.sql" />
+    <Content Include="sqlscripts\updates_to_tables.sql" />
     <None Include="Resources\Movie+napis.png" />
     <None Include="Resources\02052_theredarrows_672x420.jpg" />
     <None Include="Resources\uwaga.png" />

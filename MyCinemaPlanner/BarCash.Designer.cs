@@ -28,15 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.BC_GridView = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.BC_CashBox = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.BC_ProduktLabel = new System.Windows.Forms.Label();
-            this.BC_IloscNumeric = new System.Windows.Forms.NumericUpDown();
-            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.BC_ZnizkaNumeric = new System.Windows.Forms.NumericUpDown();
             this.BC_DodajZamowienieButton = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.BC_IloscNumeric = new System.Windows.Forms.NumericUpDown();
+            this.BC_ProduktLabel = new System.Windows.Forms.Label();
             this.BC_ZamowieniaGrid = new System.Windows.Forms.DataGridView();
             this.BC_ZamowienieLabel = new System.Windows.Forms.Label();
             this.BC_PotwierdzButton = new System.Windows.Forms.Button();
@@ -44,6 +46,7 @@
             this.BC_AnulujButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.BC_GridView)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BC_ZnizkaNumeric)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BC_IloscNumeric)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BC_ZamowieniaGrid)).BeginInit();
             this.SuspendLayout();
@@ -53,15 +56,15 @@
             this.BC_GridView.AllowUserToAddRows = false;
             this.BC_GridView.AllowUserToDeleteRows = false;
             this.BC_GridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.BC_GridView.DefaultCellStyle = dataGridViewCellStyle3;
-            this.BC_GridView.Location = new System.Drawing.Point(3, 35);
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.BC_GridView.DefaultCellStyle = dataGridViewCellStyle1;
+            this.BC_GridView.Location = new System.Drawing.Point(4, 31);
             this.BC_GridView.Name = "BC_GridView";
             this.BC_GridView.ReadOnly = true;
             this.BC_GridView.Size = new System.Drawing.Size(500, 212);
@@ -73,7 +76,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(4, 6);
+            this.label1.Location = new System.Drawing.Point(3, 3);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(186, 24);
             this.label1.TabIndex = 1;
@@ -82,13 +85,15 @@
             // BC_CashBox
             // 
             this.BC_CashBox.FormattingEnabled = true;
-            this.BC_CashBox.Location = new System.Drawing.Point(194, 9);
+            this.BC_CashBox.Location = new System.Drawing.Point(194, 6);
             this.BC_CashBox.Name = "BC_CashBox";
             this.BC_CashBox.Size = new System.Drawing.Size(121, 21);
             this.BC_CashBox.TabIndex = 2;
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.BC_ZnizkaNumeric);
             this.groupBox1.Controls.Add(this.BC_DodajZamowienieButton);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.BC_IloscNumeric);
@@ -102,32 +107,22 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Wybierz liczbe produktów:";
             // 
-            // BC_ProduktLabel
+            // label2
             // 
-            this.BC_ProduktLabel.AutoSize = true;
-            this.BC_ProduktLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BC_ProduktLabel.Location = new System.Drawing.Point(7, 22);
-            this.BC_ProduktLabel.Name = "BC_ProduktLabel";
-            this.BC_ProduktLabel.Size = new System.Drawing.Size(71, 20);
-            this.BC_ProduktLabel.TabIndex = 0;
-            this.BC_ProduktLabel.Text = "Produkt";
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(7, 82);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(50, 16);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Zniżka:";
             // 
-            // BC_IloscNumeric
+            // BC_ZnizkaNumeric
             // 
-            this.BC_IloscNumeric.Location = new System.Drawing.Point(52, 51);
-            this.BC_IloscNumeric.Name = "BC_IloscNumeric";
-            this.BC_IloscNumeric.Size = new System.Drawing.Size(158, 22);
-            this.BC_IloscNumeric.TabIndex = 1;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(7, 54);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(39, 16);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Ilość:";
+            this.BC_ZnizkaNumeric.Location = new System.Drawing.Point(63, 79);
+            this.BC_ZnizkaNumeric.Name = "BC_ZnizkaNumeric";
+            this.BC_ZnizkaNumeric.Size = new System.Drawing.Size(147, 22);
+            this.BC_ZnizkaNumeric.TabIndex = 4;
             // 
             // BC_DodajZamowienieButton
             // 
@@ -140,10 +135,37 @@
             this.BC_DodajZamowienieButton.UseVisualStyleBackColor = true;
             this.BC_DodajZamowienieButton.Click += new System.EventHandler(this.BC_DodajZamowienieButton_Click);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(7, 54);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(39, 16);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Ilość:";
+            // 
+            // BC_IloscNumeric
+            // 
+            this.BC_IloscNumeric.Location = new System.Drawing.Point(63, 51);
+            this.BC_IloscNumeric.Name = "BC_IloscNumeric";
+            this.BC_IloscNumeric.Size = new System.Drawing.Size(147, 22);
+            this.BC_IloscNumeric.TabIndex = 1;
+            // 
+            // BC_ProduktLabel
+            // 
+            this.BC_ProduktLabel.AutoSize = true;
+            this.BC_ProduktLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BC_ProduktLabel.Location = new System.Drawing.Point(7, 22);
+            this.BC_ProduktLabel.Name = "BC_ProduktLabel";
+            this.BC_ProduktLabel.Size = new System.Drawing.Size(71, 20);
+            this.BC_ProduktLabel.TabIndex = 0;
+            this.BC_ProduktLabel.Text = "Produkt";
+            // 
             // BC_ZamowieniaGrid
             // 
             this.BC_ZamowieniaGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.BC_ZamowieniaGrid.Location = new System.Drawing.Point(3, 283);
+            this.BC_ZamowieniaGrid.Location = new System.Drawing.Point(4, 283);
             this.BC_ZamowieniaGrid.Name = "BC_ZamowieniaGrid";
             this.BC_ZamowieniaGrid.Size = new System.Drawing.Size(500, 101);
             this.BC_ZamowieniaGrid.TabIndex = 4;
@@ -206,10 +228,11 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.BC_GridView);
             this.Name = "BarCash";
-            this.Size = new System.Drawing.Size(739, 458);
+            this.Size = new System.Drawing.Size(740, 460);
             ((System.ComponentModel.ISupportInitialize)(this.BC_GridView)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BC_ZnizkaNumeric)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BC_IloscNumeric)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BC_ZamowieniaGrid)).EndInit();
             this.ResumeLayout(false);
@@ -232,5 +255,7 @@
         private System.Windows.Forms.Button BC_PotwierdzButton;
         private System.Windows.Forms.Label BC_RazemLabel;
         private System.Windows.Forms.Button BC_AnulujButton;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.NumericUpDown BC_ZnizkaNumeric;
     }
 }

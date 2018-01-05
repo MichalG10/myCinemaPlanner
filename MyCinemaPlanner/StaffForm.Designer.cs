@@ -32,6 +32,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.kasaBarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.magazynToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.StaffPanel = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -41,16 +42,16 @@
             // 
             this.tableLayoutPanel1.AutoSize = true;
             this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.menuStrip1, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.StaffPanel, 0, 2);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 12);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 346F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.Size = new System.Drawing.Size(915, 394);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
@@ -68,7 +69,8 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.kasaBarToolStripMenuItem});
+            this.kasaBarToolStripMenuItem,
+            this.magazynToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 24);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(915, 24);
@@ -82,8 +84,16 @@
             this.kasaBarToolStripMenuItem.Text = "Kasa - Bar";
             this.kasaBarToolStripMenuItem.Click += new System.EventHandler(this.kasaBarToolStripMenuItem_Click);
             // 
+            // magazynToolStripMenuItem
+            // 
+            this.magazynToolStripMenuItem.Name = "magazynToolStripMenuItem";
+            this.magazynToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
+            this.magazynToolStripMenuItem.Text = "Magazyn";
+            this.magazynToolStripMenuItem.Click += new System.EventHandler(this.magazynToolStripMenuItem_Click);
+            // 
             // StaffPanel
             // 
+            this.StaffPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.StaffPanel.Location = new System.Drawing.Point(3, 51);
             this.StaffPanel.Name = "StaffPanel";
             this.StaffPanel.Size = new System.Drawing.Size(200, 100);
@@ -115,5 +125,6 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem kasaBarToolStripMenuItem;
         private System.Windows.Forms.Panel StaffPanel;
+        private System.Windows.Forms.ToolStripMenuItem magazynToolStripMenuItem;
     }
 }

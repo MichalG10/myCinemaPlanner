@@ -566,8 +566,9 @@ namespace MyCinemaPlanner
                 /* uaktualnia pozycje kursora, uodparnia przed "skakaniem" kursora do pierwszej pozycji */
                 updateCursor(cellRowM, cellColM, dataGrid);
                 updateCursor(cellRowD, cellColD, dataGridDist);
+                updateCursor(cellRowDis, cellColDis, distributionsGridView);
 
-              /* jeśli w wyniku operacji usuwania kursor będzie wskazywał nieistniejącą komórkę */
+                /* jeśli w wyniku operacji usuwania kursor będzie wskazywał nieistniejącą komórkę */
             } catch (ArgumentOutOfRangeException ex) {
                 cellRowM = 0; cellColM = 0;
                 cellRowD = 0; cellColD = 0;
@@ -575,7 +576,7 @@ namespace MyCinemaPlanner
 
                 updateCursor(cellRowM, cellColM, dataGrid);
                 updateCursor(cellRowD, cellColD, dataGridDist);
-                updateCursor(cellRowDis, cellColDis, dataGridDist);
+                updateCursor(cellRowDis, cellColDis, distributionsGridView);
             }
             /* odświeża wartości w wykorzystywanych ComboBoxach */
             refreshComboBox(ctx);

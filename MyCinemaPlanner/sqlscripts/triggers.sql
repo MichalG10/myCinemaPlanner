@@ -44,8 +44,3 @@ if (select p.AmountInStock - i.Amount from inserted i
 begin
 	RAISERROR (@amount, 16, 1);
 End
-else
-	update Products
-	set AmountInStock = AmountInStock - i.Amount
-	from Products P
-	join inserted i on P.ProductID = i.ProductID

@@ -98,14 +98,20 @@ namespace MyCinemaPlanner
             updateZamowienia();
         }
 
+        // Działanie przycisku Potwierdz zamówienie - Transakcja
         private void BC_PotwierdzButton_Click(object sender, EventArgs e)
         {
             using (var ctx = new myCinemaPlannerDBEntities())
             {
+                // Stworzenie obiektu przechowującego informację o rozpoczęciu transakcji - dbTran
+                // dzięki niemu będzie możliwy ewentualny rollback w przypadku niepowodzenia
                 using (System.Data.Entity.DbContextTransaction dbTran = ctx.Database.BeginTransaction())
                 {
                     try
                     {
+                        // Każdy element zamówienia z pomocniczej struktury orderList
+                        // zostaje zamieniony na rekord tabeli Usage przechowującej
+                        // informację o każdym wykorzystaniu produktu z magazynu
                         foreach (Record rec in orderList)
                         {
                             int id = (from p in ctx.Products
@@ -120,34 +126,38 @@ namespace MyCinemaPlanner
                                 WorkDay = DateTime.Now
                             };
 
+                            // Dodanie elementu do tabeli Usage wywołuje trigger
                             ctx.Usage.Add(usa);
+
+                            // Zostaje również zmiejszona liczba elementów w magazynie
+                            Products prod = (from pr in ctx.Products
+                                             where pr.ProductID == id
+                                             select pr).FirstOrDefault();
+                            prod.AmountInStock -= rec.Liczba;
+                            ctx.Entry(prod).State = System.Data.Entity.EntityState.Modified;
                         }
 
+                        // Zmiany zostają zapisane dopiero po dodaniu wszystkich elementów
                         ctx.SaveChanges();
+                        // Jeśli zmiany zostały zapisane bez problemów można potwierdzić otwartą transakcję
                         dbTran.Commit();
                         MessageBox.Show("Transakcja przeprowadzona pomyślnie.");
 
                         updateGrid(ctx);
                     }
-                    catch (DbEntityValidationException ex)
-                    {
-                        var errorMessages = ex.EntityValidationErrors
-                        .SelectMany(x => x.ValidationErrors)
-                        .Select(x => x.ErrorMessage);
-                        var fullErrorMessage = string.Join("; ", errorMessages);
-                        MessageBox.Show(fullErrorMessage);
-                        dbTran.Rollback();
-                    }
+                    // Wyjątki wywoływane przez triggery, bądź CHECK
                     catch (System.Data.Entity.Core.EntityCommandExecutionException ex)
                     {
                         if (ex.InnerException == null) MessageBox.Show("Wyjątek: Wprowadzono nie właściwy typ danych.");
                         else MessageBox.Show("Wyjątek: " + ex.InnerException.Message + "\n======================\nTransakcja przerwana.");
+                        // W przypadku błędu wszystkie zmiany są cofane, a baza pozostaje w stane sprzed rozpoczęcia transakcji.
                         dbTran.Rollback();
                     }
                     catch (Exception ex)
                     {
                         if (ex.InnerException == null) MessageBox.Show("Wyjątek: Wprowadzono nie właściwy typ danych.");
                         else MessageBox.Show("Wyjątek: " + ex.InnerException.InnerException.Message + "\n======================\nTransakcja przerwana.");
+                        // W przypadku błędu wszystkie zmiany są cofane, a baza pozostaje w stane sprzed rozpoczęcia transakcji.
                         dbTran.Rollback();
                     }
 

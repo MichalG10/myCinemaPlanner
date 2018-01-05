@@ -28,20 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.PW_MainGrid = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.PW_ProduktLabel = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.PW_ProduktBox = new System.Windows.Forms.TextBox();
-            this.PW_KategoriaBox = new System.Windows.Forms.ComboBox();
-            this.PW_IloscwmagNumeric = new System.Windows.Forms.NumericUpDown();
-            this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.PW_IloscwmagNumeric = new System.Windows.Forms.NumericUpDown();
+            this.PW_KategoriaBox = new System.Windows.Forms.ComboBox();
+            this.PW_ProduktBox = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.PW_ProduktLabel = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.PW_IloscdoodrzNumeric = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.PW_MainGrid)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PW_IloscwmagNumeric)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PW_IloscdoodrzNumeric)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -58,14 +61,14 @@
             // PW_MainGrid
             // 
             this.PW_MainGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.PW_MainGrid.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.PW_MainGrid.DefaultCellStyle = dataGridViewCellStyle1;
             this.PW_MainGrid.Location = new System.Drawing.Point(4, 31);
             this.PW_MainGrid.Name = "PW_MainGrid";
             this.PW_MainGrid.Size = new System.Drawing.Size(448, 400);
@@ -74,6 +77,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.PW_IloscdoodrzNumeric);
+            this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.PW_IloscwmagNumeric);
@@ -90,40 +95,26 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Aktualizuj produkt";
             // 
-            // PW_ProduktLabel
+            // button1
             // 
-            this.PW_ProduktLabel.AutoSize = true;
-            this.PW_ProduktLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.PW_ProduktLabel.Location = new System.Drawing.Point(6, 18);
-            this.PW_ProduktLabel.Name = "PW_ProduktLabel";
-            this.PW_ProduktLabel.Size = new System.Drawing.Size(72, 18);
-            this.PW_ProduktLabel.TabIndex = 1;
-            this.PW_ProduktLabel.Text = "Produkt:";
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.Location = new System.Drawing.Point(7, 129);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(255, 49);
+            this.button1.TabIndex = 11;
+            this.button1.Text = "Aktualizuj produkt";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // label3
+            // label2
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label3.Location = new System.Drawing.Point(6, 47);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(69, 16);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Kategoria:";
-            // 
-            // PW_ProduktBox
-            // 
-            this.PW_ProduktBox.Location = new System.Drawing.Point(84, 17);
-            this.PW_ProduktBox.Name = "PW_ProduktBox";
-            this.PW_ProduktBox.Size = new System.Drawing.Size(178, 22);
-            this.PW_ProduktBox.TabIndex = 4;
-            // 
-            // PW_KategoriaBox
-            // 
-            this.PW_KategoriaBox.FormattingEnabled = true;
-            this.PW_KategoriaBox.Location = new System.Drawing.Point(84, 44);
-            this.PW_KategoriaBox.Name = "PW_KategoriaBox";
-            this.PW_KategoriaBox.Size = new System.Drawing.Size(178, 24);
-            this.PW_KategoriaBox.TabIndex = 6;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label2.Location = new System.Drawing.Point(6, 74);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(129, 16);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Ilość dostarczonych:";
             // 
             // PW_IloscwmagNumeric
             // 
@@ -138,26 +129,63 @@
             this.PW_IloscwmagNumeric.TabIndex = 7;
             this.PW_IloscwmagNumeric.Tag = "";
             // 
-            // label2
+            // PW_KategoriaBox
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label2.Location = new System.Drawing.Point(6, 73);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(129, 16);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "Ilość dostarczonych:";
+            this.PW_KategoriaBox.FormattingEnabled = true;
+            this.PW_KategoriaBox.Location = new System.Drawing.Point(84, 44);
+            this.PW_KategoriaBox.Name = "PW_KategoriaBox";
+            this.PW_KategoriaBox.Size = new System.Drawing.Size(178, 24);
+            this.PW_KategoriaBox.TabIndex = 6;
             // 
-            // button1
+            // PW_ProduktBox
             // 
-            this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(7, 129);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(255, 49);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "Aktualizuj produkt";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.PW_ProduktBox.Location = new System.Drawing.Point(84, 17);
+            this.PW_ProduktBox.Name = "PW_ProduktBox";
+            this.PW_ProduktBox.Size = new System.Drawing.Size(178, 22);
+            this.PW_ProduktBox.TabIndex = 4;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label3.Location = new System.Drawing.Point(6, 47);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(69, 16);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Kategoria:";
+            // 
+            // PW_ProduktLabel
+            // 
+            this.PW_ProduktLabel.AutoSize = true;
+            this.PW_ProduktLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.PW_ProduktLabel.Location = new System.Drawing.Point(6, 18);
+            this.PW_ProduktLabel.Name = "PW_ProduktLabel";
+            this.PW_ProduktLabel.Size = new System.Drawing.Size(72, 18);
+            this.PW_ProduktLabel.TabIndex = 1;
+            this.PW_ProduktLabel.Text = "Produkt:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label4.Location = new System.Drawing.Point(6, 99);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(127, 16);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "Ilość do odrzucenia:";
+            // 
+            // PW_IloscdoodrzNumeric
+            // 
+            this.PW_IloscdoodrzNumeric.Location = new System.Drawing.Point(141, 97);
+            this.PW_IloscdoodrzNumeric.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.PW_IloscdoodrzNumeric.Name = "PW_IloscdoodrzNumeric";
+            this.PW_IloscdoodrzNumeric.Size = new System.Drawing.Size(121, 22);
+            this.PW_IloscdoodrzNumeric.TabIndex = 13;
+            this.PW_IloscdoodrzNumeric.Tag = "";
             // 
             // ProductWarehouse
             // 
@@ -173,6 +201,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PW_IloscwmagNumeric)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PW_IloscdoodrzNumeric)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -190,5 +219,7 @@
         private System.Windows.Forms.NumericUpDown PW_IloscwmagNumeric;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.NumericUpDown PW_IloscdoodrzNumeric;
+        private System.Windows.Forms.Label label4;
     }
 }

@@ -34,6 +34,9 @@
         <AssociationConnector Association="myCinemaPlannerDBModel.FK__Seance__Technici__3D5E1FD2" ManuallyRouted="false" />
         <AssociationConnector Association="myCinemaPlannerDBModel.FK__Sellings__StaffI__44FF419A" ManuallyRouted="false" />
         <EntityTypeShape EntityType="myCinemaPlannerDBModel.Distributors_counted_movies" Width="1.5" PointX="8.25" PointY="7.625" />
+        <EntityTypeShape EntityType="myCinemaPlannerDBModel.Products_Ordered" Width="1.5" PointX="10.375" PointY="0.75" />
+        <EntityTypeShape EntityType="myCinemaPlannerDBModel.Products_Realized" Width="1.5" PointX="10.375" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="myCinemaPlannerDBModel.Products_with_OLT" Width="1.5" PointX="10.375" PointY="6.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

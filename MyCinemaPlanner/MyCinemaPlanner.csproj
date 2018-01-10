@@ -111,6 +111,12 @@
     <Compile Include="Manager.Designer.cs">
       <DependentUpon>Manager.cs</DependentUpon>
     </Compile>
+    <Compile Include="ManagerProductsandOrders.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ManagerProductsandOrders.Designer.cs">
+      <DependentUpon>ManagerProductsandOrders.cs</DependentUpon>
+    </Compile>
     <Compile Include="Manager_Welcome.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -145,6 +151,15 @@
       <DependentUpon>myCinemaPlanner.tt</DependentUpon>
     </Compile>
     <Compile Include="Products.cs">
+      <DependentUpon>myCinemaPlanner.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Products_Ordered.cs">
+      <DependentUpon>myCinemaPlanner.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Products_Realized.cs">
+      <DependentUpon>myCinemaPlanner.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Products_with_OLT.cs">
       <DependentUpon>myCinemaPlanner.tt</DependentUpon>
     </Compile>
     <Compile Include="ProductWarehouse.cs">
@@ -190,6 +205,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Manager.resx">
       <DependentUpon>Manager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManagerProductsandOrders.resx">
+      <DependentUpon>ManagerProductsandOrders.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Manager_Welcome.resx">
       <DependentUpon>Manager_Welcome.cs</DependentUpon>

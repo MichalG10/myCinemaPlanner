@@ -82,6 +82,7 @@
           <Property Name="Price" Type="money" Nullable="false" />
           <Property Name="Discount" Type="decimal" Precision="4" Scale="2" Nullable="false" />
           <Property Name="WorkDay" Type="date" />
+          <Property Name="Realised" Type="date" />
         </EntityType>
         <EntityType Name="Products">
           <Key>
@@ -169,6 +170,55 @@ warning 6002: The table/view 'myCinemaPlannerDB.dbo.Distributors_counted_movies'
           </Key>
           <Property Name="Name" Type="varchar" MaxLength="250" Nullable="false" />
           <Property Name="AmountofMovies" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'myCinemaPlannerDB.dbo.Products_Ordered' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Products_Ordered">
+          <Key>
+            <PropertyRef Name="OrderID" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Amount" />
+          </Key>
+          <Property Name="OrderID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Amount" Type="int" Nullable="false" />
+          <Property Name="PriceInPLN" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="OrderDate" Type="date" />
+          <Property Name="DaysOfWaiting" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'myCinemaPlannerDB.dbo.Products_Realized' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Products_Realized">
+          <Key>
+            <PropertyRef Name="OrderID" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Amount" />
+            <PropertyRef Name="Discount" />
+          </Key>
+          <Property Name="OrderID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Amount" Type="int" Nullable="false" />
+          <Property Name="Discount" Type="decimal" Precision="4" Scale="2" Nullable="false" />
+          <Property Name="PriceInPLN" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="RealizationDate" Type="date" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'myCinemaPlannerDB.dbo.Products_with_OLT' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Products_with_OLT">
+          <Key>
+            <PropertyRef Name="ProductID" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="UnitPrice" />
+            <PropertyRef Name="AmountInStock" />
+            <PropertyRef Name="MinAmount" />
+          </Key>
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="UnitPrice" Type="money" Nullable="false" />
+          <Property Name="AmountInStock" Type="int" Nullable="false" />
+          <Property Name="MinAmount" Type="int" Nullable="false" />
+          <Property Name="Category" Type="varchar" MaxLength="25" />
+          <Property Name="OrderedLastTime" Type="date" />
         </EntityType>
         <Association Name="FK__Cleaning__RoomID__3C69FB99">
           <End Role="Rooms" Type="Self.Rooms" Multiplicity="1" />
@@ -399,6 +449,37 @@ warning 6002: The table/view 'myCinemaPlannerDB.dbo.Distributors_counted_movies'
     [Distributors_counted_movies].[AmountofMovies] AS [AmountofMovies]
     FROM [dbo].[Distributors_counted_movies] AS [Distributors_counted_movies]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="Products_Ordered" EntityType="Self.Products_Ordered" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Products_Ordered].[OrderID] AS [OrderID], 
+    [Products_Ordered].[Name] AS [Name], 
+    [Products_Ordered].[Amount] AS [Amount], 
+    [Products_Ordered].[PriceInPLN] AS [PriceInPLN], 
+    [Products_Ordered].[OrderDate] AS [OrderDate], 
+    [Products_Ordered].[DaysOfWaiting] AS [DaysOfWaiting]
+    FROM [dbo].[Products_Ordered] AS [Products_Ordered]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Products_Realized" EntityType="Self.Products_Realized" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Products_Realized].[OrderID] AS [OrderID], 
+    [Products_Realized].[Name] AS [Name], 
+    [Products_Realized].[Amount] AS [Amount], 
+    [Products_Realized].[Discount] AS [Discount], 
+    [Products_Realized].[PriceInPLN] AS [PriceInPLN], 
+    [Products_Realized].[RealizationDate] AS [RealizationDate]
+    FROM [dbo].[Products_Realized] AS [Products_Realized]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Products_with_OLT" EntityType="Self.Products_with_OLT" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Products_with_OLT].[ProductID] AS [ProductID], 
+    [Products_with_OLT].[Name] AS [Name], 
+    [Products_with_OLT].[UnitPrice] AS [UnitPrice], 
+    [Products_with_OLT].[AmountInStock] AS [AmountInStock], 
+    [Products_with_OLT].[MinAmount] AS [MinAmount], 
+    [Products_with_OLT].[Category] AS [Category], 
+    [Products_with_OLT].[OrderedLastTime] AS [OrderedLastTime]
+    FROM [dbo].[Products_with_OLT] AS [Products_with_OLT]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK__Cleaning__RoomID__3C69FB99" Association="Self.FK__Cleaning__RoomID__3C69FB99">
             <End Role="Rooms" EntitySet="Rooms" />
             <End Role="Cleaning" EntitySet="Cleaning" />
@@ -549,6 +630,7 @@ warning 6002: The table/view 'myCinemaPlannerDB.dbo.Distributors_counted_movies'
           <Property Name="Discount" Type="Decimal" Precision="4" Scale="2" Nullable="false" />
           <NavigationProperty Name="Products" Relationship="Self.FK__Orders__ProductI__534D60F1" FromRole="Orders" ToRole="Products" />
           <Property Name="WorkDay" Type="DateTime" Precision="0" />
+          <Property Name="Realised" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="Products">
           <Key>
@@ -924,6 +1006,9 @@ warning 6002: The table/view 'myCinemaPlannerDB.dbo.Distributors_counted_movies'
             <Parameter Name="Sub" Mode="In" Type="String" />
             <Parameter Name="is3D" Mode="In" Type="Boolean" />
           </FunctionImport>
+          <EntitySet Name="Products_Ordered" EntityType="myCinemaPlannerDBModel.Products_Ordered" />
+          <EntitySet Name="Products_Realized" EntityType="myCinemaPlannerDBModel.Products_Realized" />
+          <EntitySet Name="Products_with_OLT" EntityType="myCinemaPlannerDBModel.Products_with_OLT" />
         </EntityContainer>
         <EntityType Name="Distributors_counted_movies">
           <Key>
@@ -931,6 +1016,49 @@ warning 6002: The table/view 'myCinemaPlannerDB.dbo.Distributors_counted_movies'
           </Key>
           <Property Name="Name" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="AmountofMovies" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Products_Ordered">
+          <Key>
+            <PropertyRef Name="OrderID" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Amount" />
+          </Key>
+          <Property Name="OrderID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Amount" Type="Int32" Nullable="false" />
+          <Property Name="PriceInPLN" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="OrderDate" Type="DateTime" Precision="0" />
+          <Property Name="DaysOfWaiting" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Products_Realized">
+          <Key>
+            <PropertyRef Name="OrderID" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Amount" />
+            <PropertyRef Name="Discount" />
+          </Key>
+          <Property Name="OrderID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Amount" Type="Int32" Nullable="false" />
+          <Property Name="Discount" Type="Decimal" Nullable="false" Precision="4" Scale="2" />
+          <Property Name="RealizationDate" Type="DateTime" Precision="0" />
+          <Property Name="PriceInPLN" Type="Decimal" Precision="8" Scale="2" />
+        </EntityType>
+        <EntityType Name="Products_with_OLT">
+          <Key>
+            <PropertyRef Name="ProductID" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="UnitPrice" />
+            <PropertyRef Name="AmountInStock" />
+            <PropertyRef Name="MinAmount" />
+          </Key>
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UnitPrice" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="AmountInStock" Type="Int32" Nullable="false" />
+          <Property Name="MinAmount" Type="Int32" Nullable="false" />
+          <Property Name="Category" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="OrderedLastTime" Type="DateTime" Precision="0" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1014,6 +1142,7 @@ warning 6002: The table/view 'myCinemaPlannerDB.dbo.Distributors_counted_movies'
           <EntitySetMapping Name="Orders">
             <EntityTypeMapping TypeName="myCinemaPlannerDBModel.Orders">
               <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="Realised" ColumnName="Realised" />
                 <ScalarProperty Name="WorkDay" ColumnName="WorkDay" />
                 <ScalarProperty Name="OrderID" ColumnName="OrderID" />
                 <ScalarProperty Name="ProductID" ColumnName="ProductID" />
@@ -1122,6 +1251,43 @@ warning 6002: The table/view 'myCinemaPlannerDB.dbo.Distributors_counted_movies'
           <FunctionImportMapping FunctionImportName="addDistribution" FunctionName="myCinemaPlannerDBModel.Store.addDistribution" />
           <FunctionImportMapping FunctionImportName="deleteDistribution" FunctionName="myCinemaPlannerDBModel.Store.deleteDistribution" />
           <FunctionImportMapping FunctionImportName="editDistribution" FunctionName="myCinemaPlannerDBModel.Store.editDistribution" />
+          <EntitySetMapping Name="Products_Ordered">
+            <EntityTypeMapping TypeName="myCinemaPlannerDBModel.Products_Ordered">
+              <MappingFragment StoreEntitySet="Products_Ordered">
+                <ScalarProperty Name="DaysOfWaiting" ColumnName="DaysOfWaiting" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="PriceInPLN" ColumnName="PriceInPLN" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products_Realized">
+            <EntityTypeMapping TypeName="myCinemaPlannerDBModel.Products_Realized">
+              <MappingFragment StoreEntitySet="Products_Realized">
+                <ScalarProperty Name="PriceInPLN" ColumnName="PriceInPLN" />
+                <ScalarProperty Name="RealizationDate" ColumnName="RealizationDate" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products_with_OLT">
+            <EntityTypeMapping TypeName="myCinemaPlannerDBModel.Products_with_OLT">
+              <MappingFragment StoreEntitySet="Products_with_OLT">
+                <ScalarProperty Name="OrderedLastTime" ColumnName="OrderedLastTime" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="MinAmount" ColumnName="MinAmount" />
+                <ScalarProperty Name="AmountInStock" ColumnName="AmountInStock" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

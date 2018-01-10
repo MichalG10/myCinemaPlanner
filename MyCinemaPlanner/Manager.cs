@@ -80,5 +80,20 @@ namespace MyCinemaPlanner
             f.Show();
         }
 
+        private void warehouseAndOrdersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Size = new Size((int)(ManagerProductsandOrders.Instance.Size.Width * 1.06), (int)(ManagerProductsandOrders.Instance.Size.Height * 1.18));
+            panel.Size = new Size(ManagerProductsandOrders.Instance.Size.Width, ManagerProductsandOrders.Instance.Size.Height);
+
+            if (!panel.Controls.Contains(ManagerProductsandOrders.Instance))
+            {
+                panel.Controls.Add(ManagerProductsandOrders.Instance);
+                ManagerProductsandOrders.Instance.Dock = DockStyle.Fill;
+                ManagerProductsandOrders.Instance.BringToFront();
+
+            }
+            else
+                ManagerProductsandOrders.Instance.BringToFront();
+        }
     }
 }

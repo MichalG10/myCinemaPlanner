@@ -69,8 +69,9 @@
           <Property Name="Title" Type="varchar" MaxLength="250" Nullable="false" />
           <Property Name="Director" Type="varchar" MaxLength="250" Nullable="false" />
           <Property Name="Genre" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Studio" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Rating" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="Studio" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Duration" Type="time" Precision="7" />
         </EntityType>
         <EntityType Name="Orders">
           <Key>
@@ -196,7 +197,7 @@ warning 6002: The table/view 'myCinemaPlannerDB.dbo.Distributors_counted_movies'
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Distribut__Distr__4AB81AF0">
+        <Association Name="FK__Distribut__Distr__49C3F6B7">
           <End Role="Distributors" Type="Self.Distributors" Multiplicity="1" />
           <End Role="Distributions" Type="Self.Distributions" Multiplicity="*" />
           <ReferentialConstraint>
@@ -208,7 +209,7 @@ warning 6002: The table/view 'myCinemaPlannerDB.dbo.Distributors_counted_movies'
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Distribut__Movie__49C3F6B7">
+        <Association Name="FK__Distribut__Movie__48CFD27E">
           <End Role="Movies" Type="Self.Movies" Multiplicity="1" />
           <End Role="Distributions" Type="Self.Distributions" Multiplicity="*" />
           <ReferentialConstraint>
@@ -220,7 +221,7 @@ warning 6002: The table/view 'myCinemaPlannerDB.dbo.Distributors_counted_movies'
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Orders__ProductI__66603565">
+        <Association Name="FK__Orders__ProductI__656C112C">
           <End Role="Products" Type="Self.Products" Multiplicity="1" />
           <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
           <ReferentialConstraint>
@@ -232,7 +233,7 @@ warning 6002: The table/view 'myCinemaPlannerDB.dbo.Distributors_counted_movies'
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Seance__Distribu__4E88ABD4">
+        <Association Name="FK__Seance__Distribu__4D94879B">
           <End Role="Distributions" Type="Self.Distributions" Multiplicity="1" />
           <End Role="Seance" Type="Self.Seance" Multiplicity="*" />
           <ReferentialConstraint>
@@ -244,7 +245,7 @@ warning 6002: The table/view 'myCinemaPlannerDB.dbo.Distributors_counted_movies'
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Seance__RoomID__4F7CD00D">
+        <Association Name="FK__Seance__RoomID__4E88ABD4">
           <End Role="Rooms" Type="Self.Rooms" Multiplicity="1" />
           <End Role="Seance" Type="Self.Seance" Multiplicity="*" />
           <ReferentialConstraint>
@@ -256,7 +257,7 @@ warning 6002: The table/view 'myCinemaPlannerDB.dbo.Distributors_counted_movies'
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Seance__Technici__5070F446">
+        <Association Name="FK__Seance__Technici__4F7CD00D">
           <End Role="Technicians" Type="Self.Technicians" Multiplicity="1" />
           <End Role="Seance" Type="Self.Seance" Multiplicity="*" />
           <ReferentialConstraint>
@@ -268,7 +269,7 @@ warning 6002: The table/view 'myCinemaPlannerDB.dbo.Distributors_counted_movies'
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Sellings__CashID__59063A47">
+        <Association Name="FK__Sellings__CashID__5812160E">
           <End Role="Cashes" Type="Self.Cashes" Multiplicity="1" />
           <End Role="Sellings" Type="Self.Sellings" Multiplicity="*" />
           <ReferentialConstraint>
@@ -280,7 +281,7 @@ warning 6002: The table/view 'myCinemaPlannerDB.dbo.Distributors_counted_movies'
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Sellings__StaffI__5812160E">
+        <Association Name="FK__Sellings__StaffI__571DF1D5">
           <End Role="Staff" Type="Self.Staff" Multiplicity="1" />
           <End Role="Sellings" Type="Self.Sellings" Multiplicity="*" />
           <ReferentialConstraint>
@@ -316,7 +317,7 @@ warning 6002: The table/view 'myCinemaPlannerDB.dbo.Distributors_counted_movies'
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Usage__CashID__60A75C0F">
+        <Association Name="FK__Usage__CashID__5FB337D6">
           <End Role="Cashes" Type="Self.Cashes" Multiplicity="1" />
           <End Role="Usage" Type="Self.Usage" Multiplicity="*" />
           <ReferentialConstraint>
@@ -328,7 +329,7 @@ warning 6002: The table/view 'myCinemaPlannerDB.dbo.Distributors_counted_movies'
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Usage__ProductID__619B8048">
+        <Association Name="FK__Usage__ProductID__60A75C0F">
           <End Role="Products" Type="Self.Products" Multiplicity="1" />
           <End Role="Usage" Type="Self.Usage" Multiplicity="*" />
           <ReferentialConstraint>
@@ -356,6 +357,11 @@ warning 6002: The table/view 'myCinemaPlannerDB.dbo.Distributors_counted_movies'
           <Parameter Name="disCity" Type="varchar" Mode="In" />
           <Parameter Name="disCountry" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="CreateRaport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="napis" Type="varchar" Mode="In" />
+          <Parameter Name="path" Type="varchar" Mode="In" />
+          <Parameter Name="name" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="deleteDistribution" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
         </Function>
@@ -379,6 +385,15 @@ warning 6002: The table/view 'myCinemaPlannerDB.dbo.Distributors_counted_movies'
           <Parameter Name="zipCode" Type="varchar" Mode="In" />
           <Parameter Name="disCity" Type="varchar" Mode="In" />
           <Parameter Name="disCountry" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spWriteStringToFile" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="String" Type="varchar(max)" Mode="In" />
+          <Parameter Name="Path" Type="varchar" Mode="In" />
+          <Parameter Name="Filename" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="WriteToFile" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="File" Type="varchar" Mode="In" />
+          <Parameter Name="Text" Type="varchar" Mode="In" />
         </Function>
         <EntityContainer Name="myCinemaPlannerDBModelStoreContainer">
           <EntitySet Name="Cashes" EntityType="Self.Cashes" Schema="dbo" store:Type="Tables" />
@@ -416,35 +431,35 @@ warning 6002: The table/view 'myCinemaPlannerDB.dbo.Distributors_counted_movies'
             <End Role="Staff" EntitySet="Staff" />
             <End Role="Cleaning" EntitySet="Cleaning" />
           </AssociationSet>
-          <AssociationSet Name="FK__Distribut__Distr__4AB81AF0" Association="Self.FK__Distribut__Distr__4AB81AF0">
+          <AssociationSet Name="FK__Distribut__Distr__49C3F6B7" Association="Self.FK__Distribut__Distr__49C3F6B7">
             <End Role="Distributors" EntitySet="Distributors" />
             <End Role="Distributions" EntitySet="Distributions" />
           </AssociationSet>
-          <AssociationSet Name="FK__Distribut__Movie__49C3F6B7" Association="Self.FK__Distribut__Movie__49C3F6B7">
+          <AssociationSet Name="FK__Distribut__Movie__48CFD27E" Association="Self.FK__Distribut__Movie__48CFD27E">
             <End Role="Movies" EntitySet="Movies" />
             <End Role="Distributions" EntitySet="Distributions" />
           </AssociationSet>
-          <AssociationSet Name="FK__Orders__ProductI__66603565" Association="Self.FK__Orders__ProductI__66603565">
+          <AssociationSet Name="FK__Orders__ProductI__656C112C" Association="Self.FK__Orders__ProductI__656C112C">
             <End Role="Products" EntitySet="Products" />
             <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
-          <AssociationSet Name="FK__Seance__Distribu__4E88ABD4" Association="Self.FK__Seance__Distribu__4E88ABD4">
+          <AssociationSet Name="FK__Seance__Distribu__4D94879B" Association="Self.FK__Seance__Distribu__4D94879B">
             <End Role="Distributions" EntitySet="Distributions" />
             <End Role="Seance" EntitySet="Seance" />
           </AssociationSet>
-          <AssociationSet Name="FK__Seance__RoomID__4F7CD00D" Association="Self.FK__Seance__RoomID__4F7CD00D">
+          <AssociationSet Name="FK__Seance__RoomID__4E88ABD4" Association="Self.FK__Seance__RoomID__4E88ABD4">
             <End Role="Rooms" EntitySet="Rooms" />
             <End Role="Seance" EntitySet="Seance" />
           </AssociationSet>
-          <AssociationSet Name="FK__Seance__Technici__5070F446" Association="Self.FK__Seance__Technici__5070F446">
+          <AssociationSet Name="FK__Seance__Technici__4F7CD00D" Association="Self.FK__Seance__Technici__4F7CD00D">
             <End Role="Technicians" EntitySet="Technicians" />
             <End Role="Seance" EntitySet="Seance" />
           </AssociationSet>
-          <AssociationSet Name="FK__Sellings__CashID__59063A47" Association="Self.FK__Sellings__CashID__59063A47">
+          <AssociationSet Name="FK__Sellings__CashID__5812160E" Association="Self.FK__Sellings__CashID__5812160E">
             <End Role="Cashes" EntitySet="Cashes" />
             <End Role="Sellings" EntitySet="Sellings" />
           </AssociationSet>
-          <AssociationSet Name="FK__Sellings__StaffI__5812160E" Association="Self.FK__Sellings__StaffI__5812160E">
+          <AssociationSet Name="FK__Sellings__StaffI__571DF1D5" Association="Self.FK__Sellings__StaffI__571DF1D5">
             <End Role="Staff" EntitySet="Staff" />
             <End Role="Sellings" EntitySet="Sellings" />
           </AssociationSet>
@@ -456,11 +471,11 @@ warning 6002: The table/view 'myCinemaPlannerDB.dbo.Distributors_counted_movies'
             <End Role="Employee" EntitySet="Employee" />
             <End Role="Technicians" EntitySet="Technicians" />
           </AssociationSet>
-          <AssociationSet Name="FK__Usage__CashID__60A75C0F" Association="Self.FK__Usage__CashID__60A75C0F">
+          <AssociationSet Name="FK__Usage__CashID__5FB337D6" Association="Self.FK__Usage__CashID__5FB337D6">
             <End Role="Cashes" EntitySet="Cashes" />
             <End Role="Usage" EntitySet="Usage" />
           </AssociationSet>
-          <AssociationSet Name="FK__Usage__ProductID__619B8048" Association="Self.FK__Usage__ProductID__619B8048">
+          <AssociationSet Name="FK__Usage__ProductID__60A75C0F" Association="Self.FK__Usage__ProductID__60A75C0F">
             <End Role="Products" EntitySet="Products" />
             <End Role="Usage" EntitySet="Usage" />
           </AssociationSet>
@@ -546,6 +561,7 @@ warning 6002: The table/view 'myCinemaPlannerDB.dbo.Distributors_counted_movies'
           <Property Name="Studio" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Rating" Type="Decimal" Precision="5" Scale="2" />
           <NavigationProperty Name="Distributions" Relationship="Self.FK__Distribut__Movie__36B12243" FromRole="Movies" ToRole="Distributions" />
+          <Property Name="Duration" Type="Time" Precision="7" />
         </EntityType>
         <EntityType Name="Orders">
           <Key>
@@ -923,7 +939,7 @@ warning 6002: The table/view 'myCinemaPlannerDB.dbo.Distributors_counted_movies'
             <Parameter Name="is3D" Mode="In" Type="Boolean" />
           </FunctionImport>
           <FunctionImport Name="deleteDistribution">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="editDistribution">
             <Parameter Name="id" Mode="In" Type="Int32" />
@@ -932,6 +948,20 @@ warning 6002: The table/view 'myCinemaPlannerDB.dbo.Distributors_counted_movies'
             <Parameter Name="Dubb" Mode="In" Type="String" />
             <Parameter Name="Sub" Mode="In" Type="String" />
             <Parameter Name="is3D" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="CreateRaport">
+            <Parameter Name="napis" Mode="In" Type="String" />
+            <Parameter Name="path" Mode="In" Type="String" />
+            <Parameter Name="name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spWriteStringToFile">
+            <Parameter Name="String" Mode="In" Type="String" />
+            <Parameter Name="Path" Mode="In" Type="String" />
+            <Parameter Name="Filename" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="WriteToFile">
+            <Parameter Name="File" Mode="In" Type="String" />
+            <Parameter Name="Text" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="Distributors_counted_movies">
@@ -1011,6 +1041,7 @@ warning 6002: The table/view 'myCinemaPlannerDB.dbo.Distributors_counted_movies'
           <EntitySetMapping Name="Movies">
             <EntityTypeMapping TypeName="myCinemaPlannerDBModel.Movies">
               <MappingFragment StoreEntitySet="Movies">
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
                 <ScalarProperty Name="MovieID" ColumnName="MovieID" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Director" ColumnName="Director" />
@@ -1128,6 +1159,9 @@ warning 6002: The table/view 'myCinemaPlannerDB.dbo.Distributors_counted_movies'
           <FunctionImportMapping FunctionImportName="addDistribution" FunctionName="myCinemaPlannerDBModel.Store.addDistribution" />
           <FunctionImportMapping FunctionImportName="deleteDistribution" FunctionName="myCinemaPlannerDBModel.Store.deleteDistribution" />
           <FunctionImportMapping FunctionImportName="editDistribution" FunctionName="myCinemaPlannerDBModel.Store.editDistribution" />
+          <FunctionImportMapping FunctionImportName="CreateRaport" FunctionName="myCinemaPlannerDBModel.Store.CreateRaport" />
+          <FunctionImportMapping FunctionImportName="spWriteStringToFile" FunctionName="myCinemaPlannerDBModel.Store.spWriteStringToFile" />
+          <FunctionImportMapping FunctionImportName="WriteToFile" FunctionName="myCinemaPlannerDBModel.Store.WriteToFile" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -89,6 +89,8 @@ namespace MyCinemaPlanner
             comboBox2.Text = dataGrid.CurrentRow.Cells[3].Value.ToString();
             ocenaBox.Text = dataGrid.CurrentRow.Cells[5].Value.ToString();
             comboBox3.Text = dataGrid.CurrentRow.Cells[4].Value.ToString();
+            DurationtextBox.Text = dataGrid.CurrentRow.Cells[6].Value.ToString();
+            
         }
 
         private void DistributorsGrid_Click(object sender, DataGridViewCellEventArgs e)
@@ -148,9 +150,10 @@ namespace MyCinemaPlanner
                         Director = rezyserBox.Text,
                         Genre = comboBox2.Text,
                         Rating = decimal.Parse(ocenaBox.Text),
-                        Studio = comboBox3.Text
+                        Studio = comboBox3.Text,
+                        Duration = TimeSpan.Parse(DurationtextBox.Text)
                     };
-                    String rec = x.Title + " | " + x.Director + " | " + x.Genre + " | " + x.Rating + " | " + x.Studio;
+                    String rec = x.Title + " | " + x.Director + " | " + x.Genre + " | " + x.Rating + " | " + x.Studio + " | " + x.Duration;
 
                     DialogResult dr = MessageBox.Show("Czy napewno chcesz dodać rekord ?\n" + rec, "Potwierdzenie", MessageBoxButtons.YesNo);
                     if (dr == DialogResult.Yes)
@@ -191,7 +194,7 @@ namespace MyCinemaPlanner
                     var x = (from m in ctx.Movies
                              where m.MovieID == IdtoDelete
                              select m).FirstOrDefault();
-                    String rec = x.Title + " | " + x.Director + " | " + x.Genre + " | " + x.Rating + " | " + x.Studio;
+                    String rec = x.Title + " | " + x.Director + " | " + x.Genre + " | " + x.Rating + " | " + x.Studio + " | " + x.Duration;
 
                     DialogResult dr = MessageBox.Show("Czy napewno chcesz usunąć rekord ?\n" + rec, "Potwierdzenie", MessageBoxButtons.YesNo);
                     if (dr == DialogResult.Yes)
@@ -229,14 +232,15 @@ namespace MyCinemaPlanner
                     var x = (from m in ctx.Movies
                              where m.MovieID == IdtoEdit
                              select m).FirstOrDefault();
-                    String rec = x.Title + " | " + x.Director + " | " + x.Genre + " | " + x.Rating + " | " + x.Studio;
+                    String rec = x.Title + " | " + x.Director + " | " + x.Genre + " | " + x.Rating + " | " + x.Studio + " | " + x.Duration;
 
                     x.Title = tytulBox.Text;
                     x.Director = rezyserBox.Text;
                     x.Genre = comboBox2.Text;
                     x.Rating = decimal.Parse(ocenaBox.Text);
                     x.Studio = comboBox3.Text;
-                    String recafter = x.Title + " | " + x.Director + " | " + x.Genre + " | " + x.Rating + " | " + x.Studio;
+                    x.Duration = TimeSpan.Parse(DurationtextBox.Text);
+                    String recafter = x.Title + " | " + x.Director + " | " + x.Genre + " | " + x.Rating + " | " + x.Studio + " | " + x.Duration;
 
                     DialogResult dr = MessageBox.Show("Czy napewno chcesz zmienić rekord z\n" + rec + "\nna\n" + recafter + " ?", "Potwierdzenie", MessageBoxButtons.YesNo);
                     if (dr == DialogResult.Yes)

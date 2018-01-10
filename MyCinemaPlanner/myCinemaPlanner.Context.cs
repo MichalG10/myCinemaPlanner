@@ -184,5 +184,52 @@ namespace MyCinemaPlanner
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("editDistribution", idParameter, movieIDParameter, distributorIDParameter, dubbParameter, subParameter, is3DParameter);
         }
+    
+        public virtual int CreateRaport(string napis, string path, string name)
+        {
+            var napisParameter = napis != null ?
+                new ObjectParameter("napis", napis) :
+                new ObjectParameter("napis", typeof(string));
+    
+            var pathParameter = path != null ?
+                new ObjectParameter("path", path) :
+                new ObjectParameter("path", typeof(string));
+    
+            var nameParameter = name != null ?
+                new ObjectParameter("name", name) :
+                new ObjectParameter("name", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CreateRaport", napisParameter, pathParameter, nameParameter);
+        }
+    
+        public virtual int spWriteStringToFile(string @string, string path, string filename)
+        {
+            var stringParameter = @string != null ?
+                new ObjectParameter("String", @string) :
+                new ObjectParameter("String", typeof(string));
+    
+            var pathParameter = path != null ?
+                new ObjectParameter("Path", path) :
+                new ObjectParameter("Path", typeof(string));
+    
+            var filenameParameter = filename != null ?
+                new ObjectParameter("Filename", filename) :
+                new ObjectParameter("Filename", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spWriteStringToFile", stringParameter, pathParameter, filenameParameter);
+        }
+    
+        public virtual int WriteToFile(string file, string text)
+        {
+            var fileParameter = file != null ?
+                new ObjectParameter("File", file) :
+                new ObjectParameter("File", typeof(string));
+    
+            var textParameter = text != null ?
+                new ObjectParameter("Text", text) :
+                new ObjectParameter("Text", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("WriteToFile", fileParameter, textParameter);
+        }
     }
 }

@@ -74,6 +74,7 @@
             this.distributionsGridView = new System.Windows.Forms.DataGridView();
             this.label16 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
@@ -89,7 +90,8 @@
             this.addDistributionButton = new System.Windows.Forms.Button();
             this.EditDistributionButton = new System.Windows.Forms.Button();
             this.deleteDistributionButton = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.Durationlabel = new System.Windows.Forms.Label();
+            this.DurationtextBox = new System.Windows.Forms.TextBox();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridDist)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).BeginInit();
@@ -517,6 +519,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.DurationtextBox);
+            this.groupBox1.Controls.Add(this.Durationlabel);
             this.groupBox1.Controls.Add(this.comboBox3);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.comboBox2);
@@ -532,7 +536,7 @@
             this.groupBox1.ForeColor = System.Drawing.Color.White;
             this.groupBox1.Location = new System.Drawing.Point(7, 22);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(216, 171);
+            this.groupBox1.Size = new System.Drawing.Size(216, 199);
             this.groupBox1.TabIndex = 27;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dodaj/Edytuj/Usuń Film";
@@ -581,6 +585,13 @@
             this.groupBox3.TabIndex = 39;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Dodaj/Edytuj/Usuń Dystrybucje";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(1, 39);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(10, 20);
+            this.textBox1.TabIndex = 45;
             // 
             // label21
             // 
@@ -727,12 +738,22 @@
             this.deleteDistributionButton.UseVisualStyleBackColor = true;
             this.deleteDistributionButton.Click += new System.EventHandler(this.deleteDistributionButton_Click);
             // 
-            // textBox1
+            // Durationlabel
             // 
-            this.textBox1.Location = new System.Drawing.Point(1, 39);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(10, 20);
-            this.textBox1.TabIndex = 45;
+            this.Durationlabel.AutoSize = true;
+            this.Durationlabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Durationlabel.Location = new System.Drawing.Point(8, 173);
+            this.Durationlabel.Name = "Durationlabel";
+            this.Durationlabel.Size = new System.Drawing.Size(41, 16);
+            this.Durationlabel.TabIndex = 13;
+            this.Durationlabel.Text = "Czas:";
+            // 
+            // DurationtextBox
+            // 
+            this.DurationtextBox.Location = new System.Drawing.Point(83, 172);
+            this.DurationtextBox.Name = "DurationtextBox";
+            this.DurationtextBox.Size = new System.Drawing.Size(127, 20);
+            this.DurationtextBox.TabIndex = 14;
             // 
             // MovsDistrControl
             // 
@@ -843,5 +864,7 @@
         private System.Windows.Forms.Button EditDistributionButton;
         private System.Windows.Forms.Button deleteDistributionButton;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox DurationtextBox;
+        private System.Windows.Forms.Label Durationlabel;
     }
 }

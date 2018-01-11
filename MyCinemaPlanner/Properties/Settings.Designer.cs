@@ -33,5 +33,29 @@ namespace MyCinemaPlanner.Properties {
                 return ((string)(this["myCinemaPlannerDBConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("SuggestAppend")]
+        public global::System.Windows.Forms.AutoCompleteMode auto {
+            get {
+                return ((global::System.Windows.Forms.AutoCompleteMode)(this["auto"]));
+            }
+            set {
+                this["auto"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("ListItems")]
+        public global::System.Windows.Forms.AutoCompleteSource autolist {
+            get {
+                return ((global::System.Windows.Forms.AutoCompleteSource)(this["autolist"]));
+            }
+            set {
+                this["autolist"] = value;
+            }
+        }
     }
 }

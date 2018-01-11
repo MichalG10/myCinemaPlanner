@@ -33,7 +33,7 @@ set @country = (select Country from inserted)
 if (select count(*) from Distributors where Country = @country) > 5
 begin
 rollback
-RAISERROR('Nie można dodać więcej dystrybutrów z jednego kraju, niż 5.', 14, 21);
+RAISERROR('Nie można dodać więcej dystrybutrów, niż 5.', 14, 21);
 End
 
 //Dodane 10.01.2018
@@ -91,3 +91,19 @@ set @suma=(SELECT CONVERT(varchar, @dataUsuniecia, 101))+'	 ' +(SELECT CONVERT(v
 begin
 EXEC WriteToFile 'C:\Users\Michal\Documents\GitHub\myCinemaPlanner\MyCinemaPlanner\bin\Debug\Raporty\Usuniete.txt',@suma 
 end
+
+-- 4.01.2017 - trigger wywoływany kiedy chcemy sprzedać więcej niż jest w magazynie
+-- nie ma rollbacka bo załatwia to transakcja
+create trigger TRIG_CheckAmountinStock on Usage
+after INSERT
+as
+declare @amount varchar(250)
+select @amount = 'Nie ma wystarczającej liczby produktu - ' + 
+				 (select p.Name from inserted i join Products p on p.ProductID = i.ProductID)
+				 + ' w magazynie.'
+if (select p.AmountInStock - i.Amount from inserted i 
+	join Products p on p.ProductID = i.ProductID) < 0
+begin
+	RAISERROR (@amount, 16, 1);
+End
+

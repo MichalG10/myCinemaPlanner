@@ -12,15 +12,14 @@ namespace MyCinemaPlanner
     using System;
     using System.Collections.Generic;
     
-    public partial class Usage
+    public partial class Products_with_OLT
     {
-        public int CashID { get; set; }
         public int ProductID { get; set; }
-        public int Amount { get; set; }
-        public System.DateTime WorkDay { get; set; }
-        public int UsageID { get; set; }
-    
-        public virtual Cashes Cashes { get; set; }
-        public virtual Products Products { get; set; }
+        public string Name { get; set; }
+        public decimal UnitPrice { get; set; }
+        public int AmountInStock { get; set; }
+        public int MinAmount { get; set; }
+        public string Category { get; set; }
+        public Nullable<System.DateTime> OrderedLastTime { get; set; }
     }
 }

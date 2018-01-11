@@ -95,5 +95,38 @@ namespace MyCinemaPlanner
             else
                 ManagerProductsandOrders.Instance.BringToFront();
         }
+
+        private void seancesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!panel.Controls.Contains(User_Seances.Instance))
+            {
+                this.Size = new System.Drawing.Size((int)(User_Seances.Instance.Size.Width * 1.06), (int)(User_Seances.Instance.Size.Height * 1.18));
+                panel.Size = new System.Drawing.Size(User_Seances.Instance.Size.Width, User_Seances.Instance.Size.Height); ;
+
+                panel.Controls.Add(User_Seances.Instance);
+                User_Seances.Instance.Dock = DockStyle.Fill;
+                User_Seances.Instance.BringToFront();
+
+            }
+            else
+                User_Seances.Instance.BringToFront();
+        }
+
+        private void repertoirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!panel.Controls.Contains(Repertoire.Instance))
+            {
+                this.Size = new System.Drawing.Size((int)(Repertoire.Instance.Size.Width * 1.06), (int)(Repertoire.Instance.Size.Height * 1.18));
+                panel.Size = new System.Drawing.Size(Repertoire.Instance.Size.Width, Repertoire.Instance.Size.Height); ;
+
+                panel.Controls.Add(Repertoire.Instance);
+                Repertoire.Instance.Dock = DockStyle.Fill;
+                Repertoire.Instance.BringToFront();
+
+            }
+            else
+                Repertoire.Instance.BringToFront();
+        }
+    
     }
 }

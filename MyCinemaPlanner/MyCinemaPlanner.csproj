@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -170,6 +170,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repertoire.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Repertoire.Designer.cs">
+      <DependentUpon>Repertoire.cs</DependentUpon>
+    </Compile>
     <Compile Include="Rooms.cs">
       <DependentUpon>myCinemaPlanner.tt</DependentUpon>
     </Compile>
@@ -194,12 +200,21 @@
     <Compile Include="Usage.cs">
       <DependentUpon>myCinemaPlanner.tt</DependentUpon>
     </Compile>
+
+    <Compile Include="User-Seances.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User-Seances.Designer.cs">
+      <DependentUpon>User-Seances.cs</DependentUpon>
+    </Compile>
+
     <EmbeddedResource Include="BarCash.resx">
       <DependentUpon>BarCash.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DailyView.resx">
       <DependentUpon>DailyView.cs</DependentUpon>
     </EmbeddedResource>
+
     <EmbeddedResource Include="Employee_control.resx">
       <DependentUpon>Employee_control.cs</DependentUpon>
     </EmbeddedResource>
@@ -228,9 +243,15 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="StaffForm.resx">
-      <DependentUpon>StaffForm.cs</DependentUpon>
+
+    <EmbeddedResource Include="Repertoire.resx">
+      <DependentUpon>Repertoire.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="User-Seances.resx">
+      <DependentUpon>User-Seances.cs</DependentUpon>
+	</EmbeddedResource>
+    <EmbeddedResource Include="StaffForm.resx">
+      <DependentUpon>StaffForm.cs</DependentUpon>    </EmbeddedResource>
     <None Include="App.Config" />
     <EntityDeploy Include="myCinemaPlanner.edmx">
       <Generator>EntityModelCodeGenerator</Generator>

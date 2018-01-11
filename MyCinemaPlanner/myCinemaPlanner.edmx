@@ -69,8 +69,9 @@
           <Property Name="Title" Type="varchar" MaxLength="250" Nullable="false" />
           <Property Name="Director" Type="varchar" MaxLength="250" Nullable="false" />
           <Property Name="Genre" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Studio" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Rating" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="Studio" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Duration" Type="time" Precision="7" />
         </EntityType>
         <EntityType Name="Orders">
           <Key>
@@ -257,6 +258,7 @@ warning 6002: The table/view 'myCinemaPlannerDB.dbo.Products_with_OLT' does not 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Distribut__Movie__36B12243">
+
           <End Role="Movies" Type="Self.Movies" Multiplicity="1" />
           <End Role="Distributions" Type="Self.Distributions" Multiplicity="*" />
           <ReferentialConstraint>
@@ -404,6 +406,11 @@ warning 6002: The table/view 'myCinemaPlannerDB.dbo.Products_with_OLT' does not 
           <Parameter Name="disCity" Type="varchar" Mode="In" />
           <Parameter Name="disCountry" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="CreateRaport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="napis" Type="varchar" Mode="In" />
+          <Parameter Name="path" Type="varchar" Mode="In" />
+          <Parameter Name="name" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="deleteDistribution" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
         </Function>
@@ -427,6 +434,15 @@ warning 6002: The table/view 'myCinemaPlannerDB.dbo.Products_with_OLT' does not 
           <Parameter Name="zipCode" Type="varchar" Mode="In" />
           <Parameter Name="disCity" Type="varchar" Mode="In" />
           <Parameter Name="disCountry" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spWriteStringToFile" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="String" Type="varchar(max)" Mode="In" />
+          <Parameter Name="Path" Type="varchar" Mode="In" />
+          <Parameter Name="Filename" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="WriteToFile" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="File" Type="varchar" Mode="In" />
+          <Parameter Name="Text" Type="varchar" Mode="In" />
         </Function>
         <EntityContainer Name="myCinemaPlannerDBModelStoreContainer">
           <EntitySet Name="Cashes" EntityType="Self.Cashes" Schema="dbo" store:Type="Tables" />
@@ -618,6 +634,7 @@ warning 6002: The table/view 'myCinemaPlannerDB.dbo.Products_with_OLT' does not 
           <Property Name="Studio" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Rating" Type="Decimal" Precision="5" Scale="2" />
           <NavigationProperty Name="Distributions" Relationship="Self.FK__Distribut__Movie__36B12243" FromRole="Movies" ToRole="Distributions" />
+          <Property Name="Duration" Type="Time" Precision="7" />
         </EntityType>
         <EntityType Name="Orders">
           <Key>
@@ -1006,9 +1023,26 @@ warning 6002: The table/view 'myCinemaPlannerDB.dbo.Products_with_OLT' does not 
             <Parameter Name="Sub" Mode="In" Type="String" />
             <Parameter Name="is3D" Mode="In" Type="Boolean" />
           </FunctionImport>
+
+          <FunctionImport Name="CreateRaport">
+            <Parameter Name="napis" Mode="In" Type="String" />
+            <Parameter Name="path" Mode="In" Type="String" />
+            <Parameter Name="name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spWriteStringToFile">
+            <Parameter Name="String" Mode="In" Type="String" />
+            <Parameter Name="Path" Mode="In" Type="String" />
+            <Parameter Name="Filename" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="WriteToFile">
+            <Parameter Name="File" Mode="In" Type="String" />
+            <Parameter Name="Text" Mode="In" Type="String" />
+          </FunctionImport>
+
           <EntitySet Name="Products_Ordered" EntityType="myCinemaPlannerDBModel.Products_Ordered" />
           <EntitySet Name="Products_Realized" EntityType="myCinemaPlannerDBModel.Products_Realized" />
           <EntitySet Name="Products_with_OLT" EntityType="myCinemaPlannerDBModel.Products_with_OLT" />
+
         </EntityContainer>
         <EntityType Name="Distributors_counted_movies">
           <Key>
@@ -1130,6 +1164,7 @@ warning 6002: The table/view 'myCinemaPlannerDB.dbo.Products_with_OLT' does not 
           <EntitySetMapping Name="Movies">
             <EntityTypeMapping TypeName="myCinemaPlannerDBModel.Movies">
               <MappingFragment StoreEntitySet="Movies">
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
                 <ScalarProperty Name="MovieID" ColumnName="MovieID" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Director" ColumnName="Director" />
@@ -1251,6 +1286,11 @@ warning 6002: The table/view 'myCinemaPlannerDB.dbo.Products_with_OLT' does not 
           <FunctionImportMapping FunctionImportName="addDistribution" FunctionName="myCinemaPlannerDBModel.Store.addDistribution" />
           <FunctionImportMapping FunctionImportName="deleteDistribution" FunctionName="myCinemaPlannerDBModel.Store.deleteDistribution" />
           <FunctionImportMapping FunctionImportName="editDistribution" FunctionName="myCinemaPlannerDBModel.Store.editDistribution" />
+
+          <FunctionImportMapping FunctionImportName="CreateRaport" FunctionName="myCinemaPlannerDBModel.Store.CreateRaport" />
+          <FunctionImportMapping FunctionImportName="spWriteStringToFile" FunctionName="myCinemaPlannerDBModel.Store.spWriteStringToFile" />
+          <FunctionImportMapping FunctionImportName="WriteToFile" FunctionName="myCinemaPlannerDBModel.Store.WriteToFile" />
+
           <EntitySetMapping Name="Products_Ordered">
             <EntityTypeMapping TypeName="myCinemaPlannerDBModel.Products_Ordered">
               <MappingFragment StoreEntitySet="Products_Ordered">
@@ -1288,6 +1328,7 @@ warning 6002: The table/view 'myCinemaPlannerDB.dbo.Products_with_OLT' does not 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

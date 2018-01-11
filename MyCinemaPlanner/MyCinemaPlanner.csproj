@@ -249,7 +249,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="User-Seances.resx">
       <DependentUpon>User-Seances.cs</DependentUpon>
-
+	</EmbeddedResource>
     <EmbeddedResource Include="StaffForm.resx">
       <DependentUpon>StaffForm.cs</DependentUpon>    </EmbeddedResource>
     <None Include="App.Config" />

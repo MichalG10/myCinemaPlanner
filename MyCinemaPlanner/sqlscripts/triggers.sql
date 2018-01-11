@@ -8,10 +8,7 @@ begin
 	RAISERROR ('Nie można dodać dystrybucji, dostarczonej już przez innego dystrybutora.', 12, 11);
 End
 
-
-
-//aktualizacja 04.01.2018
-
+-- aktualizacja 04.01.2018
 create trigger TRIG_AddMovie on Movies
 after INSERT
 as
@@ -23,8 +20,7 @@ rollback
 RAISERROR ('Nie można dodać filmu który już wczesniej został dodany', 13, 1);
 End
 
-//aktualizacja 04.01.2018
-
+-- aktualizacja 04.01.2018
 create trigger TRIG_AddDistributor on Distributors
 after insert
 as
@@ -36,7 +32,7 @@ rollback
 RAISERROR('Nie można dodać więcej dystrybutrów, niż 5.', 14, 21);
 End
 
-//Dodane 10.01.2018
+-- Dodane 10.01.2018
 create trigger TRIG_AddEmployeeRaport on Employee
 after insert
 as
@@ -64,7 +60,7 @@ begin
 EXEC WriteToFile 'C:\Users\Michal\Documents\GitHub\myCinemaPlanner\MyCinemaPlanner\bin\Debug\Raporty\Dodane.txt',@suma 
 end
 
-//Dodane 10.01.2018
+-- Dodane 10.01.2018
 create trigger TRIG_DeleteEmployeeRaport on Employee
 after delete
 as

@@ -79,7 +79,7 @@ namespace MyCinemaPlanner
             RepertoiredataGridView.DataSource = query;
             string dat= data.ToShortDateString();
             string value = String.Format("{0} {1} {2} {3} {4} {5} {6} {7} {8}", "Tytuł".PadRight(31), "RoomID".PadRight(8), "Dubbing".PadRight(9), "Subtitle".PadRight(10), "is3D".PadRight(7), "ShowDate".PadRight(12), "StartTime".PadRight(12), "EndTime".PadRight(12), "Technician");
-            var pom = "C:'Users'Michal'Documents'GitHub'myCinemaPlanner'MyCinemaPlanner'bin'Debug'Raporty'".Replace("'", "\\");
+            var pom = "C:'Users'Dominik'Desktop'DevKodi'myCinemaPlanner'MyCinemaPlanner'log'".Replace("'", "\\");
             pom = pom + dat + ".txt";
             ctx.WriteToFile(pom, value);
             foreach (var z in query)

@@ -77,7 +77,7 @@ delete from Distributions
 where DistributionID = @id
 
 
-//Dodane 10.01.2018 by zadziałało najpierw odpalic:
+-- Dodane 10.01.2018 by zadziałało najpierw odpalic:
 sp_configure 'show advanced options', 1; 
 GO 
 RECONFIGURE; 
@@ -86,11 +86,12 @@ sp_configure 'Ole Automation Procedures', 1;
 GO 
 RECONFIGURE; 
 GO 
+
+
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-
 CREATE PROCEDURE [dbo].[WriteToFile]
 @File        VARCHAR(2000),
 @Text        VARCHAR(2000)

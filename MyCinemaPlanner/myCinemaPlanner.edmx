@@ -69,8 +69,8 @@
           <Property Name="Title" Type="varchar" MaxLength="250" Nullable="false" />
           <Property Name="Director" Type="varchar" MaxLength="250" Nullable="false" />
           <Property Name="Genre" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Rating" Type="decimal" Precision="5" Scale="2" />
           <Property Name="Studio" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Rating" Type="decimal" Precision="5" Scale="2" />
           <Property Name="Duration" Type="time" Precision="7" />
         </EntityType>
         <EntityType Name="Orders">
@@ -258,7 +258,6 @@ warning 6002: The table/view 'myCinemaPlannerDB.dbo.Products_with_OLT' does not 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Distribut__Movie__36B12243">
-
           <End Role="Movies" Type="Self.Movies" Multiplicity="1" />
           <End Role="Distributions" Type="Self.Distributions" Multiplicity="*" />
           <ReferentialConstraint>
@@ -406,11 +405,6 @@ warning 6002: The table/view 'myCinemaPlannerDB.dbo.Products_with_OLT' does not 
           <Parameter Name="disCity" Type="varchar" Mode="In" />
           <Parameter Name="disCountry" Type="varchar" Mode="In" />
         </Function>
-        <Function Name="CreateRaport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="napis" Type="varchar" Mode="In" />
-          <Parameter Name="path" Type="varchar" Mode="In" />
-          <Parameter Name="name" Type="varchar" Mode="In" />
-        </Function>
         <Function Name="deleteDistribution" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
         </Function>
@@ -434,11 +428,6 @@ warning 6002: The table/view 'myCinemaPlannerDB.dbo.Products_with_OLT' does not 
           <Parameter Name="zipCode" Type="varchar" Mode="In" />
           <Parameter Name="disCity" Type="varchar" Mode="In" />
           <Parameter Name="disCountry" Type="varchar" Mode="In" />
-        </Function>
-        <Function Name="spWriteStringToFile" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="String" Type="varchar(max)" Mode="In" />
-          <Parameter Name="Path" Type="varchar" Mode="In" />
-          <Parameter Name="Filename" Type="varchar" Mode="In" />
         </Function>
         <Function Name="WriteToFile" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="File" Type="varchar" Mode="In" />
@@ -1286,9 +1275,6 @@ warning 6002: The table/view 'myCinemaPlannerDB.dbo.Products_with_OLT' does not 
           <FunctionImportMapping FunctionImportName="addDistribution" FunctionName="myCinemaPlannerDBModel.Store.addDistribution" />
           <FunctionImportMapping FunctionImportName="deleteDistribution" FunctionName="myCinemaPlannerDBModel.Store.deleteDistribution" />
           <FunctionImportMapping FunctionImportName="editDistribution" FunctionName="myCinemaPlannerDBModel.Store.editDistribution" />
-
-          <FunctionImportMapping FunctionImportName="CreateRaport" FunctionName="myCinemaPlannerDBModel.Store.CreateRaport" />
-          <FunctionImportMapping FunctionImportName="spWriteStringToFile" FunctionName="myCinemaPlannerDBModel.Store.spWriteStringToFile" />
           <FunctionImportMapping FunctionImportName="WriteToFile" FunctionName="myCinemaPlannerDBModel.Store.WriteToFile" />
 
           <EntitySetMapping Name="Products_Ordered">

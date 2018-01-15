@@ -45,6 +45,7 @@ namespace MyCinemaPlanner
         public virtual DbSet<Products_Ordered> Products_Ordered { get; set; }
         public virtual DbSet<Products_Realized> Products_Realized { get; set; }
         public virtual DbSet<Products_with_OLT> Products_with_OLT { get; set; }
+        public virtual DbSet<Distribution_TicketCash> Distribution_TicketCash { get; set; }
     
         public virtual int AddDistributor(string disName, string disEmail, string disPhone, string disAdress, string zipCode, string disCity, string disCountry)
         {

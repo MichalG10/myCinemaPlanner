@@ -34,6 +34,7 @@
             this.kasaBarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.magazynToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.StaffPanel = new System.Windows.Forms.Panel();
+            this.kasaBiletyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -70,6 +71,7 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.kasaBarToolStripMenuItem,
+            this.kasaBiletyToolStripMenuItem,
             this.magazynToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 24);
             this.menuStrip1.Name = "menuStrip1";
@@ -99,6 +101,13 @@
             this.StaffPanel.Size = new System.Drawing.Size(200, 100);
             this.StaffPanel.TabIndex = 2;
             // 
+            // kasaBiletyToolStripMenuItem
+            // 
+            this.kasaBiletyToolStripMenuItem.Name = "kasaBiletyToolStripMenuItem";
+            this.kasaBiletyToolStripMenuItem.Size = new System.Drawing.Size(83, 20);
+            this.kasaBiletyToolStripMenuItem.Text = "Kasa - Bilety";
+            this.kasaBiletyToolStripMenuItem.Click += new System.EventHandler(this.kasaBiletyToolStripMenuItem_Click);
+            // 
             // StaffForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -126,5 +135,6 @@
         private System.Windows.Forms.ToolStripMenuItem kasaBarToolStripMenuItem;
         private System.Windows.Forms.Panel StaffPanel;
         private System.Windows.Forms.ToolStripMenuItem magazynToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem kasaBiletyToolStripMenuItem;
     }
 }

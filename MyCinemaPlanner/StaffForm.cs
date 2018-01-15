@@ -53,5 +53,21 @@ namespace MyCinemaPlanner
             else
                 ProductWarehouse.Instance.BringToFront();
         }
+
+        private void kasaBiletyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Size = new Size((int)(TicketCash.Instance.Size.Width * 1.06), (int)(TicketCash.Instance.Size.Height * 1.18));
+            tableLayoutPanel1.RowStyles[2].Height = TicketCash.Instance.Size.Height * (float)1.18;
+            StaffPanel.Size = new Size(TicketCash.Instance.Size.Width, TicketCash.Instance.Size.Height);
+
+            if (!StaffPanel.Controls.Contains(TicketCash.Instance))
+            {
+                StaffPanel.Controls.Add(TicketCash.Instance);
+                TicketCash.Instance.Dock = DockStyle.Fill;
+                TicketCash.Instance.BringToFront();
+            }
+            else
+                TicketCash.Instance.BringToFront();
+        }
     }
 }

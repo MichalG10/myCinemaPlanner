@@ -37,6 +37,7 @@
         <EntityTypeShape EntityType="myCinemaPlannerDBModel.Products_Ordered" Width="1.5" PointX="10.375" PointY="0.75" />
         <EntityTypeShape EntityType="myCinemaPlannerDBModel.Products_Realized" Width="1.5" PointX="10.375" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="myCinemaPlannerDBModel.Products_with_OLT" Width="1.5" PointX="10.375" PointY="6.75" />
+        <EntityTypeShape EntityType="myCinemaPlannerDBModel.Distribution_TicketCash" Width="1.5" PointX="10.375" PointY="10.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

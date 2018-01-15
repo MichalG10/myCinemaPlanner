@@ -127,6 +127,21 @@ namespace MyCinemaPlanner
             else
                 Repertoire.Instance.BringToFront();
         }
-    
+
+        private void ticketsManagmentToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!panel.Controls.Contains(TicketsManagment.Instance))
+            {
+                this.Size = new System.Drawing.Size((int)(TicketsManagment.Instance.Size.Width * 1.06), (int)(TicketsManagment.Instance.Size.Height * 1.18));
+                panel.Size = new System.Drawing.Size(TicketsManagment.Instance.Size.Width, TicketsManagment.Instance.Size.Height);
+
+                panel.Controls.Add(TicketsManagment.Instance);
+                TicketsManagment.Instance.Dock = DockStyle.Fill;
+                TicketsManagment.Instance.BringToFront();
+
+            }
+            else
+                TicketsManagment.Instance.BringToFront();
+        }
     }
 }

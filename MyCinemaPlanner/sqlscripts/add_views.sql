@@ -26,5 +26,14 @@ from Orders o
 join Products p on p.ProductID = o.ProductID
 where o.Realised is not NULL
 
+-- 13.01.2018 -- dodanie view potrzebnego do obsługi biletów
+create view [Distribution_TicketCash] as
+select s.SeanceID as IdSeansu, m.Title as Tytuł, s.RoomID as Sala,
+	   datediff(minute, s.StartTime, s.EndTime) as CzasTrwania, 
+	   cast(s.StartTime as time(0)) as GodzSeansu,
+	   s.ShowDate
+from Seance s
+join Distributions d on d.DistributionID = s.DistributionID
+join Movies m on m.MovieID = d.MovieID
 
 

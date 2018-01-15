@@ -31,25 +31,27 @@
             this.label1 = new System.Windows.Forms.Label();
             this.productsGrid = new System.Windows.Forms.DataGridView();
             this.RecordGroupBox = new System.Windows.Forms.GroupBox();
+            this.PCenaNumeric = new System.Windows.Forms.NumericUpDown();
+            this.PKategoriaBox = new System.Windows.Forms.ComboBox();
+            this.PMinimalnaNumeric = new System.Windows.Forms.NumericUpDown();
+            this.PLiczbaNumeric = new System.Windows.Forms.NumericUpDown();
+            this.label2 = new System.Windows.Forms.Label();
+            this.PNazwaBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.PNazwaBox = new System.Windows.Forms.TextBox();
-            this.PLiczbaNumeric = new System.Windows.Forms.NumericUpDown();
-            this.PMinimalnaNumeric = new System.Windows.Forms.NumericUpDown();
-            this.PKategoriaBox = new System.Windows.Forms.ComboBox();
-            this.PCenaNumeric = new System.Windows.Forms.NumericUpDown();
             this.label7 = new System.Windows.Forms.Label();
             this.orderedGrid = new System.Windows.Forms.DataGridView();
             this.label8 = new System.Windows.Forms.Label();
             this.realizedGrid = new System.Windows.Forms.DataGridView();
+            this.PAddModifyButton = new System.Windows.Forms.Button();
+            this.PDeleteButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.productsGrid)).BeginInit();
             this.RecordGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PLiczbaNumeric)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PMinimalnaNumeric)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PCenaNumeric)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PMinimalnaNumeric)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PLiczbaNumeric)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.orderedGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.realizedGrid)).BeginInit();
             this.SuspendLayout();
@@ -75,9 +77,12 @@
             this.productsGrid.ReadOnly = true;
             this.productsGrid.Size = new System.Drawing.Size(748, 165);
             this.productsGrid.TabIndex = 25;
+            this.productsGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.productsGrid_CellClick);
             // 
             // RecordGroupBox
             // 
+            this.RecordGroupBox.Controls.Add(this.PDeleteButton);
+            this.RecordGroupBox.Controls.Add(this.PAddModifyButton);
             this.RecordGroupBox.Controls.Add(this.PCenaNumeric);
             this.RecordGroupBox.Controls.Add(this.PKategoriaBox);
             this.RecordGroupBox.Controls.Add(this.PMinimalnaNumeric);
@@ -91,10 +96,79 @@
             this.RecordGroupBox.ForeColor = System.Drawing.Color.White;
             this.RecordGroupBox.Location = new System.Drawing.Point(761, 21);
             this.RecordGroupBox.Name = "RecordGroupBox";
-            this.RecordGroupBox.Size = new System.Drawing.Size(268, 171);
+            this.RecordGroupBox.Size = new System.Drawing.Size(268, 198);
             this.RecordGroupBox.TabIndex = 26;
             this.RecordGroupBox.TabStop = false;
             this.RecordGroupBox.Text = "Dodaj/Zmień/Usuń produkt";
+            // 
+            // PCenaNumeric
+            // 
+            this.PCenaNumeric.DecimalPlaces = 2;
+            this.PCenaNumeric.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.PCenaNumeric.Location = new System.Drawing.Point(11, 126);
+            this.PCenaNumeric.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.PCenaNumeric.Name = "PCenaNumeric";
+            this.PCenaNumeric.Size = new System.Drawing.Size(66, 20);
+            this.PCenaNumeric.TabIndex = 11;
+            // 
+            // PKategoriaBox
+            // 
+            this.PKategoriaBox.FormattingEnabled = true;
+            this.PKategoriaBox.Location = new System.Drawing.Point(83, 41);
+            this.PKategoriaBox.Name = "PKategoriaBox";
+            this.PKategoriaBox.Size = new System.Drawing.Size(180, 21);
+            this.PKategoriaBox.TabIndex = 10;
+            // 
+            // PMinimalnaNumeric
+            // 
+            this.PMinimalnaNumeric.Location = new System.Drawing.Point(156, 84);
+            this.PMinimalnaNumeric.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.PMinimalnaNumeric.Name = "PMinimalnaNumeric";
+            this.PMinimalnaNumeric.Size = new System.Drawing.Size(66, 20);
+            this.PMinimalnaNumeric.TabIndex = 9;
+            this.PMinimalnaNumeric.Tag = "";
+            // 
+            // PLiczbaNumeric
+            // 
+            this.PLiczbaNumeric.Location = new System.Drawing.Point(11, 84);
+            this.PLiczbaNumeric.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.PLiczbaNumeric.Name = "PLiczbaNumeric";
+            this.PLiczbaNumeric.Size = new System.Drawing.Size(66, 20);
+            this.PLiczbaNumeric.TabIndex = 8;
+            this.PLiczbaNumeric.Tag = "";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(8, 107);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(43, 16);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Cena:";
+            // 
+            // PNazwaBox
+            // 
+            this.PNazwaBox.Location = new System.Drawing.Point(83, 18);
+            this.PNazwaBox.Name = "PNazwaBox";
+            this.PNazwaBox.Size = new System.Drawing.Size(180, 20);
+            this.PNazwaBox.TabIndex = 5;
             // 
             // label5
             // 
@@ -110,7 +184,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(153, 71);
+            this.label4.Location = new System.Drawing.Point(153, 65);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(110, 16);
             this.label4.TabIndex = 3;
@@ -120,21 +194,11 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(6, 71);
+            this.label3.Location = new System.Drawing.Point(6, 65);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(131, 16);
             this.label3.TabIndex = 2;
             this.label3.Text = "Liczba w magazynie:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(8, 116);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(43, 16);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Cena:";
             // 
             // label6
             // 
@@ -145,65 +209,6 @@
             this.label6.Size = new System.Drawing.Size(52, 16);
             this.label6.TabIndex = 0;
             this.label6.Text = "Nazwa:";
-            // 
-            // PNazwaBox
-            // 
-            this.PNazwaBox.Location = new System.Drawing.Point(83, 18);
-            this.PNazwaBox.Name = "PNazwaBox";
-            this.PNazwaBox.Size = new System.Drawing.Size(180, 20);
-            this.PNazwaBox.TabIndex = 5;
-            // 
-            // PLiczbaNumeric
-            // 
-            this.PLiczbaNumeric.Location = new System.Drawing.Point(11, 90);
-            this.PLiczbaNumeric.Maximum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.PLiczbaNumeric.Name = "PLiczbaNumeric";
-            this.PLiczbaNumeric.Size = new System.Drawing.Size(66, 20);
-            this.PLiczbaNumeric.TabIndex = 8;
-            this.PLiczbaNumeric.Tag = "";
-            // 
-            // PMinimalnaNumeric
-            // 
-            this.PMinimalnaNumeric.Location = new System.Drawing.Point(156, 90);
-            this.PMinimalnaNumeric.Maximum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.PMinimalnaNumeric.Name = "PMinimalnaNumeric";
-            this.PMinimalnaNumeric.Size = new System.Drawing.Size(66, 20);
-            this.PMinimalnaNumeric.TabIndex = 9;
-            this.PMinimalnaNumeric.Tag = "";
-            // 
-            // PKategoriaBox
-            // 
-            this.PKategoriaBox.FormattingEnabled = true;
-            this.PKategoriaBox.Location = new System.Drawing.Point(83, 41);
-            this.PKategoriaBox.Name = "PKategoriaBox";
-            this.PKategoriaBox.Size = new System.Drawing.Size(180, 21);
-            this.PKategoriaBox.TabIndex = 10;
-            // 
-            // PCenaNumeric
-            // 
-            this.PCenaNumeric.DecimalPlaces = 2;
-            this.PCenaNumeric.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
-            this.PCenaNumeric.Location = new System.Drawing.Point(11, 135);
-            this.PCenaNumeric.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.PCenaNumeric.Name = "PCenaNumeric";
-            this.PCenaNumeric.Size = new System.Drawing.Size(66, 20);
-            this.PCenaNumeric.TabIndex = 11;
             // 
             // label7
             // 
@@ -249,6 +254,27 @@
             this.realizedGrid.Size = new System.Drawing.Size(748, 160);
             this.realizedGrid.TabIndex = 30;
             // 
+            // PAddModifyButton
+            // 
+            this.PAddModifyButton.ForeColor = System.Drawing.Color.Black;
+            this.PAddModifyButton.Location = new System.Drawing.Point(9, 153);
+            this.PAddModifyButton.Name = "PAddModifyButton";
+            this.PAddModifyButton.Size = new System.Drawing.Size(120, 39);
+            this.PAddModifyButton.TabIndex = 12;
+            this.PAddModifyButton.Text = "Dodaj/Aktualizuj produkt";
+            this.PAddModifyButton.UseVisualStyleBackColor = true;
+            this.PAddModifyButton.Click += new System.EventHandler(this.PAddModifyButton_Click);
+            // 
+            // PDeleteButton
+            // 
+            this.PDeleteButton.ForeColor = System.Drawing.Color.Black;
+            this.PDeleteButton.Location = new System.Drawing.Point(143, 153);
+            this.PDeleteButton.Name = "PDeleteButton";
+            this.PDeleteButton.Size = new System.Drawing.Size(120, 39);
+            this.PDeleteButton.TabIndex = 13;
+            this.PDeleteButton.Text = "Usuń produkt";
+            this.PDeleteButton.UseVisualStyleBackColor = true;
+            // 
             // ManagerProductsandOrders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -266,9 +292,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.productsGrid)).EndInit();
             this.RecordGroupBox.ResumeLayout(false);
             this.RecordGroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PLiczbaNumeric)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PMinimalnaNumeric)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PCenaNumeric)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PMinimalnaNumeric)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PLiczbaNumeric)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.orderedGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.realizedGrid)).EndInit();
             this.ResumeLayout(false);
@@ -295,5 +321,7 @@
         private System.Windows.Forms.DataGridView orderedGrid;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.DataGridView realizedGrid;
+        private System.Windows.Forms.Button PDeleteButton;
+        private System.Windows.Forms.Button PAddModifyButton;
     }
 }

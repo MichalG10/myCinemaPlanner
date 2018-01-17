@@ -43,9 +43,6 @@ namespace MyCinemaPlanner
             listofOrdered = new List<TicketOrder>();
             orderSum = 0;
 
-            // mapuje klasy na struktury jsonowe
-            BsonClassMap.RegisterClassMap<Ticket>();
-            BsonClassMap.RegisterClassMap<TicketOrder>();
             try {
                 client = new MongoClient(connectionString);
                 db = client.GetDatabase(databaseName);

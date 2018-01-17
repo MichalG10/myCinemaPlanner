@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MongoDB.Bson.Serialization;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,11 @@ namespace MyCinemaPlanner
         public Manager()
         {
             InitializeComponent();
+
+            // mapuje klasy na struktury jsonowe
+            BsonClassMap.RegisterClassMap<Ticket>();
+            BsonClassMap.RegisterClassMap<TicketOrder>();
+
             this.Size = new Size((int)(Manager_Welcome.Instance.Size.Width * 1.06), (int)(Manager_Welcome.Instance.Size.Height * 1.18));
             panel.Size = new Size(Manager_Welcome.Instance.Size.Width, Manager_Welcome.Instance.Size.Height);
 
